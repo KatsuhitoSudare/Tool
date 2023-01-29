@@ -9,5 +9,10 @@ namespace KALEIDOSCOPE
 	{
 	}
 
+	void cRenderer::OnRender(XMMATRIX _View, XMMATRIX _Projection)
+	{
+
+	}
+
 }
 

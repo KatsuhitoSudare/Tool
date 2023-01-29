@@ -7,7 +7,15 @@ namespace KALEIDOSCOPE
 	{
 	public:
 		cRenderer();
+
 		virtual ~cRenderer();
+
+		virtual void OnRender(XMMATRIX _View,XMMATRIX _Projection);
+
+	private:
+
+
+
 	};
 }
 

@@ -1,5 +1,9 @@
 #pragma once
 #include "cObject.h"
+#include"cTransform.h"
+
+class cGameObject;
+
 
 namespace KALEIDOSCOPE
 {
@@ -9,7 +13,12 @@ namespace KALEIDOSCOPE
 		cComponent();
 		virtual ~cComponent();
 
+		cTransform* m_Transform;
+		cGameObject* m_GameObject;
+
 	private:
+
+
 
 	};
 }
