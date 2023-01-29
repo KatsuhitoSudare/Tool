@@ -147,10 +147,22 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\KaleidoScope.h" />
+    <ClInclude Include="src\cComponent.h" />
+    <ClInclude Include="src\cGameObject.h" />
+    <ClInclude Include="src\cObject.h" />
+    <ClInclude Include="src\cRenderer.h" />
+    <ClInclude Include="src\cSceneManager.h" />
+    <ClInclude Include="src\cSystemMain.h" />
+    <ClInclude Include="src\cTransform.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\KaleidoScope.cpp" />
+    <ClCompile Include="src\cComponent.cpp" />
+    <ClCompile Include="src\cGameObject.cpp" />
+    <ClCompile Include="src\cObject.cpp" />
+    <ClCompile Include="src\cRenderer.cpp" />
+    <ClCompile Include="src\cSceneManager.cpp" />
+    <ClCompile Include="src\cSystemMain.cpp" />
+    <ClCompile Include="src\cTransform.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

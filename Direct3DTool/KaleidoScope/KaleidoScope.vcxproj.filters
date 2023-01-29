@@ -13,15 +13,72 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="cSceneManager">
+      <UniqueIdentifier>{f705c557-efd8-4e9d-a2df-5c24a3170838}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SystemMain">
+      <UniqueIdentifier>{9be47773-7511-4ca1-b0b5-ea7f8dcd2ec8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="cObject">
+      <UniqueIdentifier>{0c6f2451-61fb-4a86-a707-db283b676b1c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="cObject\cGameObject">
+      <UniqueIdentifier>{8e26b852-5d15-41d3-b235-1ba374fbed8f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="cObject\Transform">
+      <UniqueIdentifier>{d231f303-ae68-4140-9616-214bab38a1fc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="cObject\Component">
+      <UniqueIdentifier>{7a39fbf3-ae42-4a3d-9d60-88517f030e24}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="cObject\Component\Renderer">
+      <UniqueIdentifier>{0c00f93b-495c-4dd4-bd90-8abdaee771f7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\KaleidoScope.h">
-      <Filter>ヘッダー ファイル</Filter>
+    <ClInclude Include="src\cSceneManager.h">
+      <Filter>cSceneManager</Filter>
+    </ClInclude>
+    <ClInclude Include="src\cSystemMain.h">
+      <Filter>SystemMain</Filter>
+    </ClInclude>
+    <ClInclude Include="src\cObject.h">
+      <Filter>cObject</Filter>
+    </ClInclude>
+    <ClInclude Include="src\cGameObject.h">
+      <Filter>cObject\cGameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="src\cTransform.h">
+      <Filter>cObject\Transform</Filter>
+    </ClInclude>
+    <ClInclude Include="src\cComponent.h">
+      <Filter>cObject\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="src\cRenderer.h">
+      <Filter>cObject\Component\Renderer</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\KaleidoScope.cpp">
-      <Filter>ソース ファイル</Filter>
+    <ClCompile Include="src\cSceneManager.cpp">
+      <Filter>cSceneManager</Filter>
+    </ClCompile>
+    <ClCompile Include="src\cSystemMain.cpp">
+      <Filter>SystemMain</Filter>
+    </ClCompile>
+    <ClCompile Include="src\cObject.cpp">
+      <Filter>cObject</Filter>
+    </ClCompile>
+    <ClCompile Include="src\cGameObject.cpp">
+      <Filter>cObject\cGameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="src\cTransform.cpp">
+      <Filter>cObject\Transform</Filter>
+    </ClCompile>
+    <ClCompile Include="src\cComponent.cpp">
+      <Filter>cObject\Component</Filter>
+    </ClCompile>
+    <ClCompile Include="src\cRenderer.cpp">
+      <Filter>cObject\Component\Renderer</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

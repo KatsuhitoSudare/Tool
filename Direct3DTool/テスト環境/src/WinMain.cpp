@@ -1,12 +1,10 @@
 #include<Windows.h>
-#include"KaleidoScope.h"
+#include"cSystemMain.h"
 
 
 INT WINAPI WinMain(HINSTANCE,HINSTANCE,LPSTR,int)
 {
-	KaleidoScope::KaleidoScopeInit();
-
-	KaleidoScope::MainLoop();
-
+	KALEIDOSCOPE::cSystemMain::SystemInit();
+	KALEIDOSCOPE::cSystemMain::MainLoop();
 	return 0;
 }
