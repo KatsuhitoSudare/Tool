@@ -8,4 +8,6 @@ namespace KALEIDOSCOPE
 	cGameObject::~cGameObject()
 	{
 	}
+
+
 }

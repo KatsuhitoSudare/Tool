@@ -4,7 +4,6 @@
 
 class cGameObject;
 
-
 namespace KALEIDOSCOPE
 {
 	class cComponent : public cObject

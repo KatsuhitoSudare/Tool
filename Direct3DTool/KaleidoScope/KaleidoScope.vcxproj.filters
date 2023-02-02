@@ -34,6 +34,15 @@
     <Filter Include="cObject\Component\Renderer">
       <UniqueIdentifier>{0c00f93b-495c-4dd4-bd90-8abdaee771f7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="cObject\Component\cBehavior">
+      <UniqueIdentifier>{aa760f9f-ca4c-43ee-b4e6-5a8489dc8386}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ResourceManager">
+      <UniqueIdentifier>{4651a1e9-be63-404f-8ca7-092cb458090f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ResourceManager\cShaderObject">
+      <UniqueIdentifier>{40ef7fc2-d007-46cc-92c6-9be8f04b748c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\cSceneManager.h">
@@ -57,6 +66,12 @@
     <ClInclude Include="src\cRenderer.h">
       <Filter>cObject\Component\Renderer</Filter>
     </ClInclude>
+    <ClInclude Include="src\cBehavior.h">
+      <Filter>cObject\Component\cBehavior</Filter>
+    </ClInclude>
+    <ClInclude Include="src\cShaderObject.h">
+      <Filter>ResourceManager\cShaderObject</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\cSceneManager.cpp">
@@ -79,6 +94,12 @@
     </ClCompile>
     <ClCompile Include="src\cRenderer.cpp">
       <Filter>cObject\Component\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\cBehavior.cpp">
+      <Filter>cObject\Component\cBehavior</Filter>
+    </ClCompile>
+    <ClCompile Include="src\cShaderObject.cpp">
+      <Filter>ResourceManager\cShaderObject</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

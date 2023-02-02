@@ -19,7 +19,8 @@ public:
 	static BOOL Direct3DInit(HWND hWnd);
 	static void ClearRenderTarget(float R,float G,float B);
 	static void SwapBuffuer();
-
+	static ID3D11Device* GetDevice();
+	static ID3D11DeviceContext* GetContext();
 
 private:
 	static inline UINT                           m_CWindowW;

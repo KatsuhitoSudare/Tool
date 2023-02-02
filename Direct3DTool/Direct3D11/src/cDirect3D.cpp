@@ -235,3 +235,13 @@ void cDirect3D::SwapBuffuer()
 {
 	m_pSwapChain->Present(1,0);
 }
+
+ID3D11Device* cDirect3D::GetDevice()
+{
+	return m_pD3DDevice.Get();
+}
+
+ID3D11DeviceContext* cDirect3D::GetContext()
+{
+	return m_pD3DContext.Get();
+}
