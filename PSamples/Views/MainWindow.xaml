@@ -1,0 +1,20 @@
+﻿<Window x:Class="PSamples.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:prism="http://prismlibrary.com/"
+        prism:ViewModelLocator.AutoWireViewModel="True"
+        Title="{Binding Title}" Height="350" Width="525" 
+        WindowStartupLocation =" CenterScreen">
+    <Grid>
+        <StackPanel>
+            <Label Content="システム日時"/>
+            <Label Content="{Binding SystemDateLabel}"/>
+            <Button Content="システム日時更新"
+                    Command="{Binding SystemDateUpdateButton}"/>
+            <Button Content="Show viw A"
+                    Command="{Binding ShowViewAButton}"/>
+
+            <ContentControl prism:RegionManager.RegionName="ContentRegion" />
+        </StackPanel>
+    </Grid>
+</Window>
