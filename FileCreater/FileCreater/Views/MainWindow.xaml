@@ -1,0 +1,21 @@
+﻿<Window x:Class="FileCreater.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:prism="http://prismlibrary.com/"
+        prism:ViewModelLocator.AutoWireViewModel="True"
+        Title="{Binding Title}" Height="350" Width="546" >
+    <Grid>
+        <DockPanel LastChildFill="False">
+            <TextBox TextWrapping="Wrap" Text="TextBox" DockPanel.Dock="Top" Height="86"/>
+            <TabControl DockPanel.Dock="Top" Height="100">
+                <TabItem Content="{Binding HOHOH}"/>
+                <TabItem Header="TabItem">
+                    <Grid Background="Blue"/>
+                </TabItem>
+                <TabItem Header="TabItem">
+                    <Grid Background="#FFE5E5E5"/>
+                </TabItem>
+            </TabControl>
+        </DockPanel>
+    </Grid>
+</Window>

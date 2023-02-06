@@ -1,4 +1,6 @@
 ﻿using Prism.Ioc;
+using Prism.Modularity;
+using PSamples.ViewModels;
 using PSamples.Views;
 using System.Windows;
 
@@ -16,7 +18,9 @@ namespace PSamples
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
-
+            containerRegistry.RegisterForNavigation<ViewA>();
+            containerRegistry.RegisterForNavigation<ViewB>();
+            containerRegistry.RegisterForNavigation<ViewC,ViewCViewModel>();
         }
     }
 }

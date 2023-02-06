@@ -7,7 +7,16 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="Views\PrismWindow1.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Views\ViewA.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\ViewB.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\ViewC.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
@@ -15,7 +24,16 @@
     <Page Update="Views\MainWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Views\PrismWindow1.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Views\ViewA.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\ViewB.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\ViewC.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

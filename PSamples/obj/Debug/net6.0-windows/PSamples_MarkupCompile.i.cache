@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\famil\OneDrive\デスクトップ\PSamples\obj\Debug\net6.0-windows\
+C:\Users\famil\Desktop\Tool\PSamples\obj\Debug\net6.0-windows\
 PSamples
 none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
-C:\Users\famil\OneDrive\デスクトップ\PSamples\App.xaml
-2-1899677478
+C:\Users\famil\Desktop\Tool\PSamples\App.xaml
+5-199690585
 
-71452296903
+13842064602
 20037222836
-Views\MainWindow.xaml;Views\ViewA.xaml;
+Views\MainWindow.xaml;Views\PrismWindow1.xaml;Views\ViewA.xaml;Views\ViewB.xaml;Views\ViewC.xaml;
 
 False
 

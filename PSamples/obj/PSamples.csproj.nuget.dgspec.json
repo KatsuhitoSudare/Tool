@@ -1,21 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\famil\\OneDrive\\デスクトップ\\PSamples\\PSamples.csproj": {}
+    "C:\\Users\\famil\\Desktop\\Tool\\PSamples\\PSamples.csproj": {}
   },
   "projects": {
-    "C:\\Users\\famil\\OneDrive\\デスクトップ\\PSamples\\PSamples.csproj": {
+    "C:\\Users\\famil\\Desktop\\Tool\\PSamples\\PSamples.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\famil\\OneDrive\\デスクトップ\\PSamples\\PSamples.csproj",
+        "projectUniqueName": "C:\\Users\\famil\\Desktop\\Tool\\PSamples\\PSamples.csproj",
         "projectName": "PSamples",
-        "projectPath": "C:\\Users\\famil\\OneDrive\\デスクトップ\\PSamples\\PSamples.csproj",
+        "projectPath": "C:\\Users\\famil\\Desktop\\Tool\\PSamples\\PSamples.csproj",
         "packagesPath": "C:\\Users\\famil\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\famil\\OneDrive\\デスクトップ\\PSamples\\obj\\",
+        "outputPath": "C:\\Users\\famil\\Desktop\\Tool\\PSamples\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
           "C:\\Users\\famil\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -27,6 +26,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {

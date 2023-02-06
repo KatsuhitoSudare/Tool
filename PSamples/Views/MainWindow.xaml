@@ -13,8 +13,12 @@
                     Command="{Binding SystemDateUpdateButton}"/>
             <Button Content="Show viw A"
                     Command="{Binding ShowViewAButton}"/>
-
+            <Button Content="Show ViewB"
+                    Command="{Binding ShowViewBButton}"/>
+            <Button Content="Show view C"
+                    Command="{Binding ShowViewCButton}"/>
             <ContentControl prism:RegionManager.RegionName="ContentRegion" />
+            <Label Content="Label"/>
         </StackPanel>
     </Grid>
 </Window>
