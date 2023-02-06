@@ -22,7 +22,7 @@ namespace KALEIDOSCOPE
 		//static ID3D11Device* device =  cDirect3D::GetDevice();
 		static ID3D11DeviceContext* context = cDirect3D::GetContext();
 
-		context->
+		//context->;
 
 		context->VSSetShader(ShaderObjectArray[ShaderName]->m_VertexShader.Get(), NULL, 0);
 		context->PSSetShader(ShaderObjectArray[ShaderName]->m_PixelShader.Get(),NULL,0);
