@@ -5,6 +5,16 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
   <ItemGroup>
+    <None Remove="Views\cake_maptip.png" />
+    <None Remove="Views\cake_sponge_kiui_maptip.png" />
+    <None Remove="Views\cake_step_maptip.png" />
+  </ItemGroup>
+  <ItemGroup>
     <PackageReference Include="Prism.Unity" Version="8.1.97" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Views\cake_maptip.png" />
+    <Resource Include="Views\cake_sponge_kiui_maptip.png" />
+    <Resource Include="Views\cake_step_maptip.png" />
   </ItemGroup>
 </Project>

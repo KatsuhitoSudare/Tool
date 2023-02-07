@@ -3,20 +3,27 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:prism="http://prismlibrary.com/"
         prism:ViewModelLocator.AutoWireViewModel="True"
-        Title="{Binding Title}" Height="350" Width="546" >
-    <Grid>
-        <DockPanel LastChildFill="False">
-            <TabControl Width="100">
-                <TabItem Header="TabItem">
-                    <Grid Background="#FFE5E5E5"/>
-                </TabItem>
-                <TabItem Header="TabItem">
-                    <Grid Background="#FFE5E5E5"/>
-                </TabItem>
-                <TabItem Header="TabItem">
-                    <Grid Background="#FFE5E5E5"/>
-                </TabItem>
-            </TabControl>
-        </DockPanel>
-    </Grid>
+        Title="{Binding Title}" Height="720" Width="1280" Icon="/Views/cake_step_maptip.png" Opacity="1.2" >
+    <StackPanel>
+        <Grid>
+            <Menu>
+                <MenuItem Header="ファイル">
+                    <MenuItem Header="新規作成"/>
+                </MenuItem>
+                <MenuItem Header="編集"/>
+            </Menu>
+        </Grid>
+        <Grid Height="30" Width="1280">
+            <ToolBarPanel>
+                <Button Content="{Binding NewFile}"  Height="30" Width="30" HorizontalAlignment="Left">
+                    <Button.BorderBrush>
+                        <ImageBrush ImageSource="/Views/cake_sponge_kiui_maptip.png"/>
+                    </Button.BorderBrush>
+                    <Button.Background>
+                        <ImageBrush ImageSource="/Views/cake_maptip.png"/>
+                    </Button.Background>
+                </Button>
+            </ToolBarPanel>
+        </Grid>
+    </StackPanel>
 </Window>
