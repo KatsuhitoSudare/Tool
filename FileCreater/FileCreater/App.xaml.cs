@@ -1,22 +1,11 @@
-﻿using FileCreater.Views;
-using Prism.Ioc;
-using System.Windows;
+﻿namespace FileCreater;
 
-namespace FileCreater
+public partial class App : Application
 {
-    /// <summary>
-    /// Interaction logic for App.xaml
-    /// </summary>
-    public partial class App
-    {
-        protected override Window CreateShell()
-        {
-            return Container.Resolve<MainWindow>();
-        }
+	public App()
+	{
+		InitializeComponent();
 
-        protected override void RegisterTypes(IContainerRegistry containerRegistry)
-        {
-
-        }
-    }
+		MainPage = new AppShell();
+	}
 }
