@@ -20,6 +20,7 @@ BOOL cDirect3D::Direct3DInit(HWND hWnd)
 		D3D_DRIVER_TYPE_REFERENCE,
 		D3D_DRIVER_TYPE_SOFTWARE,
 	};
+
 	unsigned int numDriverTypes = ARRAYSIZE(driverTypes);
 
 	D3D_FEATURE_LEVEL   level{};

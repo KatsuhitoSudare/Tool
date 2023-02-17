@@ -1,0 +1,206 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="ソース ファイル">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="ヘッダー ファイル">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="リソース ファイル">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="external">
+      <UniqueIdentifier>{31bf3644-1acb-4bca-95f8-5ecbe80fc2e1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="external\meshoptimizer">
+      <UniqueIdentifier>{182a4a3c-25c3-4f7c-bd25-1466073d763c}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\src\App.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\FileUtil.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\DescriptorPool.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ConstantBuffer.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Texture.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\VertexBuffer.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\IndexBuffer.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ColorTarget.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\DepthTarget.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\CommandList.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Fence.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ResMesh.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Mesh.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Logger.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Material.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Camera.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\RootSignature.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\packages\meshoptimizer\src\allocator.cpp">
+      <Filter>external\meshoptimizer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\packages\meshoptimizer\src\clusterizer.cpp">
+      <Filter>external\meshoptimizer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\packages\meshoptimizer\src\indexcodec.cpp">
+      <Filter>external\meshoptimizer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\packages\meshoptimizer\src\indexgenerator.cpp">
+      <Filter>external\meshoptimizer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\packages\meshoptimizer\src\overdrawanalyzer.cpp">
+      <Filter>external\meshoptimizer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\packages\meshoptimizer\src\overdrawoptimizer.cpp">
+      <Filter>external\meshoptimizer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\packages\meshoptimizer\src\simplifier.cpp">
+      <Filter>external\meshoptimizer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\packages\meshoptimizer\src\spatialorder.cpp">
+      <Filter>external\meshoptimizer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\packages\meshoptimizer\src\stripifier.cpp">
+      <Filter>external\meshoptimizer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\packages\meshoptimizer\src\vcacheanalyzer.cpp">
+      <Filter>external\meshoptimizer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\packages\meshoptimizer\src\vcacheoptimizer.cpp">
+      <Filter>external\meshoptimizer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\packages\meshoptimizer\src\vertexcodec.cpp">
+      <Filter>external\meshoptimizer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\packages\meshoptimizer\src\vertexfilter.cpp">
+      <Filter>external\meshoptimizer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\packages\meshoptimizer\src\vfetchanalyzer.cpp">
+      <Filter>external\meshoptimizer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\packages\meshoptimizer\src\vfetchoptimizer.cpp">
+      <Filter>external\meshoptimizer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\StructuredBuffer.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\include\App.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\FileUtil.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\ComPtr.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Pool.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\DescriptorPool.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\ConstantBuffer.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Texture.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\VertexBuffer.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\IndexBuffer.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\ColorTarget.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\DepthTarget.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\CommandList.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Fence.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\ResMesh.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Mesh.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Logger.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\InlineUtil.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Material.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Camera.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\RootSignature.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\packages\meshoptimizer\src\meshoptimizer.h">
+      <Filter>external\meshoptimizer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\StructuredBuffer.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\MeshShaderPipelineState.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="..\res\Shader\GuiVS.hlsl">
+      <Filter>リソース ファイル</Filter>
+    </FxCompile>
+    <FxCompile Include="..\res\Shader\GuiPS.hlsl">
+      <Filter>リソース ファイル</Filter>
+    </FxCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+</Project>
