@@ -13,6 +13,22 @@ INT WINAPI WinMain(HINSTANCE, HINSTANCE,LPSTR,INT)
 
 	while (cWindowManager::ProcessMessage())
 	{
+		//更新処理はここに記述する
 
+		Direct3D12::StartRecordCommand();
+
+		Direct3D12::ClearRTV(0.4f, 0.4f, 0.4f);
+
+		Direct3D12::ClearDSV();
+
+		//描画処理は子kの間に記述する
+
+		Direct3D12::EndRecordCommand();
+
+		Direct3D12::RunCommand();
+
+		Direct3D12::Present(1);
 	}
+
+	Direct3D12::ShutdownD3D12();
 }

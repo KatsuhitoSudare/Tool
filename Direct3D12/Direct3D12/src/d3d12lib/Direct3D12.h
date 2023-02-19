@@ -21,19 +21,26 @@ public:
     //初期化関数
 	static BOOL InitD3D12(HWND _hWmd);
 
+    //終了関数
+    static void ShutdownD3D12();
+
     //バッファを交換する
     static void Present(uint32_t vsync);
 
     //レンダーターゲットのクリア
-    static void CreaterRTV(float R,float G,float B);
+    static void ClearRTV(float R,float G,float B);
 
     //深度ステンシルビューとバッファのクリア
-    static void CreaterDSV();
+    static void ClearDSV();
 
     //コマンドの記録を開始する関数:描画の処理の前に行う
     static void StartRecordCommand();
 
+    //コマンドの記録を終了する関数
+    static void EndRecordCommand();
 
+    //コマンドを実行する関数
+    static void RunCommand();
 
 private:
     static const uint32_t FrameCount = 2;   // フレームバッファ数です.

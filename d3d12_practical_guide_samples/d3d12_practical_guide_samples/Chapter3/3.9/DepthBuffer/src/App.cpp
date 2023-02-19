@@ -500,12 +500,12 @@ bool App::OnInit()
         desc.Layout             = D3D12_TEXTURE_LAYOUT_ROW_MAJOR;
         desc.Flags              = D3D12_RESOURCE_FLAG_NONE;
 
-        // リソースを生成.
+        // リソースを生成.*D3D11のCreateBufferみたいなやつ
         auto hr = m_pDevice->CreateCommittedResource(
             &prop,
             D3D12_HEAP_FLAG_NONE,
             &desc,
-            D3D12_RESOURCE_STATE_GENERIC_READ,
+            D3D12_RESOURCE_STATE_GENERIC_READ,//D3D12_HEAP_TYPE_UPLOADを指定しているので
             nullptr,
             IID_PPV_ARGS(m_pVB.GetAddressOf()));
         if ( FAILED(hr) )

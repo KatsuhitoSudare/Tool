@@ -313,6 +313,60 @@ BOOL Direct3D12::InitD3D12(HWND _hWnd)
     m_pCmdList->Close();
 }
 
+void Direct3D12::ShutdownD3D12()
+{
+    assert(m_pQueue != nullptr);
+    assert(m_pFence != nullptr);
+    assert(m_FenceEvent != nullptr);
+
+    // シグナル処理.
+    m_pQueue->Signal(m_pFence.Get(), m_FenceCounter[m_FrameIndex]);
+
+    // 完了時にイベントを設定する..
+    m_pFence->SetEventOnCompletion(m_FenceCounter[m_FrameIndex], m_FenceEvent);
+
+    // 待機処理.
+    WaitForSingleObjectEx(m_FenceEvent, INFINITE, FALSE);
+
+    // カウンターを増やす.
+    m_FenceCounter[m_FrameIndex]++;
+
+    // イベント破棄.
+    if (m_FenceEvent != nullptr)
+    {
+        CloseHandle(m_FenceEvent);
+        m_FenceEvent = nullptr;
+    }
+
+    // フェンス破棄.
+    m_pFence.Reset();
+
+    // レンダーターゲットビューの破棄.
+    m_pHeapRTV.Reset();
+    for (auto i = 0u; i < FrameCount; ++i)
+    {
+        m_pColorBuffer[i].Reset();
+    }
+
+    // コマンドリストの破棄.
+    m_pCmdList.Reset();
+
+    // コマンドアロケータの破棄.
+    for (auto i = 0u; i < FrameCount; ++i)
+    {
+        m_pCmdAllocator[i].Reset();
+    }
+
+    // スワップチェインの破棄.
+    m_pSwapChain.Reset();
+
+    // コマンドキューの破棄.
+    m_pQueue.Reset();
+
+    // デバイスの破棄.
+    m_pDevice.Reset();
+}
+
 void Direct3D12::Present(uint32_t vsync)
 {
     // 画面に表示.
@@ -336,14 +390,18 @@ void Direct3D12::Present(uint32_t vsync)
     m_FenceCounter[m_FrameIndex] = currentValue + 1;
 }
 
-void Direct3D12::CreaterRTV(float R, float G, float B)
+void Direct3D12::ClearRTV(float R, float G, float B)
 {
-
+    // クリアカラーの設定.
+    float clearColor[] = { 0.25f, 0.25f, 0.25f, 1.0f };
+    // レンダーターゲットビューをクリア.
+    m_pCmdList->ClearRenderTargetView(m_HandleRTV[m_FrameIndex], clearColor, 0, nullptr);
 }
 
-void Direct3D12::CreaterDSV()
+void Direct3D12::ClearDSV()
 {
-
+    // 深度ステンシルビューをクリア.
+    m_pCmdList->ClearDepthStencilView(m_HandleDSV, D3D12_CLEAR_FLAG_DEPTH, 1.0f, 0, 0, nullptr);
 }
 
 
@@ -354,4 +412,41 @@ void Direct3D12::StartRecordCommand()
 
     //コマンドリストの初期化
     m_pCmdList->Reset(m_pCmdAllocator[m_FrameIndex].Get(), nullptr);
+
+    // リソースバリアの設定.
+    D3D12_RESOURCE_BARRIER barrier = {};
+    barrier.Type = D3D12_RESOURCE_BARRIER_TYPE_TRANSITION;
+    barrier.Flags = D3D12_RESOURCE_BARRIER_FLAG_NONE;
+    barrier.Transition.pResource = m_pColorBuffer[m_FrameIndex].Get();
+    barrier.Transition.StateBefore = D3D12_RESOURCE_STATE_PRESENT;
+    barrier.Transition.StateAfter = D3D12_RESOURCE_STATE_RENDER_TARGET;
+    barrier.Transition.Subresource = D3D12_RESOURCE_BARRIER_ALL_SUBRESOURCES;
+
+    // リソースバリア.
+    m_pCmdList->ResourceBarrier(1, &barrier);
+}
+
+void Direct3D12::EndRecordCommand()
+{
+    // リソースバリアの設定.
+    D3D12_RESOURCE_BARRIER barrier = {};
+    barrier.Type = D3D12_RESOURCE_BARRIER_TYPE_TRANSITION;
+    barrier.Flags = D3D12_RESOURCE_BARRIER_FLAG_NONE;
+    barrier.Transition.pResource = m_pColorBuffer[m_FrameIndex].Get();
+    barrier.Transition.StateBefore = D3D12_RESOURCE_STATE_RENDER_TARGET;
+    barrier.Transition.StateAfter = D3D12_RESOURCE_STATE_PRESENT;
+    barrier.Transition.Subresource = D3D12_RESOURCE_BARRIER_ALL_SUBRESOURCES;
+
+    // リソースバリア.
+    m_pCmdList->ResourceBarrier(1, &barrier);
+
+    // コマンドの記録を終了.
+    m_pCmdList->Close();
+}
+
+void Direct3D12::RunCommand()
+{
+    // コマンドを実行.
+    ID3D12CommandList* ppCmdLists[] = { m_pCmdList.Get() };
+    m_pQueue->ExecuteCommandLists(1, ppCmdLists);
 }
