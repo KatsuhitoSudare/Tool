@@ -20,8 +20,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\d3d12lib\Direct3D12.h" />
+    <ClInclude Include="src\d3d12lib\lib\cRTV.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\cRTV.cpp" />
     <ClCompile Include="src\Direct3D12.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

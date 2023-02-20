@@ -59,9 +59,9 @@ public:
     //! @retval false   生成処理に失敗.
     //-------------------------------------------------------------------------
     static bool Create(
-        ID3D12Device*                       pDevice,
-        const D3D12_DESCRIPTOR_HEAP_DESC*   pDesc,
-        DescriptorPool**                    ppPool);
+        __in ID3D12Device*                       pDevice,
+        __in const D3D12_DESCRIPTOR_HEAP_DESC*   pDesc,
+        __out DescriptorPool**                    ppPool);
 
     //-------------------------------------------------------------------------
     //! @brief      参照カウントを増やします.
