@@ -24,5 +24,10 @@ namespace Avalon
         {
             InitializeComponent();
         }
+
+        private void LayoutDocument_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

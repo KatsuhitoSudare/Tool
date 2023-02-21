@@ -7,19 +7,49 @@
         xmlns:local="clr-namespace:Avalon"
         mc:Ignorable="d"
         Title="MainWindow" Height="720" Width="1280">
-    <StackPanel Orientation="Horizontal">
-        <StackPanel Orientation="Vertical">
-            <!--シーンオブジェクトなどのリソースを配置-->
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/><!--メニューバー用-->
+            <RowDefinition Height="20*"/><!--ウィンドウたちを配置-->
+        </Grid.RowDefinitions>
+        <avalonDock:DockingManager x:Name="Manager" AllowMixedOrientation="True" Grid.Row="1">
+            <avalonDock:LayoutRoot>
+                <avalonDock:LayoutPanel Orientation="Horizontal">
+                    <avalonDock:LayoutPanel Orientation="Vertical">
 
+                        <avalonDock:LayoutPanel Orientation="Horizontal">
+                            <avalonDock:LayoutAnchorablePane DockHeight="100"  x:Name="uxAnchorablePane2">
+                                <!-- ツールウィンドウ -->
+                                <avalonDock:LayoutAnchorable Title="ToolWindow2" ContentId="ToolWindow2">
+                                    <TextBox/>
+                                </avalonDock:LayoutAnchorable>
+                            </avalonDock:LayoutAnchorablePane>
+                            <avalonDock:LayoutDocumentPane x:Name="Document">
+                                <!--メインウィンドウ-->
+                                <avalonDock:LayoutDocument Title="main" ContentId="MainWindow">
+                                    <TextBox/>
+                                </avalonDock:LayoutDocument>
+                            </avalonDock:LayoutDocumentPane>
+                        </avalonDock:LayoutPanel>
+                        <avalonDock:LayoutAnchorablePane DockHeight="100"  x:Name="uk">
+                            <!-- ツールウィンドウ -->
+                            <avalonDock:LayoutAnchorable Title="ToolWindow2" ContentId="ToolWindow2">
+                                <TextBox/>
+                            </avalonDock:LayoutAnchorable>
+                        </avalonDock:LayoutAnchorablePane>
 
+                    </avalonDock:LayoutPanel>
+                    <avalonDock:LayoutAnchorablePane DockHeight="100"  x:Name="secondpane">
+                        <!-- ツールウィンドウ -->
+                        <avalonDock:LayoutAnchorable Title="ToolWindow2" ContentId="ToolWindow2">
+                            <TextBox/>
+                        </avalonDock:LayoutAnchorable>
+                    </avalonDock:LayoutAnchorablePane>
 
-        </StackPanel>
-        <!--インスペクタービューの生成位置-->
-        <avalonDock:DockingManager x:Name="uxDockingManager" AllowMixedOrientation="True" Grid.Row="1"/>
-
-
-    </StackPanel>
-    
-    
+                </avalonDock:LayoutPanel>
+            </avalonDock:LayoutRoot>
+        </avalonDock:DockingManager>
+    </Grid>
+ 
     
 </Window>
