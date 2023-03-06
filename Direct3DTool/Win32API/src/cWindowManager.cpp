@@ -2,6 +2,7 @@
 #include <iostream>
 #include <sstream>
 #include <string>
+#include"ImguiLib.h"
 
 
 BOOL cWindowManager::MakeWindow()
@@ -102,6 +103,9 @@ BOOL cWindowManager::ProcessMessage()
 
 LRESULT cWindowManager::WndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 {
+	if (IMGUILIB->ImGuiProc(hWnd, uMsg, wParam, lParam))
+		return true;
+
 	switch (uMsg)
 	{
 	case WM_DESTROY:

@@ -7,6 +7,7 @@
         xmlns:local="clr-namespace:Avalon"
         mc:Ignorable="d"
         Title="MainWindow" Height="720" Width="1280">
+    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/><!--メニューバー用-->
@@ -16,31 +17,29 @@
             <avalonDock:LayoutRoot>
                 <avalonDock:LayoutPanel Orientation="Horizontal">
                     <avalonDock:LayoutPanel Orientation="Vertical">
-
                         <avalonDock:LayoutPanel Orientation="Horizontal">
-                            <avalonDock:LayoutAnchorablePane DockHeight="100"  x:Name="uxAnchorablePane2">
-                                <!-- ツールウィンドウ -->
-                                <avalonDock:LayoutAnchorable Title="ToolWindow2" ContentId="ToolWindow2">
+                            <!--=================ヒエラルキービュー======================-->
+                            <avalonDock:LayoutAnchorablePane DockHeight="3*" DockWidth="1*" x:Name="uxAnchorablePane2">
+                                <avalonDock:LayoutAnchorable Title="ToolWindow2" ContentId="ヒエラルキー">
                                     <TextBox/>
                                 </avalonDock:LayoutAnchorable>
                             </avalonDock:LayoutAnchorablePane>
-                            <avalonDock:LayoutDocumentPane x:Name="Document">
-                                <!--メインウィンドウ-->
-                                <avalonDock:LayoutDocument Title="main" ContentId="MainWindow">
+                            <!--===================ゲームビュー======================-->
+                            <avalonDock:LayoutDocumentPane x:Name="GameWindow" DockHeight="3*" DockWidth="2*">
+                                <avalonDock:LayoutDocument Title="main" ContentId="ゲーム">
                                     <TextBox/>
                                 </avalonDock:LayoutDocument>
                             </avalonDock:LayoutDocumentPane>
                         </avalonDock:LayoutPanel>
-                        <avalonDock:LayoutAnchorablePane DockHeight="100"  x:Name="uk">
-                            <!-- ツールウィンドウ -->
+                        <!---======================コンテンツウィンドウ=======================-->
+                        <avalonDock:LayoutAnchorablePane DockHeight="1*"  x:Name="コンテンツウィンドウ">
                             <avalonDock:LayoutAnchorable Title="ToolWindow2" ContentId="ToolWindow2">
                                 <TextBox/>
                             </avalonDock:LayoutAnchorable>
                         </avalonDock:LayoutAnchorablePane>
-
                     </avalonDock:LayoutPanel>
-                    <avalonDock:LayoutAnchorablePane DockHeight="100"  x:Name="secondpane">
-                        <!-- ツールウィンドウ -->
+                    <!--==========================インスペクタービュー===========================-->
+                    <avalonDock:LayoutAnchorablePane DockHeight="*"  x:Name="secondpane">
                         <avalonDock:LayoutAnchorable Title="ToolWindow2" ContentId="ToolWindow2">
                             <TextBox/>
                         </avalonDock:LayoutAnchorable>

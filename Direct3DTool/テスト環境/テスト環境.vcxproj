@@ -138,6 +138,9 @@
     <ProjectReference Include="..\Direct3D11\Direct3D11.vcxproj">
       <Project>{5d96ddb7-526c-4abd-991f-98ea880959bf}</Project>
     </ProjectReference>
+    <ProjectReference Include="..\ImGuiLib\ImGuiLib.vcxproj">
+      <Project>{3cb11312-6a61-41ff-b404-38bde621e424}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\KaleidoScope\KaleidoScope.vcxproj">
       <Project>{35b6f903-c494-45d9-b447-59f634ef38f5}</Project>
     </ProjectReference>

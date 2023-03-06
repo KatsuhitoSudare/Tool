@@ -18,11 +18,32 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\imgui.cpp" />
+    <ClCompile Include="src\ImguiLib.cpp" />
+    <ClCompile Include="src\imgui_demo.cpp" />
+    <ClCompile Include="src\imgui_draw.cpp" />
+    <ClCompile Include="src\imgui_impl_dx11.cpp" />
+    <ClCompile Include="src\imgui_impl_win32.cpp" />
+    <ClCompile Include="src\imgui_tables.cpp" />
+    <ClCompile Include="src\imgui_widgets.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\imconfig.h" />
+    <ClInclude Include="src\imgui.h" />
+    <ClInclude Include="src\ImguiLib.h" />
+    <ClInclude Include="src\imgui_impl_dx11.h" />
+    <ClInclude Include="src\imgui_impl_win32.h" />
+    <ClInclude Include="src\imgui_internal.h" />
+    <ClInclude Include="src\imstb_rectpack.h" />
+    <ClInclude Include="src\imstb_textedit.h" />
+    <ClInclude Include="src\imstb_truetype.h" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{35b6f903-c494-45d9-b447-59f634ef38f5}</ProjectGuid>
-    <RootNamespace>KaleidoScope</RootNamespace>
+    <ProjectGuid>{3cb11312-6a61-41ff-b404-38bde621e424}</ProjectGuid>
+    <RootNamespace>ImGuiLib</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -76,8 +97,6 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>..\Win32API\src;..\ImguiLib\src;..\Direct3D11\src</AdditionalIncludeDirectories>
-      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>
@@ -93,8 +112,6 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>..\Win32API\src;..\ImguiLib\src;..\Direct3D11\src</AdditionalIncludeDirectories>
-      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>
@@ -110,8 +127,6 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>..\Win32API\src;..\ImguiLib\src;..\Direct3D11\src</AdditionalIncludeDirectories>
-      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>
@@ -127,8 +142,6 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>..\Win32API\src;..\ImguiLib\src;..\Direct3D11\src</AdditionalIncludeDirectories>
-      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>
@@ -138,39 +151,6 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Direct3D11\Direct3D11.vcxproj">
-      <Project>{5d96ddb7-526c-4abd-991f-98ea880959bf}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\ImGuiLib\ImGuiLib.vcxproj">
-      <Project>{3cb11312-6a61-41ff-b404-38bde621e424}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\Win32API\Win32API.vcxproj">
-      <Project>{6eeeb392-c79e-4f3d-828a-8eb5015b486e}</Project>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="src\cBehavior.h" />
-    <ClInclude Include="src\cComponent.h" />
-    <ClInclude Include="src\cGameObject.h" />
-    <ClInclude Include="src\cObject.h" />
-    <ClInclude Include="src\cRenderer.h" />
-    <ClInclude Include="src\cSceneManager.h" />
-    <ClInclude Include="src\cShaderObject.h" />
-    <ClInclude Include="src\cSystemMain.h" />
-    <ClInclude Include="src\cTransform.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="src\cBehavior.cpp" />
-    <ClCompile Include="src\cComponent.cpp" />
-    <ClCompile Include="src\cGameObject.cpp" />
-    <ClCompile Include="src\cObject.cpp" />
-    <ClCompile Include="src\cRenderer.cpp" />
-    <ClCompile Include="src\cSceneManager.cpp" />
-    <ClCompile Include="src\cShaderObject.cpp" />
-    <ClCompile Include="src\cSystemMain.cpp" />
-    <ClCompile Include="src\cTransform.cpp" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
