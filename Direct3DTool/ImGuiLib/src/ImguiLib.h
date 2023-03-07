@@ -29,11 +29,13 @@ public:
 
 	void Shutdown();
 
-	void RenderImgui();
+	void ImguiRender();
 
-	void CreateButton(std::string WindowName, std::string ButtonName, void (*PushEvent)(), Kinds ButtonKinds);
+	void ImguiCreateButton(std::string WindowName, std::string ButtonName, void (*PushEvent)(), Kinds ButtonKinds);
 
 	void ImguiCreateWindow(std::string WindowName);
+
+	void ImguiCreateSliderF(std::string WindowName,std::string SliderName,float* SliderValue,float Min,float Max);
 
 	LRESULT ImGuiProc(HWND hWbd, UINT msg, WPARAM wParam, LPARAM lParam);
 
@@ -49,13 +51,22 @@ private:
 		bool Edge;
 	};
 
+	struct SliderConfig
+	{
+		std::string SliderName;
+		float* SliderValue;
+		float Max;
+		float Min;
+	};
+
 	struct ImguiWindowConfig
 	{
 		//ウィンドウの名前
 		std::string WindowName;
 		//ボタン
 		std::vector<ButtonConfig*> ButtonArray;
-
+		//スライダー
+		std::vector<SliderConfig*> SlliderArray;
 	};
 
 

@@ -30,7 +30,7 @@ void ImguiLib::Shutdown()
 	ImGui::DestroyContext();
 }
 
-void ImguiLib::RenderImgui()
+void ImguiLib::ImguiRender()
 {
 	// Start the Dear ImGui frame
 	ImGui_ImplDX11_NewFrame();
@@ -67,6 +67,14 @@ void ImguiLib::RenderImgui()
 				}
 			}
 		}
+
+		//スライダーの処理
+		{
+			for (auto slider : Window.second->SlliderArray)
+			{
+				ImGui::SliderFloat(slider->SliderName.c_str(), slider->SliderValue, slider->Min, slider->Max);
+			}
+		}
 		
 
 		ImGui::End();
@@ -76,7 +84,7 @@ void ImguiLib::RenderImgui()
 	ImGui_ImplDX11_RenderDrawData(ImGui::GetDrawData());
 }
 
-void ImguiLib::CreateButton(std::string WindowName, std::string ButtonName, void(*PushEvent)(), Kinds ButtonKinds)
+void ImguiLib::ImguiCreateButton(std::string WindowName, std::string ButtonName, void(*PushEvent)(), Kinds ButtonKinds)
 {
 	WindowArray[WindowName]->ButtonArray.emplace_back(new ButtonConfig());
 	WindowArray[WindowName]->ButtonArray[WindowArray[WindowName]->ButtonArray.size() - 1]->ButtonName = ButtonName;
@@ -97,6 +105,15 @@ void ImguiLib::ImguiCreateWindow(std::string WindowName)
 		MessageBox(hWnd, L"WindowName is confliction", L"result", MB_ICONINFORMATION);
 	}
 	
+}
+
+void ImguiLib::ImguiCreateSliderF(std::string WindowName, std::string SliderName, float* SliderValue, float Min, float Max)
+{
+	WindowArray[WindowName]->SlliderArray.emplace_back(new SliderConfig());
+	WindowArray[WindowName]->SlliderArray[WindowArray[WindowName]->SlliderArray.size() - 1]->SliderName = SliderName;
+	WindowArray[WindowName]->SlliderArray[WindowArray[WindowName]->SlliderArray.size() - 1]->SliderValue = SliderValue;
+	WindowArray[WindowName]->SlliderArray[WindowArray[WindowName]->SlliderArray.size() - 1]->Max = Max;
+	WindowArray[WindowName]->SlliderArray[WindowArray[WindowName]->SlliderArray.size() - 1]->Min = Min;
 }
 
 LRESULT ImguiLib::ImGuiProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)

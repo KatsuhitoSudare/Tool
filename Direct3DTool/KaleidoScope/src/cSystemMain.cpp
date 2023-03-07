@@ -19,7 +19,7 @@ namespace KALEIDOSCOPE
 		cDirect3D::Direct3DInit(cWindowManager::GetWindowHandole());
 		IMGUILIB->Initialize(cWindowManager::GetWindowHandole(), cDirect3D::GetDevice(), cDirect3D::GetContext());
 		IMGUILIB->ImguiCreateWindow("Window");
-		IMGUILIB->CreateButton("Window", "button1", Message, Edge);
+		IMGUILIB->ImguiCreateButton("Window", "button1", Message, Edge);
 
 
 		return TRUE;
@@ -29,10 +29,13 @@ namespace KALEIDOSCOPE
 
 	BOOL cSystemMain::MainLoop()
 	{
+		float fl = 0.0f;
+		IMGUILIB->ImguiCreateSliderF("Window","sli",&fl,0.0f,1.0f);
+
 		while (cWindowManager::ProcessMessage())
 		{
 			cDirect3D::ClearRenderTarget(0.4, 0.4, 0.4);
-			IMGUILIB->RenderImgui();
+			IMGUILIB->ImguiRender();
 
 
 			cDirect3D::SwapBuffuer();
