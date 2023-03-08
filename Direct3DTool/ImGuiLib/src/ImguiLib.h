@@ -3,6 +3,7 @@
 #include<map>
 #include<string>
 #include<vector>
+#include<stdarg.h>
 
 enum Kinds
 {
@@ -31,11 +32,13 @@ public:
 
 	void ImguiRender();
 
-	void ImguiCreateButton(std::string WindowName, std::string ButtonName, void (*PushEvent)(), Kinds ButtonKinds);
+	void ImguiCreateButton(__in std::string WindowName, __in std::string ButtonName, __in void (*PushEvent)(), __in Kinds ButtonKinds);
 
-	void ImguiCreateWindow(std::string WindowName);
+	void ImguiCreateWindow(__in std::string WindowName);
 
-	void ImguiCreateSliderF(std::string WindowName,std::string SliderName,float* SliderValue,float Min,float Max);
+	void ImguiCreateSliderF(__in std::string WindowName, __in std::string SliderName, __out float* SliderValue, __in float Min, __in float Max);
+
+	void ImguiCreateText(const char* Text,...);
 
 	LRESULT ImGuiProc(HWND hWbd, UINT msg, WPARAM wParam, LPARAM lParam);
 

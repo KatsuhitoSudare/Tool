@@ -116,6 +116,11 @@ void ImguiLib::ImguiCreateSliderF(std::string WindowName, std::string SliderName
 	WindowArray[WindowName]->SlliderArray[WindowArray[WindowName]->SlliderArray.size() - 1]->Min = Min;
 }
 
+void ImguiLib::ImguiCreateText(const char* Text, ...)
+{
+	
+}
+
 LRESULT ImguiLib::ImGuiProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 {
 	if (ImGui_ImplWin32_WndProcHandler(hwnd, msg, wParam, lParam))
