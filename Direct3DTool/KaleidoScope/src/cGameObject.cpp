@@ -9,5 +9,13 @@ namespace KALEIDOSCOPE
 	{
 	}
 
+	void cGameObject::Init()
+	{
+	}
+
+	void cGameObject::Render()
+	{
+	}
+
 
 }

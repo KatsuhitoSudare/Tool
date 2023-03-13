@@ -13,6 +13,11 @@ namespace KALEIDOSCOPE
 
 		unique_ptr<cTransform> m_Transform;
 
+		void Init();
+
+		void Render();
+
+
 		template<typename T>
 		T* GetComponent();
 
@@ -25,6 +30,7 @@ namespace KALEIDOSCOPE
 
 	private:
 		vector<unique_ptr<cComponent>> m_ComponentVector;
+
 	};
 
 

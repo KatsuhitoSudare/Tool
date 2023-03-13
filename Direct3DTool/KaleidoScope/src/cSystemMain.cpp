@@ -2,6 +2,13 @@
 #include"cDirect3D.h"
 #include"cWindowManager.h"
 #include"ImguiLib.h"
+#include"VertexShader.h"
+#include"PixelShader.h"
+
+
+VertexShader* VS;
+PixelShader* PS;
+
 
 namespace KALEIDOSCOPE
 {
@@ -20,6 +27,15 @@ namespace KALEIDOSCOPE
 		IMGUILIB->Initialize(cWindowManager::GetWindowHandole(), cDirect3D::GetDevice(), cDirect3D::GetContext());
 		IMGUILIB->ImguiCreateWindow("Window");
 		IMGUILIB->ImguiCreateButton("Window", "button1", Message, Edge);
+
+		//テスト用
+		{
+			VS->InitVertexShader(L"vs.hlsl", "vs_main", cDirect3D::GetDevice());
+			PS->InitPixelShader(L"ps.hlsl", "ps_main", cDirect3D::GetDevice());
+		}
+
+
+
 		return TRUE;
 	}
 
