@@ -118,7 +118,7 @@ void ImguiLib::ImguiCreateSliderF(std::string WindowName, std::string SliderName
 
 void ImguiLib::ImguiCreateText(const char* Text, ...)
 {
-	
+	ImGui::
 }
 
 LRESULT ImguiLib::ImGuiProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)

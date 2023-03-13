@@ -23,10 +23,10 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <FxCompile Include="src\VertexShader.hlsl">
+    <FxCompile Include="src\ps.hlsl">
       <Filter>Shader</Filter>
     </FxCompile>
-    <FxCompile Include="src\PixelShader.hlsl">
+    <FxCompile Include="src\vs.hlsl">
       <Filter>Shader</Filter>
     </FxCompile>
   </ItemGroup>

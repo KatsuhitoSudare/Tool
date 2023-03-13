@@ -20,8 +20,6 @@ namespace KALEIDOSCOPE
 		IMGUILIB->Initialize(cWindowManager::GetWindowHandole(), cDirect3D::GetDevice(), cDirect3D::GetContext());
 		IMGUILIB->ImguiCreateWindow("Window");
 		IMGUILIB->ImguiCreateButton("Window", "button1", Message, Edge);
-
-
 		return TRUE;
 	}
 

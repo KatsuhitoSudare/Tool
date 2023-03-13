@@ -12,7 +12,6 @@
 
 using Microsoft::WRL::ComPtr;
 
-
 class cDirect3D
 {
 public:

@@ -1,9 +1,17 @@
 #include "cRenderer.h"
 
+
+
 namespace KALEIDOSCOPE
 {
 	cRenderer::cRenderer()
 	{
+		
+
+	}
+	cRenderer::cRenderer(ID3D11Device* device)
+	{
+		
 	}
 	cRenderer::~cRenderer()
 	{

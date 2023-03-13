@@ -1,4 +1,7 @@
 #include "cDirect3D.h"
+#include"VertexBuffer.h"
+#include"IndexBuffer.h"
+#include"ConstantBuffer.h"
 
 #pragma comment(lib, "d3d11.lib")
 #pragma comment(lib, "dxgi.lib")
@@ -246,3 +249,5 @@ ID3D11DeviceContext* cDirect3D::GetContext()
 {
 	return m_pD3DContext.Get();
 }
+
+
