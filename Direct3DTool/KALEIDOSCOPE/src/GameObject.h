@@ -25,11 +25,16 @@ public:
 	void Init();
 	void Draw();
 private:
-	VertexBuffer<Vertex>	 VB;
-	IndexBuffer				 IB;
+	std::vector<VertexBuffer<Vertex>>	 VB;
+	std::vector<IndexBuffer>			 IB;
 	ConstantBuffer<Constant> CB;
 	VertexShader             VS;
 	PixelShader				 PS;
+
+	XMMATRIX  mW;
+	XMMATRIX  mV;
+	XMMATRIX  mP;
+
 	
 };
 

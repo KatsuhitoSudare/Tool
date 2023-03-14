@@ -39,16 +39,18 @@ inline HRESULT ConstantBuffer<T>::CreateConstantBuffer(ID3D11Device* _device)
 template<class T>
 inline void ConstantBuffer<T>::UpdateBufferResource(T* NewResource, ID3D11DeviceContext* context)
 {
-    D3D11_MAPPED_SUBRESOURCE pData;
-
     if (context != nullptr)
     {
-        auto hr = context->Map(Buffer.Get(), 0, D3D11_MAP_WRITE_DISCARD, 0, &pData);
+        /*auto hr = context->Map(Buffer.Get(), 0, D3D11_MAP_WRITE_DISCARD, 0, &pData);
         if (SUCCEEDED(hr))
         {
-            memccpy(pData.pData, pData.RowPitch, NewResource, sizeof(T));
+
+            const rsize_t dataSize = sizeof(T);
+            memcpy_s(pData.pData, pData.RowPitch, NewResource, dataSize);
             context->Unmap(Buffer.Get(), 0);
-        }
+        }*/
+
+        context->UpdateSubresource(Buffer.Get(),0,NULL,NewResource,0,0);
     }
 }
 
@@ -57,6 +59,6 @@ inline void ConstantBuffer<T>::VSSetConstantBuffer(ID3D11DeviceContext* context,
 {
     if (context != nullptr)
     {
-        context->VSSetConstantBuffers(slot, 1, Buffer);
+        context->VSSetConstantBuffers(slot, 1, Buffer.GetAddressOf());
     }
 }

@@ -24,10 +24,10 @@ struct ImportSettings // インポートするときのパラメータ
 class AssimpLoader
 {
 public:
-    bool Load(ImportSettings setting); // モデルをロードする
+     static bool Load(ImportSettings setting); // モデルをロードする
 
 private:
-    void LoadMesh(Mesh& dst, const aiMesh* src, bool inverseU, bool inverseV);
+    static void LoadMesh(Mesh& dst, const aiMesh* src, bool inverseU, bool inverseV);
     //void LoadTexture(const wchar_t* filename, Mesh& dst, const aiMaterial* src);
 };
 

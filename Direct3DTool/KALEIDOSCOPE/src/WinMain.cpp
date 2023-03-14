@@ -25,7 +25,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 	{
 		cDirect3D::ClearRenderTarget(0.4, 0.4, 0.4);
 
-
+		gameobject.Draw();
 
 		cDirect3D::SwapBuffuer();
 	}

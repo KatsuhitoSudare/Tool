@@ -1,8 +1,8 @@
-cbuffer Transform : register(b0)
+cbuffer Transform : register(b1)
 {
-    float4x4 World;
-    float4x4 View;
-    float4x4 Proj;
+    matrix World;
+    matrix View;
+    matrix Proj;
 }
 
 struct VSInput
@@ -25,12 +25,11 @@ VSOutput vert(VSInput input)
 {
     VSOutput output = (VSOutput) 0;
 
-    float4 localPos = float4(input.pos, 1.0f);
-    float4 worldPos = mul(World, localPos);
-    float4 viewPos = mul(View, worldPos);
-    float4 projPos = mul(Proj, viewPos);
+    output.svpos = float4(input.pos, 1.0f);
+    output.svpos = mul(output.svpos,World);
+    output.svpos = mul(output.svpos, View);
+    output.svpos = mul(output.svpos,Proj);
 
-    output.svpos = projPos;
     output.color = input.color;
     output.uv = input.uv; // Ç±Ç±Ç™ïœçXì_ÅBì¸óÕÇ©ÇÁuvÇìnÇ∑
     return output;

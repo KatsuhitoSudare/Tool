@@ -12,16 +12,15 @@ template<class T>
 class VertexBuffer
 {
 public:
-	HRESULT CreateVertexBuffer( __in const ID3D11Device* _device,__in const std::vector<T> VertexList);
-    void IASetVertexBuffer(ID3D11DeviceContext* context);
+	HRESULT CreateVertexBuffer(ID3D11Device * _device,ID3D11DeviceContext* context, std::vector<T> const& VertexList);
+    void IASetVertexBuffer(ID3D11DeviceContext* context,std::vector<T> Vertexlist);
 
 private:
 	ComPtr<ID3D11Buffer> Buffer;
-
 };
 
 template<class T>
-inline HRESULT VertexBuffer<T>::CreateVertexBuffer(const ID3D11Device* _device, const std::vector<T>  VertexList)
+inline HRESULT VertexBuffer<T>::CreateVertexBuffer(ID3D11Device * _device, ID3D11DeviceContext* context, std::vector<T> const&  VertexList)
 {
     D3D11_BUFFER_DESC bufferDesc;
     bufferDesc.ByteWidth = sizeof(T) * (UINT)VertexList.size();
@@ -44,22 +43,22 @@ inline HRESULT VertexBuffer<T>::CreateVertexBuffer(const ID3D11Device* _device, 
     subResourceData.SysMemPitch = 0;
     subResourceData.SysMemSlicePitch = 0;
 
-    auto hr = _device->CreateBuffer(&bufferDesc, &subResourceData, &Buffer);
-    if (FAILED(hr))
-        return hr;
-
+    auto hr = _device->CreateBuffer(&bufferDesc, &subResourceData, Buffer.GetAddressOf());
+    
     delete[] VertexDate;
 
     return S_OK;
 }
 
 template<class T>
-inline void VertexBuffer<T>::IASetVertexBuffer(ID3D11DeviceContext* context)
+inline void VertexBuffer<T>::IASetVertexBuffer(ID3D11DeviceContext* context, std::vector<T> Vertexlist)
 {
     if (context != nullptr)
     {
         UINT strides = sizeof(T);
         UINT offsets = 0;
-        context->IASetVertexBuffers(0, 1, &Buffer, &strides, &offsets);
+        
+        context->UpdateSubresource(Buffer.Get(), 0, NULL, Vertexlist.data(), 0, 0);
+        context->IASetVertexBuffers(0, 1, Buffer.GetAddressOf(), &strides, &offsets);
     }
 }
