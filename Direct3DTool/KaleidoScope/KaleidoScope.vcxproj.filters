@@ -13,93 +13,77 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="cSceneManager">
-      <UniqueIdentifier>{f705c557-efd8-4e9d-a2df-5c24a3170838}</UniqueIdentifier>
+    <Filter Include="GUI">
+      <UniqueIdentifier>{33970bcc-6e49-4846-aa72-f303810ca4ad}</UniqueIdentifier>
     </Filter>
-    <Filter Include="SystemMain">
-      <UniqueIdentifier>{9be47773-7511-4ca1-b0b5-ea7f8dcd2ec8}</UniqueIdentifier>
+    <Filter Include="Engin">
+      <UniqueIdentifier>{2a2a266d-7dc3-4659-965d-6464a1636356}</UniqueIdentifier>
     </Filter>
-    <Filter Include="cObject">
-      <UniqueIdentifier>{0c6f2451-61fb-4a86-a707-db283b676b1c}</UniqueIdentifier>
+    <Filter Include="Loader">
+      <UniqueIdentifier>{ae894c21-38b9-40a9-a390-1fbe5f2a0a2d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="cObject\cGameObject">
-      <UniqueIdentifier>{8e26b852-5d15-41d3-b235-1ba374fbed8f}</UniqueIdentifier>
+    <Filter Include="Data">
+      <UniqueIdentifier>{1b418ed5-6d53-4cd2-bf3c-4f52d2a881e9}</UniqueIdentifier>
     </Filter>
-    <Filter Include="cObject\Transform">
-      <UniqueIdentifier>{d231f303-ae68-4140-9616-214bab38a1fc}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="cObject\Component">
-      <UniqueIdentifier>{7a39fbf3-ae42-4a3d-9d60-88517f030e24}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="cObject\Component\Renderer">
-      <UniqueIdentifier>{0c00f93b-495c-4dd4-bd90-8abdaee771f7}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="cObject\Component\cBehavior">
-      <UniqueIdentifier>{aa760f9f-ca4c-43ee-b4e6-5a8489dc8386}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ResourceManager">
-      <UniqueIdentifier>{4651a1e9-be63-404f-8ca7-092cb458090f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ResourceManager\cShaderObject">
-      <UniqueIdentifier>{40ef7fc2-d007-46cc-92c6-9be8f04b748c}</UniqueIdentifier>
+    <Filter Include="Shader">
+      <UniqueIdentifier>{58f5f3e7-241e-4d8b-ae9a-9ba3e31610d4}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\cSceneManager.h">
-      <Filter>cSceneManager</Filter>
+    <ClCompile Include="src\WinMain.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="src\AssimpLoader.cpp">
+      <Filter>Loader</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GameObject.cpp">
+      <Filter>Engin</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\ImguiLib.h">
+      <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="src\cSystemMain.h">
-      <Filter>SystemMain</Filter>
+    <ClInclude Include="include\cWindowManager.h">
+      <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="src\cObject.h">
-      <Filter>cObject</Filter>
+    <ClInclude Include="include\cDirect3D.h">
+      <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="src\cGameObject.h">
-      <Filter>cObject\cGameObject</Filter>
+    <ClInclude Include="include\ConstantBuffer.h">
+      <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="src\cTransform.h">
-      <Filter>cObject\Transform</Filter>
+    <ClInclude Include="include\IndexBuffer.h">
+      <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="src\cComponent.h">
-      <Filter>cObject\Component</Filter>
+    <ClInclude Include="include\PixelShader.h">
+      <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="src\cRenderer.h">
-      <Filter>cObject\Component\Renderer</Filter>
+    <ClInclude Include="include\ShaderObject.h">
+      <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="src\cBehavior.h">
-      <Filter>cObject\Component\cBehavior</Filter>
+    <ClInclude Include="include\VertexBuffer.h">
+      <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="src\cShaderObject.h">
-      <Filter>ResourceManager\cShaderObject</Filter>
+    <ClInclude Include="include\VertexShader.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Mesh.h">
+      <Filter>Data</Filter>
+    </ClInclude>
+    <ClInclude Include="src\AssimpLoader.h">
+      <Filter>Loader</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GameObject.h">
+      <Filter>Engin</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\cSceneManager.cpp">
-      <Filter>cSceneManager</Filter>
-    </ClCompile>
-    <ClCompile Include="src\cSystemMain.cpp">
-      <Filter>SystemMain</Filter>
-    </ClCompile>
-    <ClCompile Include="src\cObject.cpp">
-      <Filter>cObject</Filter>
-    </ClCompile>
-    <ClCompile Include="src\cGameObject.cpp">
-      <Filter>cObject\cGameObject</Filter>
-    </ClCompile>
-    <ClCompile Include="src\cTransform.cpp">
-      <Filter>cObject\Transform</Filter>
-    </ClCompile>
-    <ClCompile Include="src\cComponent.cpp">
-      <Filter>cObject\Component</Filter>
-    </ClCompile>
-    <ClCompile Include="src\cRenderer.cpp">
-      <Filter>cObject\Component\Renderer</Filter>
-    </ClCompile>
-    <ClCompile Include="src\cBehavior.cpp">
-      <Filter>cObject\Component\cBehavior</Filter>
-    </ClCompile>
-    <ClCompile Include="src\cShaderObject.cpp">
-      <Filter>ResourceManager\cShaderObject</Filter>
-    </ClCompile>
+    <FxCompile Include="Shader\PixelShader.hlsl">
+      <Filter>Shader</Filter>
+    </FxCompile>
+    <FxCompile Include="Shader\VertexShader.hlsl">
+      <Filter>Shader</Filter>
+    </FxCompile>
   </ItemGroup>
 </Project>

@@ -1,8 +1,9 @@
-#include "cWindowManager.h"
+#include "..\..\KALEIDOSCOPE\include\cWindowManager.h"
+#include"..\..\KALEIDOSCOPE\include\ImguiLib.h"
 #include <iostream>
 #include <sstream>
 #include <string>
-#include"ImguiLib.h"
+
 
 
 BOOL cWindowManager::MakeWindow()
