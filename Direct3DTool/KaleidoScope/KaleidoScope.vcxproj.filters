@@ -39,6 +39,9 @@
     <ClCompile Include="src\GameObject.cpp">
       <Filter>Engin</Filter>
     </ClCompile>
+    <ClCompile Include="..\Direct3D11\src\KS_WindowManager.cpp">
+      <Filter>GUI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\ImguiLib.h">
@@ -76,6 +79,9 @@
     </ClInclude>
     <ClInclude Include="src\GameObject.h">
       <Filter>Engin</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Direct3D11\src\KS_WindowManager.h">
+      <Filter>GUI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

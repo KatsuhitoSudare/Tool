@@ -8,7 +8,6 @@ ImguiLib* ImguiLib::instatnce = nullptr;
 // Forward declare message handler from imgui_impl_win32.cpp
 extern IMGUI_IMPL_API LRESULT ImGui_ImplWin32_WndProcHandler(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
 
-
 void ImguiLib::Initialize(__in HWND _hWnd,
 	__in ID3D11Device* const d3ddevice,
 	__in ID3D11DeviceContext* const _d3dcontext)
@@ -21,6 +20,7 @@ void ImguiLib::Initialize(__in HWND _hWnd,
 	ImGui_ImplWin32_Init(_hWnd);
 	ImGui_ImplDX11_Init(d3ddevice, _d3dcontext);
 	hWnd = _hWnd;
+
 }
 
 void ImguiLib::Shutdown()
@@ -39,7 +39,7 @@ void ImguiLib::ImguiRender()
 
 	for (auto& Window : WindowArray)
 	{
-		ImGui::Begin(Window.first.c_str());
+		ImGui::Begin(Window.first.c_str(),&Window.second->DisplayState,Window.second->flg);
 
 		//ƒ{ƒ^ƒ“‚Ìˆ—
 		{
@@ -105,6 +105,21 @@ void ImguiLib::ImguiCreateWindow(std::string WindowName)
 		MessageBox(hWnd, L"WindowName is confliction", L"result", MB_ICONINFORMATION);
 	}
 	
+}
+
+void ImguiLib::ImguiCreateWindowEX(std::string WindowName, int WindowFlag)
+{
+	if (WindowArray.count(WindowName) == 0)
+	{
+		WindowArray[WindowName] = new ImguiWindowConfig();
+		WindowArray[WindowName]->WindowName = WindowName;
+		WindowArray[WindowName]->DisplayState = true;
+		WindowArray[WindowName]->flg = WindowFlag;
+	}
+	else
+	{
+		MessageBox(hWnd, L"WindowName is confliction", L"result", MB_ICONINFORMATION);
+	}
 }
 
 void ImguiLib::ImguiCreateSliderF(std::string WindowName, std::string SliderName, float* SliderValue, float Min, float Max)

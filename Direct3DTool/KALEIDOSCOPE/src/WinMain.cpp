@@ -3,7 +3,7 @@
 #include"cDirect3D.h"
 #include"ImguiLib.h"
 #include"GameObject.h"
-
+#include"..\src\"
 
 
 
@@ -15,9 +15,8 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 	cWindowManager::MakeWindow();
 	//DirectX11の初期化
 	cDirect3D::Direct3DInit(cWindowManager::GetWindowHandole());
-
-	GameObject gameobject;
-	gameobject.Init();
+	IMGUILIB->Initialize(cWindowManager::GetWindowHandole(),cDirect3D::GetDevice(),cDirect3D::GetContext());
+	
 
 
 	//メインループの開始
@@ -25,7 +24,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 	{
 		cDirect3D::ClearRenderTarget(0.4, 0.4, 0.4);
 
-		gameobject.Draw();
+		
 
 		cDirect3D::SwapBuffuer();
 	}

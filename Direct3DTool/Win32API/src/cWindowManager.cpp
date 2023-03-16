@@ -33,7 +33,7 @@ BOOL cWindowManager::MakeWindow()
 	m_hWnd = CreateWindowEx(0,                // 拡張ウィンドウスタイル
 		m_WindowTitle,                        // ウィンドウクラスの名前
 		m_WindowTitle,                        // ウィンドウの名前
-		WS_OVERLAPPEDWINDOW - WS_THICKFRAME,// ウィンドウスタイル
+		WS_OVERLAPPEDWINDOW | WS_MAXIMIZE,    // ウィンドウスタイル
 		CW_USEDEFAULT,						  // ウィンドウの左上Ｘ座標
 		CW_USEDEFAULT,						  // ウィンドウの左上Ｙ座標 
 		m_WindowW,							  // ウィンドウの幅
@@ -50,15 +50,15 @@ BOOL cWindowManager::MakeWindow()
 		return FALSE;
 	}
 
-	RECT rcWnd, rcClient;
+	/*RECT rcWnd, rcClient;
 	GetWindowRect(m_hWnd, &rcWnd);
 	GetClientRect(m_hWnd, &rcClient);
 	m_WindowW = (rcWnd.right - rcWnd.left) - (rcClient.right - rcClient.left) + m_WindowW;
 	m_WindowH = (rcWnd.bottom - rcWnd.top) - (rcClient.bottom - rcClient.top) + m_WindowH;
-	SetWindowPos(m_hWnd, NULL, 0, 0, m_WindowW, m_WindowH, SWP_NOMOVE | SWP_NOZORDER);
+	SetWindowPos(m_hWnd, NULL, 0, 0, m_WindowW, m_WindowH, SWP_NOMOVE | SWP_NOZORDER);*/
 
 	// 指定されたウィンドウの表示状態を設定(ウィンドウを表示)
-	ShowWindow(m_hWnd, SW_SHOWNORMAL);
+	ShowWindow(m_hWnd, SW_SHOWMAXIMIZED);
 	// ウィンドウの状態を直ちに反映(ウィンドウのクライアント領域を更新)
 	UpdateWindow(m_hWnd);
 
