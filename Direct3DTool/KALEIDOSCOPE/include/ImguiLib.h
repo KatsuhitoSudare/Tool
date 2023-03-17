@@ -89,6 +89,7 @@ private:
 
 	ImguiLib() {};
 	static ImguiLib* instatnce;
+	
 	std::map<std::string, ImguiWindowConfig*> WindowArray;
 	HWND hWnd = NULL;
 };

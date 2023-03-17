@@ -142,19 +142,4 @@ void AssimpLoader::LoadMesh(Mesh& dst, const aiMesh* src, bool inverseU, bool in
     }
 }
 
-//void AssimpLoader::LoadTexture(const wchar_t* filename, Mesh& dst, const aiMaterial* src)
-//{
-//    aiString path;
-//    if (src->Get(AI_MATKEY_TEXTURE_DIFFUSE(0), path) == AI_SUCCESS)
-//    {
-//        // テクスチャパスは相対パスで入っているので、ファイルの場所とくっつける
-//        auto dir = GetDirectoryPath(filename);
-//        auto file = std::string(path.C_Str());
-//        dst.DiffuseMap = dir + ToWideString(file);
-//    }
-//    else
-//    {
-//        dst.DiffuseMap.clear();
-//    }
-//}
 
