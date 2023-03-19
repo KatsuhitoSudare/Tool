@@ -28,6 +28,9 @@
     <Filter Include="Shader">
       <UniqueIdentifier>{58f5f3e7-241e-4d8b-ae9a-9ba3e31610d4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="GUI\IMGUI">
+      <UniqueIdentifier>{d1c6103e-78a7-4d5f-bfb5-7546daccdd01}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\WinMain.cpp">
@@ -43,6 +46,24 @@
       <Filter>GUI</Filter>
     </ClCompile>
     <ClCompile Include="src\SystemManager.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="src\IMGUI\imgui_impl_dx11.cpp">
+      <Filter>GUI\IMGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="src\IMGUI\imgui_impl_win32.cpp">
+      <Filter>GUI\IMGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="src\IMGUI\imgui_tables.cpp">
+      <Filter>GUI\IMGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="src\IMGUI\imgui_widgets.cpp">
+      <Filter>GUI\IMGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="src\IMGUI\imgui.cpp">
+      <Filter>GUI\IMGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="src\MasterView.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
   </ItemGroup>
@@ -88,6 +109,30 @@
     </ClInclude>
     <ClInclude Include="src\SystemManager.h">
       <Filter>ソース ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="src\IMGUI\imgui_impl_dx11.h">
+      <Filter>GUI\IMGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="src\IMGUI\imgui_impl_win32.h">
+      <Filter>GUI\IMGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="src\IMGUI\imgui_internal.h">
+      <Filter>GUI\IMGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="src\IMGUI\imstb_rectpack.h">
+      <Filter>GUI\IMGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="src\IMGUI\imstb_textedit.h">
+      <Filter>GUI\IMGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="src\IMGUI\imstb_truetype.h">
+      <Filter>GUI\IMGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="src\IMGUI\imgui.h">
+      <Filter>GUI\IMGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="src\MasterView.h">
+      <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

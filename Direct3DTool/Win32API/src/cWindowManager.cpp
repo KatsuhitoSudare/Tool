@@ -1,8 +1,9 @@
 #include "..\..\KALEIDOSCOPE\include\cWindowManager.h"
-#include"..\..\KALEIDOSCOPE\include\ImguiLib.h"
 #include <iostream>
 #include <sstream>
 #include <string>
+#include"..\..\KaleidoScope\src\IMGUI\imgui.h"
+#include"..\..\KaleidoScope\src\ViewManager.h"
 
 
 
@@ -102,9 +103,11 @@ BOOL cWindowManager::ProcessMessage()
 	return TRUE;
 }
 
+extern IMGUI_IMPL_API LRESULT ImGui_ImplWin32_WndProcHandler(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
+
 LRESULT cWindowManager::WndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 {
-	if (IMGUILIB->ImGuiProc(hWnd, uMsg, wParam, lParam))
+	if (ImGui_ImplWin32_WndProcHandler(hWnd, uMsg, wParam, lParam))
 		return true;
 
 	switch (uMsg)
@@ -119,6 +122,10 @@ LRESULT cWindowManager::WndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lPar
 			// xƒ{ƒ^ƒ“‚ª‰Ÿ‚³‚ê‚½‚Ì‚Æ“¯‚¶Œø‰Ê‚ð”­Šö‚·‚é
 			PostMessage(hWnd, WM_CLOSE, wParam, lParam);
 		}
+		break;
+
+	case WM_SIZE:
+		KALEIDOSCOPE::GUI::ViewManager::SetMasterviewSize(LOWORD(lParam), HIWORD(lParam));
 		break;
 	default:
 	{ /* DO_NOTHING */ }

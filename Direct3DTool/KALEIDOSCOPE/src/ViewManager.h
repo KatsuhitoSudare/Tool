@@ -1,5 +1,4 @@
 #pragma once
-#include"ImguiLib.h"
 #include<string>
 
 namespace KALEIDOSCOPE
@@ -12,6 +11,7 @@ namespace KALEIDOSCOPE
 			static void Inititalize();
 			static void SutoDoun();
 			static void Render();
+			static void SetMasterviewSize(float w,float h);
 		private:
 			static inline std::string AssetsView;
 			static inline std::string SceneView;
@@ -19,9 +19,7 @@ namespace KALEIDOSCOPE
 			static inline std::string HierarchyView;
 			static inline std::string InspectorView;
 			static inline std::string MasterWindow;
-
-			static inline float f;
-			static inline float fg;
+			static inline float winde, height;
 		};
 	}
 }
