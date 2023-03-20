@@ -131,7 +131,21 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Direct3D11\cDirect3D.cpp" />
+    <ClCompile Include="src\Direct3D11\IndexBuffer.cpp" />
+    <ClCompile Include="src\Direct3D11\PixelShader.cpp" />
+    <ClCompile Include="src\Direct3D11\VertexShader.cpp" />
+    <ClCompile Include="src\Win32\Win32Window.cpp" />
     <ClCompile Include="src\WinMain.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\Direct3D11\cDirect3D.h" />
+    <ClInclude Include="src\Direct3D11\ConstantBuffer.h" />
+    <ClInclude Include="src\Direct3D11\IndexBuffer.h" />
+    <ClInclude Include="src\Direct3D11\PixelShader.h" />
+    <ClInclude Include="src\Direct3D11\VertexBuffer.h" />
+    <ClInclude Include="src\Direct3D11\VertexShader.h" />
+    <ClInclude Include="src\Win32\Win32Window.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

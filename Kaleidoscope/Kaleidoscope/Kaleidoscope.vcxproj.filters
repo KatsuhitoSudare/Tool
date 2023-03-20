@@ -13,10 +13,69 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Win32">
+      <UniqueIdentifier>{e3d24fda-d397-4601-988f-5b1e576440e6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Direct3D11">
+      <UniqueIdentifier>{acaa4c01-eb36-43b9-9ee5-09e986c743de}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Direct3D11\IndexBuffer">
+      <UniqueIdentifier>{2ea17648-5988-4d12-8c80-82d2180b4d29}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Direct3D11\ConstantBuffer">
+      <UniqueIdentifier>{70113a55-7993-4220-afe3-f8236878814c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Direct3D11\PixelShader">
+      <UniqueIdentifier>{b62519c4-2bae-4683-ad83-07a23332e96f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Direct3D11\VertexBuffer">
+      <UniqueIdentifier>{9809e4e4-bede-4ee8-add9-a4e7596e5575}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Direct3D11\VertexShader">
+      <UniqueIdentifier>{c8591bd5-ca29-447a-bb6a-582e52520873}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\WinMain.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
+    <ClCompile Include="src\Win32\Win32Window.cpp">
+      <Filter>Win32</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Direct3D11\cDirect3D.cpp">
+      <Filter>Direct3D11</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Direct3D11\IndexBuffer.cpp">
+      <Filter>Direct3D11\IndexBuffer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Direct3D11\PixelShader.cpp">
+      <Filter>Direct3D11\PixelShader</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Direct3D11\VertexShader.cpp">
+      <Filter>Direct3D11\VertexShader</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\Win32\Win32Window.h">
+      <Filter>Win32</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Direct3D11\cDirect3D.h">
+      <Filter>Direct3D11</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Direct3D11\IndexBuffer.h">
+      <Filter>Direct3D11\IndexBuffer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Direct3D11\ConstantBuffer.h">
+      <Filter>Direct3D11\ConstantBuffer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Direct3D11\PixelShader.h">
+      <Filter>Direct3D11\PixelShader</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Direct3D11\VertexBuffer.h">
+      <Filter>Direct3D11\VertexBuffer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Direct3D11\VertexShader.h">
+      <Filter>Direct3D11\VertexShader</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
