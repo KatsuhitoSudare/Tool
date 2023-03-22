@@ -1,11 +1,12 @@
 #include"cDirect3D.h"
 
+
 #pragma comment(lib, "d3d11.lib")
 #pragma comment(lib, "dxgi.lib")
 
-BOOL cDirect3D::Direct3DInit(HWND hWnd)
+BOOL cDirect3D::Direct3DInit()	
 {
-	m_hWnd = hWnd;
+	HWND hWnd = NULL;
 
 	HRESULT  hr = 0;
 	UINT         numModes = 0;
@@ -151,83 +152,32 @@ BOOL cDirect3D::Direct3DInit(HWND hWnd)
 	delete[] DisplayMode;
 
 	//バックバッファの取得
-	ComPtr<ID3D11Texture2D> m_pBackBuffer;
-
 	hr = m_pSwapChain->GetBuffer(0,__uuidof(ID3D11Texture2D), (LPVOID*)&m_pBackBuffer);
 	if (FAILED(hr))
 	{
 		MessageBox(hWnd, L"バックバッファの取得に失敗", L"結果", MB_ICONINFORMATION);
 		return FALSE;
 	}
-	hr = m_pD3DDevice->CreateRenderTargetView(m_pBackBuffer.Get(), NULL, &m_pRTV);
-	if (FAILED(hr))
-	{
-		MessageBox(hWnd, L"バックバッファの作成に失敗", L"結果", MB_ICONINFORMATION);
-		return FALSE;
-	}
 
-	//深度ステンシルバッファ作成
-	D3D11_TEXTURE2D_DESC txDesc;
+	m_rtv.CreateRenderTerget(m_pBackBuffer.Get(),1920,1080);
+	m_rtv.SetRenderTerget(true);
 
-	ZeroMemory(&txDesc, sizeof(txDesc));
-	txDesc.Width = m_CWindowW;
-	txDesc.Height = m_CWindowH;
-	txDesc.MipLevels = 1;
-	txDesc.ArraySize = 1;
-	txDesc.Format = DXGI_FORMAT_D24_UNORM_S8_UINT;
-	txDesc.SampleDesc.Count = 1;
-	txDesc.SampleDesc.Quality = 0;
-	txDesc.Usage = D3D11_USAGE_DEFAULT;
-	txDesc.BindFlags = D3D11_BIND_DEPTH_STENCIL;
-	txDesc.CPUAccessFlags = 0;
-	txDesc.MiscFlags = 0;
+	//D3D11_VIEWPORT viewport;
+	//viewport.TopLeftX = 0;
+	//viewport.TopLeftY = 0;
+	//viewport.Width = (FLOAT)m_CWindowW;
+	//viewport.Height = (FLOAT)m_CWindowH;
+	//viewport.MinDepth = 0.0f;
+	//viewport.MaxDepth = 1.0f;
 
-	hr = m_pD3DDevice->CreateTexture2D(&txDesc, NULL, &m_pDepthStencilTexture);
-
-	if (SUCCEEDED(hr)) {
-		D3D11_DEPTH_STENCIL_VIEW_DESC dsDesc;
-		ZeroMemory(&dsDesc, sizeof(dsDesc));
-		dsDesc.Format = txDesc.Format;
-		dsDesc.ViewDimension = D3D11_DSV_DIMENSION_TEXTURE2D;
-		dsDesc.Texture2D.MipSlice = 0;
-		hr = m_pD3DDevice->CreateDepthStencilView(m_pDepthStencilTexture.Get(), &dsDesc, &m_pDepthStencilView);
-	}
-
-	if (FAILED(hr))
-	{
-		MessageBox(hWnd, L"深度ステンシルバッファの作成に失敗", L"結果", MB_ICONINFORMATION);
-		return FALSE;
-	}
-
-	// レンダリングターゲットを設定　（注）今は2DなのでZバッファ無効にしておく
-	m_pD3DContext->OMSetRenderTargets(1, m_pRTV.GetAddressOf(), m_pDepthStencilView.Get());
-
-
-	D3D11_VIEWPORT viewport;
-	viewport.TopLeftX = 0;
-	viewport.TopLeftY = 0;
-	viewport.Width = (FLOAT)m_CWindowW;
-	viewport.Height = (FLOAT)m_CWindowH;
-	viewport.MinDepth = 0.0f;
-	viewport.MaxDepth = 1.0f;
-
-	m_pD3DContext->RSSetViewports(1, &viewport);
+	//m_pD3DContext->RSSetViewports(1, &viewport);
 
 	return TRUE;
 }
 
 void cDirect3D::ClearRenderTarget(float R, float G, float B)
 {
-	float clearColor[4] = { R, G, B, 1.0f }; //red,green,blue,alpha
-
-	m_pD3DContext->ClearRenderTargetView(m_pRTV.Get(), clearColor);
-
-	// Zバッファ、ステンシルバッファクリア
-	m_pD3DContext->ClearDepthStencilView(
-		m_pDepthStencilView.Get(),			// デプスステンシルビュー
-		D3D11_CLEAR_DEPTH | D3D11_CLEAR_STENCIL,
-		1.0f,			// Ｚバッファを1.0でクリアする(0.0f～1.0f)
-		0);				// ステンシルバッファを0でクリアする
+	m_rtv.ClearRenderTarget(R, G, B);
 }
 
 void cDirect3D::SwapBuffuer()
@@ -243,6 +193,18 @@ ID3D11Device* cDirect3D::GetDevice()
 ID3D11DeviceContext* cDirect3D::GetContext()
 {
 	return m_pD3DContext.Get();
+}
+
+void cDirect3D::SwapChainResizeBuffer(UINT w,UINT h)
+{	
+	if (m_pSwapChain != nullptr)
+	{
+		m_rtv.CleanupRenderTarget();
+		m_pSwapChain->ResizeBuffers(0, w, h, DXGI_FORMAT_UNKNOWN, 0);
+		m_pBackBuffer.Reset();
+		auto hr = m_pSwapChain->GetBuffer(0, __uuidof(ID3D11Texture2D), (LPVOID*)&m_pBackBuffer);
+		m_rtv.CreateRenderTerget(m_pBackBuffer.Get(),w,h);
+	}
 }
 
 

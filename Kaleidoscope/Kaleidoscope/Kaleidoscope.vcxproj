@@ -77,10 +77,12 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
+      <AdditionalIncludeDirectories>include\</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>lib\debug\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -92,12 +94,15 @@
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
+      <AdditionalIncludeDirectories>include\</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>lib\debug\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>opengl32.lib;glfw3.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -107,10 +112,12 @@
       <PreprocessorDefinitions>_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
+      <AdditionalIncludeDirectories>include\</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>lib\debug\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -122,20 +129,34 @@
       <PreprocessorDefinitions>NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
+      <AdditionalIncludeDirectories>include\</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>lib\debug\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>opengl32.lib;glfw3.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\Direct3D11\cDirect3D.cpp" />
+    <ClCompile Include="src\Direct3D11\cDirect3D.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="src\Direct3D11\IndexBuffer.cpp" />
     <ClCompile Include="src\Direct3D11\PixelShader.cpp" />
+    <ClCompile Include="src\Direct3D11\RenderTergetView.cpp" />
     <ClCompile Include="src\Direct3D11\VertexShader.cpp" />
-    <ClCompile Include="src\Win32\Win32Window.cpp" />
+    <ClCompile Include="src\GLFW\GLFWWindow.cpp" />
+    <ClCompile Include="src\GUI\WindowHost.cpp" />
+    <ClCompile Include="src\IMGUI\imgui.cpp" />
+    <ClCompile Include="src\IMGUI\imgui_draw.cpp" />
+    <ClCompile Include="src\IMGUI\imgui_impl_glfw.cpp" />
+    <ClCompile Include="src\IMGUI\imgui_impl_opengl3.cpp" />
+    <ClCompile Include="src\IMGUI\imgui_tables.cpp" />
+    <ClCompile Include="src\IMGUI\imgui_widgets.cpp" />
     <ClCompile Include="src\WinMain.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -143,9 +164,19 @@
     <ClInclude Include="src\Direct3D11\ConstantBuffer.h" />
     <ClInclude Include="src\Direct3D11\IndexBuffer.h" />
     <ClInclude Include="src\Direct3D11\PixelShader.h" />
+    <ClInclude Include="src\Direct3D11\RenderTergetView.h" />
     <ClInclude Include="src\Direct3D11\VertexBuffer.h" />
     <ClInclude Include="src\Direct3D11\VertexShader.h" />
-    <ClInclude Include="src\Win32\Win32Window.h" />
+    <ClInclude Include="src\GLFW\GLFWWindow.h" />
+    <ClInclude Include="src\GUI\WindowHost.h" />
+    <ClInclude Include="src\IMGUI\imconfig.h" />
+    <ClInclude Include="src\IMGUI\imgui.h" />
+    <ClInclude Include="src\IMGUI\imgui_impl_glfw.h" />
+    <ClInclude Include="src\IMGUI\imgui_impl_opengl3.h" />
+    <ClInclude Include="src\IMGUI\imgui_internal.h" />
+    <ClInclude Include="src\IMGUI\imstb_rectpack.h" />
+    <ClInclude Include="src\IMGUI\imstb_textedit.h" />
+    <ClInclude Include="src\IMGUI\imstb_truetype.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

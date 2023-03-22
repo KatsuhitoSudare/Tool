@@ -13,9 +13,6 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Win32">
-      <UniqueIdentifier>{e3d24fda-d397-4601-988f-5b1e576440e6}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Direct3D11">
       <UniqueIdentifier>{acaa4c01-eb36-43b9-9ee5-09e986c743de}</UniqueIdentifier>
     </Filter>
@@ -34,13 +31,28 @@
     <Filter Include="Direct3D11\VertexShader">
       <UniqueIdentifier>{c8591bd5-ca29-447a-bb6a-582e52520873}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Direct3D11\RenderTergetView">
+      <UniqueIdentifier>{3319cc41-f2d7-40a7-b238-69fd60fb47fe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="IMGUI">
+      <UniqueIdentifier>{bd5cb5f9-3f63-4da7-9a24-34352c40ab56}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GUI">
+      <UniqueIdentifier>{4da823de-de4d-4023-a17d-36eb9c9670cc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GUI\Host">
+      <UniqueIdentifier>{0ba1d8cd-74d6-4571-a4cf-1dcd592d1d0f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GUI\Inspecter">
+      <UniqueIdentifier>{2013769e-45fa-4220-9cf3-0478bbeaaab3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GLFW">
+      <UniqueIdentifier>{300b181c-3b68-4c69-b21c-2b9483397654}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\WinMain.cpp">
       <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Win32\Win32Window.cpp">
-      <Filter>Win32</Filter>
     </ClCompile>
     <ClCompile Include="src\Direct3D11\cDirect3D.cpp">
       <Filter>Direct3D11</Filter>
@@ -54,11 +66,35 @@
     <ClCompile Include="src\Direct3D11\VertexShader.cpp">
       <Filter>Direct3D11\VertexShader</Filter>
     </ClCompile>
+    <ClCompile Include="src\Direct3D11\RenderTergetView.cpp">
+      <Filter>Direct3D11\RenderTergetView</Filter>
+    </ClCompile>
+    <ClCompile Include="src\IMGUI\imgui.cpp">
+      <Filter>IMGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="src\IMGUI\imgui_draw.cpp">
+      <Filter>IMGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="src\IMGUI\imgui_tables.cpp">
+      <Filter>IMGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="src\IMGUI\imgui_widgets.cpp">
+      <Filter>IMGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GUI\WindowHost.cpp">
+      <Filter>GUI\Host</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GLFW\GLFWWindow.cpp">
+      <Filter>GLFW</Filter>
+    </ClCompile>
+    <ClCompile Include="src\IMGUI\imgui_impl_glfw.cpp">
+      <Filter>IMGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="src\IMGUI\imgui_impl_opengl3.cpp">
+      <Filter>IMGUI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\Win32\Win32Window.h">
-      <Filter>Win32</Filter>
-    </ClInclude>
     <ClInclude Include="src\Direct3D11\cDirect3D.h">
       <Filter>Direct3D11</Filter>
     </ClInclude>
@@ -76,6 +112,39 @@
     </ClInclude>
     <ClInclude Include="src\Direct3D11\VertexShader.h">
       <Filter>Direct3D11\VertexShader</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Direct3D11\RenderTergetView.h">
+      <Filter>Direct3D11\RenderTergetView</Filter>
+    </ClInclude>
+    <ClInclude Include="src\IMGUI\imconfig.h">
+      <Filter>IMGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="src\IMGUI\imgui.h">
+      <Filter>IMGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="src\IMGUI\imgui_internal.h">
+      <Filter>IMGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="src\IMGUI\imstb_rectpack.h">
+      <Filter>IMGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="src\IMGUI\imstb_textedit.h">
+      <Filter>IMGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="src\IMGUI\imstb_truetype.h">
+      <Filter>IMGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GUI\WindowHost.h">
+      <Filter>GUI\Host</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GLFW\GLFWWindow.h">
+      <Filter>GLFW</Filter>
+    </ClInclude>
+    <ClInclude Include="src\IMGUI\imgui_impl_glfw.h">
+      <Filter>IMGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="src\IMGUI\imgui_impl_opengl3.h">
+      <Filter>IMGUI</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

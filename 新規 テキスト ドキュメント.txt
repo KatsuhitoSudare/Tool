@@ -1,0 +1,31 @@
+// DirectX 11のテクスチャオブジェクトからテクスチャデータをコピーする関数
+void CopyTextureDataFromD3D11ToOpenGL(ID3D11Texture2D* d3dTexture, GLuint glTexture)
+{
+    // DirectX 11のテクスチャデータを取得する
+    D3D11_TEXTURE2D_DESC desc;
+    d3dTexture->GetDesc(&desc);
+    UINT width = desc.Width;
+    UINT height = desc.Height;
+    UINT rowPitch = desc.Width * 4; // RGBAフォーマットを想定して4バイトずつ
+    UINT slicePitch = rowPitch * desc.Height;
+    BYTE* textureData = new BYTE[slicePitch];
+    ID3D11DeviceContext* context = NULL;
+    d3dTexture->GetDevice()->GetImmediateContext(&context);
+    context->CopyResource(d3dTexture, textureData);
+
+    // OpenGLのテクスチャオブジェクトを作成する
+    glBindTexture(GL_TEXTURE_2D, glTexture);
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA8, width, height, 0, GL_BGRA, GL_UNSIGNED_BYTE, textureData);
+
+    // テクスチャフィルタリングを設定する
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+    // テクスチャのラップモードを設定する
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+
+    // テクスチャメモリを解放する
+    delete[] textureData;
+    context->Release();
+}
