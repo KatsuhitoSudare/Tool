@@ -49,6 +49,27 @@
     <Filter Include="GLFW">
       <UniqueIdentifier>{300b181c-3b68-4c69-b21c-2b9483397654}</UniqueIdentifier>
     </Filter>
+    <Filter Include="GUI\GUIWindowManager">
+      <UniqueIdentifier>{2141baff-8b45-402f-a8bc-0d4f4fe36615}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GUI\Window">
+      <UniqueIdentifier>{8aea92d1-b087-43f1-a699-e4d5854a5ca2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GUI\Hierarchy">
+      <UniqueIdentifier>{5abcaad3-7f8b-4ee1-99ab-28d3483bff90}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GUI\Assets">
+      <UniqueIdentifier>{125359cb-0b35-4e8d-b10c-6c44fb15e9e1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GUI\Game">
+      <UniqueIdentifier>{48f90319-32e3-40d8-9d62-9ff3d940986c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GUI\Scene">
+      <UniqueIdentifier>{3841c316-a469-46d6-8e75-8b0534826e63}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Direct3D11\D3D11RenderingEngin">
+      <UniqueIdentifier>{bd73cb09-e8db-44e0-b0bd-a5878ba7c853}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\WinMain.cpp">
@@ -92,6 +113,27 @@
     </ClCompile>
     <ClCompile Include="src\IMGUI\imgui_impl_opengl3.cpp">
       <Filter>IMGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GUI\GuiWindowManager.cpp">
+      <Filter>GUI\GUIWindowManager</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GUI\InspecterView.cpp">
+      <Filter>GUI\Inspecter</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GUI\HierarchyView.cpp">
+      <Filter>GUI\Hierarchy</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GUI\AssetsView.cpp">
+      <Filter>GUI\Assets</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GUI\GameView.cpp">
+      <Filter>GUI\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GUI\SceneView.cpp">
+      <Filter>GUI\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Direct3D11\D3D11RenderingEngin.cpp">
+      <Filter>Direct3D11\D3D11RenderingEngin</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -145,6 +187,30 @@
     </ClInclude>
     <ClInclude Include="src\IMGUI\imgui_impl_opengl3.h">
       <Filter>IMGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GUI\Window.h">
+      <Filter>GUI\Window</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GUI\GuiWindowManager.h">
+      <Filter>GUI\GUIWindowManager</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GUI\InspecterView.h">
+      <Filter>GUI\Inspecter</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GUI\HierarchyView.h">
+      <Filter>GUI\Hierarchy</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GUI\AssetsView.h">
+      <Filter>GUI\Assets</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GUI\GameView.h">
+      <Filter>GUI\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GUI\SceneView.h">
+      <Filter>GUI\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Direct3D11\D3D11RenderingEngin.h">
+      <Filter>Direct3D11\D3D11RenderingEngin</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

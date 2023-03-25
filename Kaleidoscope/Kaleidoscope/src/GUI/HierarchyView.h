@@ -1,18 +1,18 @@
 #pragma once
-#include<Windows.h>
-#include"Window.h"
+#include "Window.h"
 
 namespace KALEIDOSCOPE
 {
 	namespace GUI
 	{
-		class WindowHost : public Window
+		class HierarchyView :public Window
 		{
 		public:
-			WindowHost();
+			HierarchyView();
 			void Update()override;
 		};
 	}
 }
+
 
 

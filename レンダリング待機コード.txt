@@ -1,0 +1,55 @@
+#include <d3d11.h>
+#include <windows.h>
+
+// ...
+
+// 既存の ID3D11Device* pDevice と ID3D11DeviceContext* pDeviceContext を想定
+
+// クエリの作成
+ID3D11Query* pQuery = nullptr;
+D3D11_QUERY_DESC queryDesc;
+queryDesc.Query = D3D11_QUERY_EVENT;
+queryDesc.MiscFlags = 0;
+HRESULT hr = pDevice->CreateQuery(&queryDesc, &pQuery);
+if (FAILED(hr)) {
+    // エラー処理
+}
+
+// Windows イベントの作成
+HANDLE hEvent = CreateEvent(nullptr, FALSE, FALSE, nullptr);
+if (hEvent == nullptr) {
+    // エラー処理
+}
+
+bool running = true;
+while (running)
+{
+    // イベント処理、入力処理
+    // ...
+
+    // レンダリング処理
+    // ...
+
+    // クエリの終了
+    pDeviceContext->End(pQuery);
+
+    // クエリの結果が利用可能になるまでイベントにシグナルを送る
+    pDeviceContext->GetData(pQuery, nullptr, 0, D3D11_ASYNC_GETDATA_DONOTFLUSH);
+    pDeviceContext->SetEventOnCompletion(pQuery, hEvent);
+
+    // イベントがシグナル状態になるのを待つ
+    WaitForSingleObject(hEvent, INFINITE);
+
+    // レンダリングが完了した後の処理
+    // ...
+
+    // 終了条件
+    if (/* 終了条件を満たす */)
+    {
+        running = false;
+    }
+}
+
+// クエリオブジェクトとイベントの解放
+pQuery->Release();
+CloseHandle(hEvent);

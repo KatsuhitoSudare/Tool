@@ -145,11 +145,18 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="src\Direct3D11\D3D11RenderingEngin.cpp" />
     <ClCompile Include="src\Direct3D11\IndexBuffer.cpp" />
     <ClCompile Include="src\Direct3D11\PixelShader.cpp" />
     <ClCompile Include="src\Direct3D11\RenderTergetView.cpp" />
     <ClCompile Include="src\Direct3D11\VertexShader.cpp" />
     <ClCompile Include="src\GLFW\GLFWWindow.cpp" />
+    <ClCompile Include="src\GUI\AssetsView.cpp" />
+    <ClCompile Include="src\GUI\GameView.cpp" />
+    <ClCompile Include="src\GUI\GuiWindowManager.cpp" />
+    <ClCompile Include="src\GUI\HierarchyView.cpp" />
+    <ClCompile Include="src\GUI\InspecterView.cpp" />
+    <ClCompile Include="src\GUI\SceneView.cpp" />
     <ClCompile Include="src\GUI\WindowHost.cpp" />
     <ClCompile Include="src\IMGUI\imgui.cpp" />
     <ClCompile Include="src\IMGUI\imgui_draw.cpp" />
@@ -162,12 +169,20 @@
   <ItemGroup>
     <ClInclude Include="src\Direct3D11\cDirect3D.h" />
     <ClInclude Include="src\Direct3D11\ConstantBuffer.h" />
+    <ClInclude Include="src\Direct3D11\D3D11RenderingEngin.h" />
     <ClInclude Include="src\Direct3D11\IndexBuffer.h" />
     <ClInclude Include="src\Direct3D11\PixelShader.h" />
     <ClInclude Include="src\Direct3D11\RenderTergetView.h" />
     <ClInclude Include="src\Direct3D11\VertexBuffer.h" />
     <ClInclude Include="src\Direct3D11\VertexShader.h" />
     <ClInclude Include="src\GLFW\GLFWWindow.h" />
+    <ClInclude Include="src\GUI\AssetsView.h" />
+    <ClInclude Include="src\GUI\GameView.h" />
+    <ClInclude Include="src\GUI\GuiWindowManager.h" />
+    <ClInclude Include="src\GUI\HierarchyView.h" />
+    <ClInclude Include="src\GUI\InspecterView.h" />
+    <ClInclude Include="src\GUI\SceneView.h" />
+    <ClInclude Include="src\GUI\Window.h" />
     <ClInclude Include="src\GUI\WindowHost.h" />
     <ClInclude Include="src\IMGUI\imconfig.h" />
     <ClInclude Include="src\IMGUI\imgui.h" />
