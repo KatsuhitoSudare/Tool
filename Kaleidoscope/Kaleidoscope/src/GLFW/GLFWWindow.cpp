@@ -16,6 +16,10 @@ namespace KALEIDOSCOPE
             if (!glfwInit())
                 return 0;
 
+            glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+            glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 0);
+            glfwWindowHint(GLFW_REFRESH_RATE, GLFW_DONT_CARE);
+
             //ウィンドウの作成
             window = glfwCreateWindow(WindowW, WindowH, WindowTitle, NULL, NULL);
             if (!window)

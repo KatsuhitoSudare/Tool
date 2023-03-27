@@ -2,6 +2,9 @@
 #include<Windows.h>
 #include<d3d11.h>
 #include<dxgi.h>
+#include<GLFW/glfw3.h>
+
+
 
 //=================================================
 // D3D11のレンダリングの機能のみを持ったクラス
@@ -22,7 +25,7 @@ namespace KALEIDOSCOPE
 
 			static void SetRenderTerget();
 
-			static ID3D11Texture2D* GetRenderTexture();
+			static GLuint GetRenderedImage();
 
 		private:
 			static inline ID3D11Device*				m_pDevice;	/*DirectX11のDevice*/

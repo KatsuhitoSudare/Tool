@@ -9,6 +9,7 @@
 #include"GameView.h"
 #include"AssetsView.h"
 #include"SceneView.h"
+#include"ConsoleView.h"
 
 namespace KALEIDOSCOPE
 {
@@ -31,6 +32,8 @@ namespace KALEIDOSCOPE
 			WindowArray.emplace_back(new SceneView());
 			//GameView‚Ì’Ç‰Á
 			WindowArray.emplace_back(new GameView());
+			//ConsoleView‚Ì’Ç‰Á
+			WindowArray.emplace_back(new ConsoleView());
 		}
 		void GuiWindowManager::UpdateGuiWindowAll()
 		{
@@ -104,9 +107,6 @@ namespace KALEIDOSCOPE
 				style.Colors[ImGuiCol_WindowBg].w = 1.0f;
 			}
 			const char* glsl_version = "#version 130";
-			glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
-			glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 0);
-
 			// Setup Platform/Renderer backends
 			ImGui_ImplGlfw_InitForOpenGL(GLFW::GLFWWindow::GetContext(), true);
 			ImGui_ImplOpenGL3_Init(glsl_version);

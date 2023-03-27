@@ -2,6 +2,8 @@
 #include"GLFW/GLFWWindow.h"
 #include"GUI/GuiWindowManager.h"
 #include"Direct3D11/D3D11RenderingEngin.h"
+#include<chrono>
+#include"Collection/Collection.h"
 
 namespace KALEIDOSCOPE
 { 
@@ -18,13 +20,16 @@ namespace KALEIDOSCOPE
 			GLFW::GLFWWindow::InitGLFW(1920,1080,"KALEIDOSCOPE");
 			GUI::GuiWindowManager::InitializeGuiWindowAll();
 			RENDARINGENGIN::D3D11RenderingEngin::D3D11RenderingEnginInit();
-
 		}
 		void SystemManager::SystemRunning()
 		{
+			glfwSwapInterval(0);
+			std::chrono::system_clock::time_point Now = std::chrono::system_clock::now(), End = std::chrono::system_clock::now();
 			while (GLFW::GLFWWindow::ProcessMessage())
 			{
 				glfwPollEvents();
+
+				Now = std::chrono::system_clock::now();
 				//=======================================================================
 				// 更新処理
 				//=======================================================================
@@ -48,6 +53,9 @@ namespace KALEIDOSCOPE
 				// バッファを交換
 				//=======================================================================
 				GLFW::GLFWWindow::GLFWSwapBuffers();
+				End = std::chrono::system_clock::now();
+
+				Time::DeltaTime = std::chrono::duration_cast<std::chrono::microseconds>(End - Now).count();
 			}
 
 		}
