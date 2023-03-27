@@ -37,7 +37,7 @@ namespace KALEIDOSCOPE
 			D3D_DRIVER_TYPE driverTypes[] =
 			{
 				D3D_DRIVER_TYPE_HARDWARE,
-				D3D_DRIVER_TYPE_WARP,					// Windows Advanced Rasterizer
+				D3D_DRIVER_TYPE_WARP,	
 				D3D_DRIVER_TYPE_REFERENCE,
 				D3D_DRIVER_TYPE_SOFTWARE,
 			};
@@ -53,6 +53,58 @@ namespace KALEIDOSCOPE
 					break;
 				}
 			}
+
+			//サイズをせってい
+			m_RendertergetWidth = 1280;
+			m_RenderTergetHeight = 720;
+		
+			// 1. レンダーターゲットテクスチャの作成
+			D3D11_TEXTURE2D_DESC rtTextureDesc;
+			ZeroMemory(&rtTextureDesc, sizeof(rtTextureDesc));
+			rtTextureDesc.Width = m_RendertergetWidth;
+			rtTextureDesc.Height = m_RenderTergetHeight;
+			rtTextureDesc.MipLevels = 1;
+			rtTextureDesc.ArraySize = 1;
+			rtTextureDesc.Format = DXGI_FORMAT_R8G8B8A8_UNORM;
+			rtTextureDesc.SampleDesc.Count = 1;
+			rtTextureDesc.SampleDesc.Quality = 0;
+			rtTextureDesc.Usage = D3D11_USAGE_DEFAULT;
+			rtTextureDesc.BindFlags = D3D11_BIND_RENDER_TARGET | D3D11_BIND_SHADER_RESOURCE;
+			rtTextureDesc.CPUAccessFlags = 0;
+			rtTextureDesc.MiscFlags = 0;
+
+			hr = m_pDevice->CreateTexture2D(&rtTextureDesc, nullptr, &m_pRenderingTergetTexture);
+			if (FAILED(hr))
+			{
+				return FALSE;
+			}
+
+			hr = m_pDevice->CreateRenderTargetView(m_pRenderingTergetTexture,nullptr,&m_rtv);
+			if (FAILED(hr))
+			{
+				return FALSE;
+			}
+
+			D3D11_TEXTURE2D_DESC depthStencilDesc;
+			ZeroMemory(&depthStencilDesc, sizeof(depthStencilDesc));
+			depthStencilDesc.Width = m_RendertergetWidth;
+			depthStencilDesc.Height = m_RenderTergetHeight;
+			depthStencilDesc.MipLevels = 1;
+			depthStencilDesc.ArraySize = 1;
+			depthStencilDesc.Format = DXGI_FORMAT_D24_UNORM_S8_UINT;
+			depthStencilDesc.SampleDesc.Count = 1;
+			depthStencilDesc.SampleDesc.Quality = 0;
+			depthStencilDesc.Usage = D3D11_USAGE_DEFAULT;
+			depthStencilDesc.BindFlags = D3D11_BIND_DEPTH_STENCIL;
+			depthStencilDesc.CPUAccessFlags = 0;
+			depthStencilDesc.MiscFlags = 0;
+			hr = m_pDevice->CreateTexture2D(&depthStencilDesc, nullptr, &m_DST);
+			if (SUCCEEDED(hr)) {
+				hr = m_pDevice->CreateDepthStencilView(m_DST, nullptr, &m_DSV);
+			}
+
+			m_pContext->OMSetRenderTargets(1,&m_rtv,m_DSV);
+
 
 			return TRUE;
 		}

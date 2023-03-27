@@ -12,16 +12,14 @@ INT WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 		//イベントの処理
 		glfwPollEvents();
 
+		//GUIwindowの更新
 		KALEIDOSCOPE::GUI::GuiWindowManager::UpdateGuiWindowAll();
 		
-		
+
+
 		//画面のclear
 		GLFWWindow::GLFWClear(0.6, 0.6, 0.6);
-		
-		
 		KALEIDOSCOPE::GUI::GuiWindowManager::RenderGuiWindowAll();
-
-
 		//バッファの切り替え
 		GLFWWindow::GLFWSwapBuffers();
 	}

@@ -70,6 +70,12 @@
     <Filter Include="Direct3D11\D3D11RenderingEngin">
       <UniqueIdentifier>{bd73cb09-e8db-44e0-b0bd-a5878ba7c853}</UniqueIdentifier>
     </Filter>
+    <Filter Include="object">
+      <UniqueIdentifier>{60469119-7bf1-4e5f-b935-cb7e4cf6e647}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SceneManager">
+      <UniqueIdentifier>{bafd6b02-02f4-4ccb-b7b7-064701194016}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\WinMain.cpp">
@@ -134,6 +140,12 @@
     </ClCompile>
     <ClCompile Include="src\Direct3D11\D3D11RenderingEngin.cpp">
       <Filter>Direct3D11\D3D11RenderingEngin</Filter>
+    </ClCompile>
+    <ClCompile Include="src\object\GameObject.cpp">
+      <Filter>object</Filter>
+    </ClCompile>
+    <ClCompile Include="src\SceneManager\SceneManager.cpp">
+      <Filter>SceneManager</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -211,6 +223,12 @@
     </ClInclude>
     <ClInclude Include="src\Direct3D11\D3D11RenderingEngin.h">
       <Filter>Direct3D11\D3D11RenderingEngin</Filter>
+    </ClInclude>
+    <ClInclude Include="src\object\GameObject.h">
+      <Filter>object</Filter>
+    </ClInclude>
+    <ClInclude Include="src\SceneManager\SceneManager.h">
+      <Filter>SceneManager</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
