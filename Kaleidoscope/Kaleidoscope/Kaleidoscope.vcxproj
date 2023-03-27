@@ -166,6 +166,7 @@
     <ClCompile Include="src\IMGUI\imgui_widgets.cpp" />
     <ClCompile Include="src\object\GameObject.cpp" />
     <ClCompile Include="src\SceneManager\SceneManager.cpp" />
+    <ClCompile Include="src\SystemManager.cpp" />
     <ClCompile Include="src\WinMain.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -196,6 +197,7 @@
     <ClInclude Include="src\IMGUI\imstb_truetype.h" />
     <ClInclude Include="src\object\GameObject.h" />
     <ClInclude Include="src\SceneManager\SceneManager.h" />
+    <ClInclude Include="src\SystemManager.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

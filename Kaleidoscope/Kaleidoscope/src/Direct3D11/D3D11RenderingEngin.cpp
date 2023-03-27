@@ -108,6 +108,16 @@ namespace KALEIDOSCOPE
 
 			return TRUE;
 		}
+		void D3D11RenderingEngin::SetRenderTerget()
+		{
+			m_pContext->OMSetRenderTargets(1, &m_rtv, m_DSV);
+			float col[4] = { 0.6f,0.6f,0.6f,1.0f };
+			m_pContext->ClearRenderTargetView(m_rtv,col);
+		}
+		ID3D11Texture2D* D3D11RenderingEngin::GetRenderTexture()
+		{
+			return m_pRenderingTergetTexture;
+		}
 	}
 }
 

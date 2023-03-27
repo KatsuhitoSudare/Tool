@@ -1,6 +1,5 @@
 #pragma once
 
-
 namespace KALEIDOSCOPE
 {
 	namespace SYSTEM
@@ -8,7 +7,10 @@ namespace KALEIDOSCOPE
 		class SystemManager
 		{
 		public:
-			void SystemInit();
+			SystemManager();
+			~SystemManager();
+
+			void SystemInitialize();
 			void SystemRunning();
 			void SystemShutDown();
 		private:
@@ -16,6 +18,5 @@ namespace KALEIDOSCOPE
 		};
 	}
 }
-
 
 

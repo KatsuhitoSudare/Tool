@@ -53,7 +53,7 @@ namespace KALEIDOSCOPE
 			ImGui::Render();
 			ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 			int display_w, display_h;
-			glfwGetFramebufferSize(GLFWWindow::GetContext(), &display_w, &display_h);
+			glfwGetFramebufferSize(GLFW::GLFWWindow::GetContext(), &display_w, &display_h);
 			glViewport(0, 0, display_w, display_h);
 
 			// Update and Render additional Platform Windows
@@ -108,7 +108,7 @@ namespace KALEIDOSCOPE
 			glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 0);
 
 			// Setup Platform/Renderer backends
-			ImGui_ImplGlfw_InitForOpenGL(GLFWWindow::GetContext(), true);
+			ImGui_ImplGlfw_InitForOpenGL(GLFW::GLFWWindow::GetContext(), true);
 			ImGui_ImplOpenGL3_Init(glsl_version);
 		}
 	}

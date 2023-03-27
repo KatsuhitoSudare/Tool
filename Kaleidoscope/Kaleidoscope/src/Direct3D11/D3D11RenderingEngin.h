@@ -18,16 +18,20 @@ namespace KALEIDOSCOPE
 			//デストラクタ
 			~D3D11RenderingEngin();
 			//初期化関数
-			BOOL D3D11RenderingEnginInit();
+			static BOOL D3D11RenderingEnginInit();
+
+			static void SetRenderTerget();
+
+			static ID3D11Texture2D* GetRenderTexture();
 
 		private:
-			ID3D11Device*		    m_pDevice;	/*DirectX11のDevice*/
-			ID3D11DeviceContext*    m_pContext;	/*DirectX11のDeviceContext*/
-			ID3D11Texture2D*        m_pRenderingTergetTexture;	/*レンダリング先にするテクスチャ*/
-			ID3D11RenderTargetView* m_rtv;
-			ID3D11DepthStencilView* m_DSV;
-			ID3D11Texture2D*		m_DST;
-			UINT					m_RendertergetWidth,m_RenderTergetHeight;/*レンダーターゲットの幅*/
+			static inline ID3D11Device*				m_pDevice;	/*DirectX11のDevice*/
+			static inline ID3D11DeviceContext*		m_pContext;	/*DirectX11のDeviceContext*/
+			static inline ID3D11Texture2D*			m_pRenderingTergetTexture;	/*レンダリング先にするテクスチャ*/
+			static inline ID3D11RenderTargetView*	m_rtv;
+			static inline ID3D11DepthStencilView*	m_DSV;
+			static inline ID3D11Texture2D*			m_DST;
+			static inline UINT						m_RendertergetWidth,m_RenderTergetHeight;/*レンダーターゲットの幅*/
 		};
 	}
 }
