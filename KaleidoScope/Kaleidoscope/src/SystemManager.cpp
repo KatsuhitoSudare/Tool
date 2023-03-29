@@ -4,6 +4,9 @@
 #include"Direct3D11/D3D11RenderingEngin.h"
 #include<chrono>
 #include"Collection/Collection.h"
+#include<string>
+#include<fstream>
+#include<sstream>
 
 namespace KALEIDOSCOPE
 { 
@@ -17,6 +20,9 @@ namespace KALEIDOSCOPE
 		}
 		void SystemManager::SystemInitialize()
 		{
+			//プロジェクトの初期化
+			ProjectSettingFileInit();
+
 			GLFW::GLFWWindow::InitGLFW(1920,1080,"KALEIDOSCOPE");
 			GUI::GuiWindowManager::InitializeGuiWindowAll();
 			RENDARINGENGIN::D3D11RenderingEngin::D3D11RenderingEnginInit();
@@ -63,6 +69,19 @@ namespace KALEIDOSCOPE
 		{
 			GUI::GuiWindowManager::ShutDownGuiWindowAll();
 			GLFW::GLFWWindow::ShutDownGLFW();
+		}
+
+		void SystemManager::ProjectSettingFileInit()
+		{
+			//シーンファイルの設定を取得
+			std::ofstream ofs("ProjectSettings\\ProjectSetting.inf");
+			if (!ofs)
+			{
+				//abot
+			}
+
+
+
 		}
 	}
 
