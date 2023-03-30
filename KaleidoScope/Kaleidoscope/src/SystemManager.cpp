@@ -74,12 +74,21 @@ namespace KALEIDOSCOPE
 		void SystemManager::ProjectSettingFileInit()
 		{
 			//シーンファイルの設定を取得
-			std::ofstream ofs("ProjectSettings\\ProjectSetting.inf");
-			if (!ofs)
-			{
-				//abot
-			}
+			std::ifstream ifs("ProjectSettings/ProjectSetting.conf");
+			std::string Buffer;
 
+			while (std::getline(ifs, Buffer))
+			{
+				std::stringstream ss(Buffer);
+				std::getline(ss, Buffer,':');
+				if (Buffer == "LastTimeOpenSceneFileDirectory ")
+				{
+					std::getline(ss, Buffer,':');
+					OpenScene = Buffer;
+				}
+
+				
+			}
 
 
 		}

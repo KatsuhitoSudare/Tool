@@ -1,4 +1,5 @@
-#pragma once
+#pragma onc
+#include<string>
 
 namespace KALEIDOSCOPE
 {
@@ -15,6 +16,8 @@ namespace KALEIDOSCOPE
 			void SystemShutDown();
 		private:
 			void ProjectSettingFileInit();
+
+			std::string OpenScene;
 		};
 	}
 }
