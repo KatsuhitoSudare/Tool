@@ -1,5 +1,6 @@
 #pragma once
 #include "Window.h"
+#include"..\KaleidoScopeCollection\GameObject.h"
 
 namespace KALEIDOSCOPE
 {
@@ -10,6 +11,8 @@ namespace KALEIDOSCOPE
 		public:
 			HierarchyView();
 			void Update()override;
+		private:
+			vector<KALEIDOSCOPE::COLLECTION::GameObject*> *ObjectArray;
 		};
 	}
 }

@@ -15,7 +15,7 @@ namespace KALEIDOSCOPE
 			void SystemRunning();
 			void SystemShutDown();
 		private:
-			void ProjectSettingFileInit();
+			void ProjectSettingFileLoad();
 
 			std::string OpenScene;
 		};

@@ -16,7 +16,7 @@ namespace KALEIDOSCOPE
 		{
 			ImGui::Begin(WindowName.c_str(), &CloseButton);
 			
-			ImGui::Image(reinterpret_cast<void*>(static_cast<intptr_t>(RENDARINGENGIN::D3D11RenderingEngin::GetRenderedImage())),ImGui::GetWindowSize());
+			ImGui::Image(reinterpret_cast<void*>(static_cast<intptr_t>(RENDARINGENGIN::D3D11RenderingEngin::GetRenderedImage())),ImGui::GetContentRegionAvail());
 
 			ImGui::End();
 		}

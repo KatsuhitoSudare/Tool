@@ -1,0 +1,9 @@
+{
+  "StartingMember": []
+  "ObjectName": "Object1",
+  "Transform": {
+    "Postion": [ 0.0, 0.0, 0.0 ],
+    "Scale": [ 1.0, 1.0, 1.0 ],
+    "Rotate": [ 0.0, 0.0, 0.0 ]
+  }
+}

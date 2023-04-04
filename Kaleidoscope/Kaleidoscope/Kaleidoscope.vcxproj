@@ -163,8 +163,15 @@
     <ClCompile Include="src\IMGUI\imgui_impl_opengl3.cpp" />
     <ClCompile Include="src\IMGUI\imgui_tables.cpp" />
     <ClCompile Include="src\IMGUI\imgui_widgets.cpp" />
-    <ClCompile Include="src\object\GameObject.cpp" />
+    <ClCompile Include="src\KaleidoScopeCollection\Camera.cpp" />
+    <ClCompile Include="src\KaleidoScopeCollection\Component.cpp" />
+    <ClCompile Include="src\KaleidoScopeCollection\MeshRenderer.cpp" />
+    <ClCompile Include="src\KaleidoScopeCollection\Object.cpp" />
+    <ClCompile Include="src\KaleidoScopeCollection\Renderer.cpp" />
+    <ClCompile Include="src\KaleidoScopeCollection\TransForm.cpp" />
+    <ClCompile Include="src\KaleidoScopeCollection\GameObject.cpp" />
     <ClCompile Include="src\SceneManager\SceneManager.cpp" />
+    <ClCompile Include="src\SceneManager\SceneObject.cpp" />
     <ClCompile Include="src\SystemManager.cpp" />
     <ClCompile Include="src\WinMain.cpp" />
   </ItemGroup>
@@ -196,8 +203,16 @@
     <ClInclude Include="src\IMGUI\imstb_rectpack.h" />
     <ClInclude Include="src\IMGUI\imstb_textedit.h" />
     <ClInclude Include="src\IMGUI\imstb_truetype.h" />
-    <ClInclude Include="src\object\GameObject.h" />
+    <ClInclude Include="src\KaleidoScopeCollection\Camera.h" />
+    <ClInclude Include="src\KaleidoScopeCollection\Component.h" />
+    <ClInclude Include="src\KaleidoScopeCollection\MeshRenderer.h" />
+    <ClInclude Include="src\KaleidoScopeCollection\Object.h" />
+    <ClInclude Include="src\KaleidoScopeCollection\Renderer.h" />
+    <ClInclude Include="src\KaleidoScopeCollection\TransForm.h" />
+    <ClInclude Include="src\KaleidoScopeCollection\GameObject.h" />
+    <ClInclude Include="src\picojson.h" />
     <ClInclude Include="src\SceneManager\SceneManager.h" />
+    <ClInclude Include="src\SceneManager\SceneObject.h" />
     <ClInclude Include="src\SystemManager.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

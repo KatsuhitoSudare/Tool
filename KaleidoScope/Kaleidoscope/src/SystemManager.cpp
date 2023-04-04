@@ -4,6 +4,7 @@
 #include"Direct3D11/D3D11RenderingEngin.h"
 #include<chrono>
 #include"Collection/Collection.h"
+#include"SceneManager/SceneManager.h"
 #include<string>
 #include<fstream>
 #include<sstream>
@@ -21,10 +22,14 @@ namespace KALEIDOSCOPE
 		void SystemManager::SystemInitialize()
 		{
 			//プロジェクトの初期化
-			ProjectSettingFileInit();
-
+			ProjectSettingFileLoad();
+			//シーンマネージャーの初期化
+			SceneManager::SceneManagerInit(OpenScene.c_str());
+			//GLFWの初期化
 			GLFW::GLFWWindow::InitGLFW(1920,1080,"KALEIDOSCOPE");
+			//GUIの初期化
 			GUI::GuiWindowManager::InitializeGuiWindowAll();
+			//レンダリングエンジンの初期化
 			RENDARINGENGIN::D3D11RenderingEngin::D3D11RenderingEnginInit();
 		}
 		void SystemManager::SystemRunning()
@@ -47,7 +52,7 @@ namespace KALEIDOSCOPE
 				// 画面をクリア
 				//=======================================================================
 				RENDARINGENGIN::D3D11RenderingEngin::SetRenderTerget();
-				GLFW::GLFWWindow::GLFWClear(0.6, 0.6, 0.6);
+				GLFW::GLFWWindow::GLFWClear(0.6f, 0.6f, 0.6f);
 
 				//=======================================================================
 				// 描画処理
@@ -68,10 +73,11 @@ namespace KALEIDOSCOPE
 		void SystemManager::SystemShutDown()
 		{
 			GUI::GuiWindowManager::ShutDownGuiWindowAll();
+			SceneManager::SceneManagerShutDown();
 			GLFW::GLFWWindow::ShutDownGLFW();
 		}
 
-		void SystemManager::ProjectSettingFileInit()
+		void SystemManager::ProjectSettingFileLoad()
 		{
 			//シーンファイルの設定を取得
 			std::ifstream ifs("ProjectSettings/ProjectSetting.conf");
@@ -80,14 +86,12 @@ namespace KALEIDOSCOPE
 			while (std::getline(ifs, Buffer))
 			{
 				std::stringstream ss(Buffer);
-				std::getline(ss, Buffer,':');
-				if (Buffer == "LastTimeOpenSceneFileDirectory ")
+				std::getline(ss, Buffer,' ');
+				if (Buffer == "LastTimeOpenSceneFileDirectory")
 				{
-					std::getline(ss, Buffer,':');
+					std::getline(ss, Buffer,' ');
 					OpenScene = Buffer;
 				}
-
-				
 			}
 
 

@@ -27,6 +27,8 @@ namespace KALEIDOSCOPE
 
 			static GLuint GetRenderedImage();
 
+			static void MeshRender();
+
 		private:
 			static inline ID3D11Device*				m_pDevice;	/*DirectX11‚ÌDevice*/
 			static inline ID3D11DeviceContext*		m_pContext;	/*DirectX11‚ÌDeviceContext*/

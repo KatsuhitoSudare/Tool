@@ -11,6 +11,8 @@ namespace KALEIDOSCOPE
 		public:
 			WindowHost();
 			void Update()override;
+		private:
+
 		};
 	}
 }

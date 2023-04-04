@@ -5,7 +5,7 @@
 #include"GLFW/glfw3.h"
 #include"..\GLFW\GLFWWindow.h"
 #include "../IMGUI/imgui_internal.h"
-
+#include"..\SceneManager\SceneManager.h"
 
 namespace KALEIDOSCOPE
 {
@@ -28,6 +28,24 @@ namespace KALEIDOSCOPE
                     }
                     ImGui::EndMenu();
                 }
+                if (ImGui::BeginMenu("Edit"))
+                {
+                    if (ImGui::MenuItem("New")) {
+                        // 新規アクションの処理
+                    }
+                    if (ImGui::MenuItem("Open")) {
+                        // 開くアクションの処理
+                    }
+                    ImGui::EndMenu();
+                }
+                if (ImGui::BeginMenu("GameObject"))
+                {
+                    if (ImGui::MenuItem("Create")) {
+                        SceneManager::GetObjectArray()->push_back(new GameObject("object"));
+                    }
+                    ImGui::EndMenu();
+                }
+
                 ImGui::EndMainMenuBar();
             }
 

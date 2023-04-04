@@ -88,6 +88,27 @@
     <Filter Include="Collection">
       <UniqueIdentifier>{955c22c3-efca-4c83-abe7-1e355c77c127}</UniqueIdentifier>
     </Filter>
+    <Filter Include="object\TransForm">
+      <UniqueIdentifier>{6fc0ed2a-c126-4509-ac1d-d25b863c8273}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="object\GameObject">
+      <UniqueIdentifier>{2ec2097a-f380-470e-9e24-eb0b02044844}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="object\Camera">
+      <UniqueIdentifier>{1d9fc14c-180a-461d-ba69-2feea829d241}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="object\Renderer">
+      <UniqueIdentifier>{80be9111-bb98-4c1f-bd92-e647973f8c0a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="object\Component">
+      <UniqueIdentifier>{ee931fa2-bcb8-4e9d-bd20-7fc3c86daf69}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="object\Renderer\MeshRenderer">
+      <UniqueIdentifier>{419009c7-f0d4-478a-ab43-cd6c98eb1025}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SceneManager\SceneObject">
+      <UniqueIdentifier>{30d8e3dd-e060-4983-8693-ce42d568cd5f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\WinMain.cpp">
@@ -150,9 +171,6 @@
     <ClCompile Include="src\Direct3D11\D3D11RenderingEngin.cpp">
       <Filter>Direct3D11\D3D11RenderingEngin</Filter>
     </ClCompile>
-    <ClCompile Include="src\object\GameObject.cpp">
-      <Filter>object</Filter>
-    </ClCompile>
     <ClCompile Include="src\SceneManager\SceneManager.cpp">
       <Filter>SceneManager</Filter>
     </ClCompile>
@@ -167,6 +185,30 @@
     </ClCompile>
     <ClCompile Include="src\Collection\Collection.cpp">
       <Filter>Collection</Filter>
+    </ClCompile>
+    <ClCompile Include="src\KaleidoScopeCollection\TransForm.cpp">
+      <Filter>object\TransForm</Filter>
+    </ClCompile>
+    <ClCompile Include="src\KaleidoScopeCollection\GameObject.cpp">
+      <Filter>object\GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="src\KaleidoScopeCollection\Camera.cpp">
+      <Filter>object\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="src\KaleidoScopeCollection\Renderer.cpp">
+      <Filter>object\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\KaleidoScopeCollection\Object.cpp">
+      <Filter>object</Filter>
+    </ClCompile>
+    <ClCompile Include="src\KaleidoScopeCollection\Component.cpp">
+      <Filter>object\Component</Filter>
+    </ClCompile>
+    <ClCompile Include="src\KaleidoScopeCollection\MeshRenderer.cpp">
+      <Filter>object\Renderer\MeshRenderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\SceneManager\SceneObject.cpp">
+      <Filter>SceneManager\SceneObject</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -242,9 +284,6 @@
     <ClInclude Include="src\Direct3D11\D3D11RenderingEngin.h">
       <Filter>Direct3D11\D3D11RenderingEngin</Filter>
     </ClInclude>
-    <ClInclude Include="src\object\GameObject.h">
-      <Filter>object</Filter>
-    </ClInclude>
     <ClInclude Include="src\SceneManager\SceneManager.h">
       <Filter>SceneManager</Filter>
     </ClInclude>
@@ -259,6 +298,33 @@
     </ClInclude>
     <ClInclude Include="src\Collection\Collection.h">
       <Filter>Collection</Filter>
+    </ClInclude>
+    <ClInclude Include="src\KaleidoScopeCollection\TransForm.h">
+      <Filter>object\TransForm</Filter>
+    </ClInclude>
+    <ClInclude Include="src\KaleidoScopeCollection\GameObject.h">
+      <Filter>object\GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="src\KaleidoScopeCollection\Camera.h">
+      <Filter>object\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="src\KaleidoScopeCollection\Renderer.h">
+      <Filter>object\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\KaleidoScopeCollection\Object.h">
+      <Filter>object</Filter>
+    </ClInclude>
+    <ClInclude Include="src\KaleidoScopeCollection\Component.h">
+      <Filter>object\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="src\KaleidoScopeCollection\MeshRenderer.h">
+      <Filter>object\Renderer\MeshRenderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\picojson.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="src\SceneManager\SceneObject.h">
+      <Filter>SceneManager\SceneObject</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
