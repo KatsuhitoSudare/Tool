@@ -44,6 +44,7 @@ namespace KALEIDOSCOPE
 				//=======================================================================
 				// XVˆ—
 				//=======================================================================
+				SceneManager::SceneUpdate();
 				GUI::GuiWindowManager::UpdateGuiWindowAll();
 
 
@@ -57,6 +58,7 @@ namespace KALEIDOSCOPE
 				//=======================================================================
 				// •`‰æˆ—
 				//=======================================================================
+				SceneManager::SceneRender();
 				GUI::GuiWindowManager::RenderGuiWindowAll();//ÅŒã‚É‰ñ‚µ‚½‚Ù‚¤‚ª‚¢‚¢
 
 

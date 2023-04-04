@@ -17,11 +17,14 @@ namespace KALEIDOSCOPE
 		static void SceneUpdate();
 		static void SceneRender();
 		static std::vector<GameObject*>* GetObjectArray();
+		static GameObject* CreateGameObject();
+		static string GetNowSceneName();
 	private:
+		static std::string CheckNameConflict(std::string);
 		//=========================================================
 		// fanction
 		//=========================================================
-		bool SearchSceneFile(const char* DirectoryPath, const char* SceneName);
+		bool SearchSceneDirectory(const char* DirectoryPath, const char* SceneName);
 
 		//=========================================================
 		// variable

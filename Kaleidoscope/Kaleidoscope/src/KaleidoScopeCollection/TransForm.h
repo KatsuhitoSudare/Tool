@@ -9,9 +9,9 @@ namespace KALEIDOSCOPE
 		{
 		public:
 			TransForm();
-			DirectX::XMVECTOR Pos;
-			DirectX::XMVECTOR Scale;
-			DirectX::XMVECTOR Rotate;
+			DirectX::XMFLOAT4 Pos;
+			DirectX::XMFLOAT4 Scale;
+			DirectX::XMFLOAT4 Rotate;
 		};
 	}
 }

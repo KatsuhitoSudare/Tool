@@ -1,6 +1,7 @@
 #pragma once
 #include<Windows.h>
 #include"Window.h"
+#include"..\KaleidoScopeCollection\GameObject.h"
 
 namespace KALEIDOSCOPE
 {
@@ -12,7 +13,7 @@ namespace KALEIDOSCOPE
 			WindowHost();
 			void Update()override;
 		private:
-
+			void SaveGameObject(KALEIDOSCOPE::COLLECTION::GameObject* _SaveGameObject);
 		};
 	}
 }

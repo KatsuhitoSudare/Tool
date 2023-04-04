@@ -9,13 +9,17 @@ namespace KALEIDOSCOPE
 	void SceneManager::ChangeScene(const char* SceneName)
 	{
 		SceneManager Sm;
-		Sm.SearchSceneFile("Assets", SceneName);
+		Sm.SearchSceneDirectory("SceneFile", SceneName);
 		IsChangeScene = true;
 	}
 
 	void SceneManager::SceneManagerInit(const char* SceneName)
 	{
-		ChangeScene(SceneName);
+		if (!mpSceneObject)
+		{
+			mpSceneObject = new SceneObject(SceneName);
+			mpSceneObject->OnInitGameObject();
+		}
 	}
 
 	void SceneManager::SceneManagerShutDown()
@@ -38,6 +42,8 @@ namespace KALEIDOSCOPE
 			}
 			//V‚µ‚­ì‚é
 			mpSceneObject = new SceneObject(NowOpenSceneFilePath.c_str());
+
+			mpSceneObject->OnInitGameObject();
 			//ƒtƒ‰ƒO‚ð“|‚·
 			IsChangeScene = false;
 		}
@@ -52,19 +58,44 @@ namespace KALEIDOSCOPE
 		return mpSceneObject->GetGameObjectArray();
 	}
 
-	bool SceneManager::SearchSceneFile(const char* DirectoryPath,const char* SceneName)
+	GameObject* SceneManager::CreateGameObject()
+	{
+		return SceneManager::mpSceneObject->GetGameObjectArray()->emplace_back(new GameObject(SceneManager::CheckNameConflict("NewObject")));
+	}
+
+	string SceneManager::GetNowSceneName()
+	{
+		return mpSceneObject->GetSceneName();
+	}
+
+	std::string SceneManager::CheckNameConflict(std::string checkstring)
+	{
+		static int Version = 0;
+		static std::string tempName = checkstring;
+
+		for (auto obj : *mpSceneObject->GetGameObjectArray())
+		{
+			if (obj->ObjectName == checkstring)
+			{
+				Version++;
+				return CheckNameConflict(tempName + std::to_string(Version));
+			}
+		}
+		Version = 0;
+		return checkstring;
+	}
+
+	bool SceneManager::SearchSceneDirectory(const char* DirectoryPath,const char* SceneName)
 	{
 		for (const auto& entry : std::filesystem::directory_iterator(DirectoryPath)) {
 			if (entry.is_directory()) {
-				SearchSceneFile(entry.path().string().c_str(),SceneName);
+				if(entry.path().filename().string() == SceneName)
+					NowOpenSceneFilePath = entry.path().string();
+				break;
 			}
 			else
 			{
-				if (entry.path().filename().string() == SceneName)
-				{
-					NowOpenSceneFilePath = entry.path().string();
-					break;
-				}
+				SearchSceneDirectory(entry.path().string().c_str(), SceneName);
 			}
 		}
 

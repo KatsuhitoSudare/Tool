@@ -10,12 +10,12 @@ namespace KALEIDOSCOPE
 		SceneObject();
 		SceneObject(const char* SceneName);
 		~SceneObject();
-		void OnInitGameObject(const char* ObjectDirectory);
+		void OnInitGameObject();
 		std::vector <KALEIDOSCOPE::COLLECTION::GameObject*>* GetGameObjectArray();
-
+		std::string GetSceneName();
 	private:
 		//このシーンのオブジェクトを格納するコンテナ
-		std::vector <KALEIDOSCOPE::COLLECTION::GameObject*> GameObjectArray;
+		std::vector <KALEIDOSCOPE::COLLECTION::GameObject*>* GameObjectArray;
 		//このシーンの名前
 		std::string SceneName;
 	};
