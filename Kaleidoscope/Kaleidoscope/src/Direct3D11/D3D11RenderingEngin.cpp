@@ -111,45 +111,21 @@ namespace KALEIDOSCOPE
 
 			m_pContext->OMSetRenderTargets(1,&m_rtv,m_DSV);
 
-
-			return TRUE;
-		}
-		void D3D11RenderingEngin::SetRenderTerget()
-		{
-			m_pContext->OMSetRenderTargets(1, &m_rtv, m_DSV);
-			float col[4] = { 0.6f,0.6f,0.6f,1.0f };
-			m_pContext->ClearRenderTargetView(m_rtv,col);
-		}
-
-		GLuint D3D11RenderingEngin::GetRenderedImage()
-		{
 			D3D11_TEXTURE2D_DESC desc;
 			m_pRenderingTergetTexture->GetDesc(&desc);
 			UINT width = desc.Width;
 			UINT height = desc.Height;
 			UINT rowPitch = desc.Width * 4; // RGBAフォーマットを想定して4バイトずつ
-			UINT slicePitch = rowPitch * desc.Height;
-			BYTE* textureData = new BYTE[slicePitch];
+			slicePitch   = rowPitch * desc.Height;
+			textureData = new BYTE[slicePitch];
 
 			// ステージングテクスチャを作成する
-			ID3D11Texture2D* stagingTexture;
 			desc.Usage = D3D11_USAGE_STAGING;
 			desc.BindFlags = 0;
 			desc.CPUAccessFlags = D3D11_CPU_ACCESS_READ;
 			desc.MiscFlags = 0;
-			HRESULT hr = m_pDevice->CreateTexture2D(&desc, NULL, &stagingTexture);
+			hr = m_pDevice->CreateTexture2D(&desc, NULL, &stagingTexture);
 
-			//データをコピーする
-			m_pContext->CopyResource(stagingTexture, m_pRenderingTergetTexture);
-
-			// ステージングテクスチャのデータをバッファにコピーする
-			D3D11_MAPPED_SUBRESOURCE mapped;
-			m_pContext->Map(stagingTexture, 0, D3D11_MAP_READ, 0, &mapped);
-			memcpy(textureData, mapped.pData, slicePitch);
-			m_pContext->Unmap(stagingTexture, 0);
-
-			GLuint glTexture = 0;
-			
 			// OpenGLのテクスチャオブジェクトを作成する
 			glBindTexture(GL_TEXTURE_2D, glTexture);
 			glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA8, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, textureData);
@@ -162,12 +138,39 @@ namespace KALEIDOSCOPE
 			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP);
 			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP);
 
+			return TRUE;
+		}
+
+		void D3D11RenderingEngin::D3D11RenderingEnginShutDown()
+		{
 			// メモリを解放する
 			delete[] textureData;
 			stagingTexture->Release();
+			m_pDevice->Release();
+			m_pContext->Release();
+			m_pRenderingTergetTexture->Release();
+			m_DST->Release();
+			m_DSV->Release();
+			m_rtv->Release();
+		}
 
+		void D3D11RenderingEngin::SetRenderTerget()
+		{
+			m_pContext->OMSetRenderTargets(1, &m_rtv, m_DSV);
+			float col[4] = { 0.6f,0.6f,0.6f,1.0f };
+			m_pContext->ClearRenderTargetView(m_rtv,col);
+		}
+
+		GLuint D3D11RenderingEngin::GetRenderedImage()
+		{
+			//データをコピーする
+			m_pContext->CopyResource(stagingTexture, m_pRenderingTergetTexture);
+			// ステージングテクスチャのデータをバッファにコピーする
+			D3D11_MAPPED_SUBRESOURCE mapped;
+			m_pContext->Map(stagingTexture, 0, D3D11_MAP_READ, 0, &mapped);
+			memcpy(textureData, mapped.pData, slicePitch);
+			m_pContext->Unmap(stagingTexture, 0);
 			return glTexture;
-
 		}
 	}
 }

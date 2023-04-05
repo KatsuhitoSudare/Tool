@@ -74,6 +74,7 @@ namespace KALEIDOSCOPE
 		}
 		void SystemManager::SystemShutDown()
 		{
+			RENDARINGENGIN::D3D11RenderingEngin::D3D11RenderingEnginShutDown();
 			GUI::GuiWindowManager::ShutDownGuiWindowAll();
 			SceneManager::SceneManagerShutDown();
 			GLFW::GLFWWindow::ShutDownGLFW();
