@@ -29,8 +29,6 @@ namespace KALEIDOSCOPE
 
 			static GLuint GetRenderedImage();
 
-			static void MeshRender();
-
 		private:
 			static inline ID3D11Device*				m_pDevice;	/*DirectX11のDevice*/
 			static inline ID3D11DeviceContext*		m_pContext;	/*DirectX11のDeviceContext*/
@@ -39,10 +37,10 @@ namespace KALEIDOSCOPE
 			static inline ID3D11DepthStencilView*	m_DSV;
 			static inline ID3D11Texture2D*			m_DST;
 			static inline UINT						m_RendertergetWidth,m_RenderTergetHeight;/*レンダーターゲットの幅*/
-			static inline ID3D11Texture2D* stagingTexture;
-			static inline GLuint glTexture = 0;
-			static inline UINT slicePitch;
-			static inline BYTE* textureData;
+			static inline ID3D11Texture2D*			stagingTexture;
+			static inline GLuint					glTexture;
+			static inline UINT						slicePitch;
+			static inline BYTE*						textureData;
 		};
 	}
 }
