@@ -5,10 +5,6 @@
 #include<vector>
 #include<stdarg.h>
 
-#define NoTitleBar 1
-#define NoResize 2
-#define NoMove 4
-
 #pragma comment(lib,"ImguiLib.lib")
 
 enum Kinds
@@ -18,8 +14,6 @@ enum Kinds
 	Exit,
 	Edge
 };
-
-
 
 class ImguiLib
 {
@@ -43,8 +37,6 @@ public:
 	void ImguiCreateButton(__in std::string WindowName, __in std::string ButtonName, __in void (*PushEvent)(), __in Kinds ButtonKinds);
 
 	void ImguiCreateWindow(__in std::string WindowName);
-
-	void ImguiCreateWindowEX(__in __in std::string WindowName, int WindowFlag);
 
 	void ImguiCreateSliderF(__in std::string WindowName, __in std::string SliderName, __out float* SliderValue, __in float Min, __in float Max);
 
@@ -80,16 +72,11 @@ private:
 		std::vector<ButtonConfig*> ButtonArray;
 		//スライダー
 		std::vector<SliderConfig*> SlliderArray;
-		//Windowの表示状態
-		bool DisplayState = true;
-		//ウィンドウの見た目
-		int  flg;
 	};
 
 
 	ImguiLib() {};
 	static ImguiLib* instatnce;
-	
 	std::map<std::string, ImguiWindowConfig*> WindowArray;
 	HWND hWnd = NULL;
 };
