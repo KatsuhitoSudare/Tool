@@ -1,4 +1,4 @@
-#include "PixelShader.h"
+#include "..\..\KALEIDOSCOPE\include\PixelShader.h"
 
 HRESULT PixelShader::InitPixelShader(const wchar_t* FileName, const char* EntryPoint, ID3D11Device* _device)
 {

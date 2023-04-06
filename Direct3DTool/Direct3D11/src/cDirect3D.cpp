@@ -1,7 +1,4 @@
-#include "cDirect3D.h"
-#include"VertexBuffer.h"
-#include"IndexBuffer.h"
-#include"ConstantBuffer.h"
+#include"..\..\KALEIDOSCOPE\include\cDirect3D.h"
 
 #pragma comment(lib, "d3d11.lib")
 #pragma comment(lib, "dxgi.lib")
@@ -231,8 +228,6 @@ void cDirect3D::ClearRenderTarget(float R, float G, float B)
 		D3D11_CLEAR_DEPTH | D3D11_CLEAR_STENCIL,
 		1.0f,			// Ｚバッファを1.0でクリアする(0.0f～1.0f)
 		0);				// ステンシルバッファを0でクリアする
-
-
 }
 
 void cDirect3D::SwapBuffuer()

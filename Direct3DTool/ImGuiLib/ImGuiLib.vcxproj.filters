@@ -56,9 +56,6 @@
     <ClInclude Include="src\imgui.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="src\ImguiLib.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
     <ClInclude Include="src\imstb_rectpack.h">
       <Filter>ソース ファイル</Filter>
     </ClInclude>

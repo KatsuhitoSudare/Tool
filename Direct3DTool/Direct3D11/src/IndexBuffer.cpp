@@ -1,4 +1,4 @@
-#include "IndexBuffer.h"
+#include "..\..\KALEIDOSCOPE\include\IndexBuffer.h"
 
 HRESULT IndexBuffer::CreateIndexBuffer(ID3D11Device* _device, std::vector<UINT>& IndexList)
 {
