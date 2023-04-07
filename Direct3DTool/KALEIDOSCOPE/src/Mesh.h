@@ -3,9 +3,6 @@
 #include<d3d11.h>
 #include<vector>
 
-
-
-
 //頂点のデータ
 struct Vertex
 {

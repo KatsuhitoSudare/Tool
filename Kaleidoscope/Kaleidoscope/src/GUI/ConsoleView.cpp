@@ -25,10 +25,7 @@ namespace KALEIDOSCOPE
 			}
 
 			ImGui::Begin(WindowName.c_str());
-
-			ImGui::Text("%f", Time::DeltaTime);
-			ImGui::Text("%d", FPS);
-
+			ImGui::Text("%dFPS", FPS);
 			ImGui::End();
 		}
 	}

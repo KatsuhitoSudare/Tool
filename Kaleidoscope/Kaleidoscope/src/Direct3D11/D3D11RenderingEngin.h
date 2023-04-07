@@ -23,11 +23,11 @@ namespace KALEIDOSCOPE
 			//初期化関数
 			static BOOL D3D11RenderingEnginInit();
 
+			static void D3D11RenderingEnginShutDown();
+
 			static void SetRenderTerget();
 
 			static GLuint GetRenderedImage();
-
-			static void MeshRender();
 
 		private:
 			static inline ID3D11Device*				m_pDevice;	/*DirectX11のDevice*/
@@ -37,6 +37,10 @@ namespace KALEIDOSCOPE
 			static inline ID3D11DepthStencilView*	m_DSV;
 			static inline ID3D11Texture2D*			m_DST;
 			static inline UINT						m_RendertergetWidth,m_RenderTergetHeight;/*レンダーターゲットの幅*/
+			static inline ID3D11Texture2D*			stagingTexture;
+			static inline GLuint					glTexture;
+			static inline UINT						slicePitch;
+			static inline BYTE*						textureData;
 		};
 	}
 }
