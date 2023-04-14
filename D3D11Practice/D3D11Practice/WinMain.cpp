@@ -14,6 +14,7 @@ INT WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 		cDirect3D::ClearRenderTarget(0.6,0.6,0.6);
 
 
+
 		cDirect3D::SwapBuffuer();
 	}
 

@@ -22,6 +22,9 @@
     <Filter Include="GameObject">
       <UniqueIdentifier>{df386441-bcd3-45b0-9338-946c1447318d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Loader">
+      <UniqueIdentifier>{c28fd029-c1db-4a64-9fbb-0e8dc256ba6d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinMain.cpp">
@@ -47,6 +50,9 @@
     </ClCompile>
     <ClCompile Include="src\GameObject.cpp">
       <Filter>GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ModelLoader.cpp">
+      <Filter>Loader</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -76,6 +82,9 @@
     </ClInclude>
     <ClInclude Include="src\GameObject.h">
       <Filter>GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ModelLoader.h">
+      <Filter>Loader</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
