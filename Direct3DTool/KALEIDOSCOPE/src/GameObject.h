@@ -34,7 +34,5 @@ private:
 	XMMATRIX  mW;
 	XMMATRIX  mV;
 	XMMATRIX  mP;
-
-	
 };
 

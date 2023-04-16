@@ -1,5 +1,6 @@
 #include"src/cWindowManager.h"
 #include"src/Direct3D11/cDirect3D.h"
+#include"src/ModelLoader.h"
 
 INT WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 {
@@ -8,6 +9,8 @@ INT WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 	cWindowManager::MakeWindow();
 	cDirect3D::Direct3DInit();
 
+	ModelLoader md;
+	md.LoadModel("unitychan.fbx");
 
 	while (cWindowManager::ProcessMessage())
 	{

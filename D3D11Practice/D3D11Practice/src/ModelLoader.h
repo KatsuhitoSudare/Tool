@@ -1,29 +1,70 @@
 #pragma once
-#include<DirectXMath.h>
-#include<vector>
-#include<map>
-#include<string>
 
-//頂点のデータ
-struct Vertex
+#include <vector>
+#include <string>
+#include <unordered_map>
+#include <DirectXMath.h>
+#include <assimp/Importer.hpp>
+#include <assimp/scene.h>
+#include <assimp/postprocess.h>
+
+struct Bone
 {
-    DirectX::XMFLOAT3 Position; // 位置座標
-    DirectX::XMFLOAT3 Normal;   // 法線
-    DirectX::XMFLOAT2 UV;       // uv座標
-    DirectX::XMFLOAT3 Tangent;  // 接空間
-    DirectX::XMFLOAT4 Color;    // 頂点色
+    DirectX::XMFLOAT4X4 offsetMatrix;
+    std::string         BoneName;
+    Bone*               parentId;
 };
 
-struct Mesh
+
+struct Animation
 {
-    std::vector<Vertex> Vertices; // 頂点データの配列
-    std::vector<uint32_t> Indices; // インデックスの配列
-    const wchar_t* DiffuseMap; // テクスチャのファイルパス
+    std::string name;
+    double duration;
+    double ticksPerSecond;
+    std::vector<std::vector<DirectX::XMFLOAT4X4>> boneTransforms;
 };
 
 class ModelLoader
 {
 public:
-	static std::map<std::string,Mesh>  LoadModel(const char* FilePath);
+    struct Vertex
+    {
+        DirectX::XMFLOAT3 position;
+        DirectX::XMFLOAT3 normal;
+        DirectX::XMFLOAT2 texCoords;
+        int boneIndices[4];  //頂点に影響を与えるボーンのインデックス
+        float boneWeights[4];//頂点に影響を与えるボーンのウェイト
+    };
+
+    struct Mesh
+    {
+        Mesh(std::vector<Vertex> v, std::vector<unsigned int> i)
+        {
+            vertices = v;
+            indices = i;
+        }
+        std::vector<Vertex> vertices;
+        std::vector<unsigned int> indices;
+        // テクスチャ情報等を含める場合は、ここに追加
+    };
+
+    ModelLoader();
+    ~ModelLoader();
+
+    bool LoadModel(const std::string& path);
+    bool LoadAnimation(const std::string& path, const std::string& animationName);
+    const std::vector<Mesh>& GetMeshes() const;
+    const std::vector<Animation>& GetAnimations() const;
+
+private:
+    void ProcessNode(aiNode* node, const aiScene* scene);
+    Mesh ProcessMesh(aiMesh* mesh, const aiScene* scene);
+    void ReadNodeHierarchy(float animationTime, const aiNode* pNode, const DirectX::XMFLOAT4X4& parentTransform, const Animation& animation);
+
+    std::vector<Mesh> m_meshes;
+    std::vector<Animation> m_animations;
+    std::unordered_map<std::string, unsigned int> m_boneMapping;
+    std::vector<Bone> m_boneInfo;
+
 };
 
