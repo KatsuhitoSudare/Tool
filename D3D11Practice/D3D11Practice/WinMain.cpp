@@ -10,7 +10,7 @@ INT WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 	cDirect3D::Direct3DInit();
 
 	ModelLoader md;
-	md.LoadModel("unitychan.fbx");
+	md.LoadModel("uni.fbx");
 
 	while (cWindowManager::ProcessMessage())
 	{

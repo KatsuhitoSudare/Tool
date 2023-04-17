@@ -9,7 +9,7 @@
 
 std::vector<Mesh> Meshes;
 
-const wchar_t* modelFile = L"assets/Dragon 2.5_fbx.fbx";
+const wchar_t* modelFile = L"assets/uni.fbx";
 
 //’¸“_‚Ìî•ñ
 D3D11_INPUT_ELEMENT_DESC desc[5] = {
