@@ -16,6 +16,6 @@ GameObject::GameObject()
 	mVS.InitVertexShader(L"Shader/VertexShader.hlsl", "vert", cDirect3D::GetDevice(), desc, 5);
 	//ピクセルシェーダーの作成
 	mPS.InitPixelShader(L"Shader/PixelShader.hlsl", "pixel", cDirect3D::GetDevice());
-
-
+	//
+	ModelLoader::LoadModel("Alicia.fbx",modelData);
 }

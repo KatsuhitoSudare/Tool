@@ -75,7 +75,7 @@ void cWindowManager::SetWindowSize(UINT width, UINT Height)
 	m_WindowH = Height;
 }
 
-void cWindowManager::SetWindowTitle(LPCWSTR Title)
+void cWindowManager::SetWindowTitle(LPCSTR Title)
 {
 	m_WindowTitle = Title;
 	m_WindowClass = Title;

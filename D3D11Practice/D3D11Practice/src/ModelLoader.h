@@ -7,21 +7,19 @@
 #include <assimp/Importer.hpp>
 #include <assimp/scene.h>
 #include <assimp/postprocess.h>
-
-struct Bone
-{
-    DirectX::XMFLOAT4X4 offsetMatrix;
-    std::string         BoneName;
-    Bone*               parentId;
-};
-
-
 struct Animation
 {
     std::string name;
     double duration;
     double ticksPerSecond;
     std::vector<std::vector<DirectX::XMFLOAT4X4>> boneTransforms;
+};
+
+struct Bone
+{
+    DirectX::XMFLOAT4X4 offsetMatrix;
+    std::string         BoneName;
+    Bone*               parentId;
 };
 
 struct Vertex
@@ -35,6 +33,7 @@ struct Vertex
 
 struct Mesh
 {
+    std::string                                MeshName;
     std::vector<Vertex>                        vertices;
     std::vector<unsigned int>                  indices;
     std::vector<Bone>                          Bones;
@@ -44,7 +43,7 @@ struct Mesh
 struct ModelData
 {
     //モデルのメッシュ
-    std::unordered_map<std::string, Mesh>      Meshes;
+    std::vector<Mesh>                          Meshes;
     //アニメーションデータ
     std::unordered_map<std::string, Animation> Animations;
 };
@@ -53,8 +52,6 @@ struct ModelData
 class ModelLoader
 {
 public:
-    static ModelData* LoadModel(const std::string const& FilePath);
-private:
-    static void LoadMesh(aiMesh& const _mesh, Mesh& dstMesh);
+    static bool LoadModel(const std::string const& FilePath, ModelData& dstData);
 };
 

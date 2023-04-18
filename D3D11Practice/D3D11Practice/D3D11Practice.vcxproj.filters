@@ -54,6 +54,9 @@
     <ClCompile Include="src\ModelLoader.cpp">
       <Filter>Loader</Filter>
     </ClCompile>
+    <ClCompile Include="src\PMXLoader.cpp">
+      <Filter>Loader</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\cWindowManager.h">
@@ -84,6 +87,9 @@
       <Filter>GameObject</Filter>
     </ClInclude>
     <ClInclude Include="src\ModelLoader.h">
+      <Filter>Loader</Filter>
+    </ClInclude>
+    <ClInclude Include="src\PMXLoader.h">
       <Filter>Loader</Filter>
     </ClInclude>
   </ItemGroup>

@@ -20,11 +20,12 @@ public:
 	GameObject();
 
 private:
-	VertexBuffer<Vertex> mVB;
-	VertexShader         mVS;
+	VertexBuffer<Vertex>     mVB;
+	VertexShader             mVS;
 	ConstantBuffer<Constant> mCB;
 	IndexBuffer              mIB;
 	PixelShader              mPS;
-	std::vector<Mesh> Meshes;
+	ModelData                modelData;
+
 };
 

@@ -47,7 +47,7 @@ BOOL cDirect3D::Direct3DInit()
 	hr = CreateDXGIFactory(__uuidof(IDXGIFactory), (LPVOID*)&m_pDxgiFactory);
 	if (FAILED(hr))
 	{
-		MessageBox(hWnd, L"ファクトリの取得に失敗", L"結果", MB_ICONINFORMATION);
+		MessageBox(hWnd, "ファクトリの取得に失敗", "結果", MB_ICONINFORMATION);
 		return FALSE;
 	}
 
@@ -55,7 +55,7 @@ BOOL cDirect3D::Direct3DInit()
 	hr = m_pDxgiFactory->EnumAdapters(0,m_pDxgiAdapter.GetAddressOf());
 	if (FAILED(hr))
 	{
-		MessageBox(hWnd, L"アダプタの取得に失敗", L"結果", MB_ICONINFORMATION);
+		MessageBox(hWnd, "アダプタの取得に失敗", "結果", MB_ICONINFORMATION);
 		return FALSE;
 	}
 
@@ -63,27 +63,27 @@ BOOL cDirect3D::Direct3DInit()
 	hr = m_pDxgiAdapter->EnumOutputs(0, m_pDxgiOutput.GetAddressOf());
 	if (FAILED(hr))
 	{
-		MessageBox(hWnd, L"モニターの情報取得に失敗", L"結果", MB_ICONINFORMATION);
+		MessageBox(hWnd, "モニターの情報取得に失敗", "結果", MB_ICONINFORMATION);
 		return FALSE;
 	}
 
 	hr = m_pDxgiOutput->GetDisplayModeList(DXGI_FORMAT_R8G8B8A8_UNORM, DXGI_ENUM_MODES_INTERLACED, &numModes, NULL);
 	if (FAILED(hr))
 	{
-		MessageBox(hWnd, L"モニターの情報取得に失敗", L"結果", MB_ICONINFORMATION);
+		MessageBox(hWnd, "モニターの情報取得に失敗", "結果", MB_ICONINFORMATION);
 		return FALSE;
 	}
 
 	DisplayMode = new DXGI_MODE_DESC[numModes];
 	if (!DisplayMode) {
-		MessageBox(hWnd, L"モニターの情報取得に失敗", L"結果", MB_ICONINFORMATION);
+		MessageBox(hWnd, "モニターの情報取得に失敗", "結果", MB_ICONINFORMATION);
 		return FALSE;
 	}
 
 	hr = m_pDxgiOutput->GetDisplayModeList(DXGI_FORMAT_R8G8B8A8_UNORM, DXGI_ENUM_MODES_INTERLACED, &numModes, DisplayMode);
 	if (FAILED(hr))
 	{
-		MessageBox(hWnd, L"モニターの情報取得に失敗", L"結果", MB_ICONINFORMATION);
+		MessageBox(hWnd, "モニターの情報取得に失敗", "結果", MB_ICONINFORMATION);
 		return FALSE;
 	}
 
@@ -115,7 +115,7 @@ BOOL cDirect3D::Direct3DInit()
 	}
 	if (FAILED(hr))
 	{
-		MessageBox(hWnd, L"デバイスの作成に失敗", L"結果", MB_ICONINFORMATION);
+		MessageBox(hWnd, "デバイスの作成に失敗", "結果", MB_ICONINFORMATION);
 		delete[] DisplayMode;
 		return FALSE;
 	}
@@ -144,7 +144,7 @@ BOOL cDirect3D::Direct3DInit()
 	hr = m_pDxgiFactory->CreateSwapChain(m_pD3DDevice.Get(), &sd, m_pSwapChain.GetAddressOf());
 	if (FAILED(hr))
 	{
-		MessageBox(hWnd, L"スワップチェインの作成に失敗", L"結果", MB_ICONINFORMATION);
+		MessageBox(hWnd, "スワップチェインの作成に失敗", "結果", MB_ICONINFORMATION);
 		delete[] DisplayMode;
 		return FALSE;
 	}
@@ -155,7 +155,7 @@ BOOL cDirect3D::Direct3DInit()
 	hr = m_pSwapChain->GetBuffer(0,__uuidof(ID3D11Texture2D), (LPVOID*)&m_pBackBuffer);
 	if (FAILED(hr))
 	{
-		MessageBox(hWnd, L"バックバッファの取得に失敗", L"結果", MB_ICONINFORMATION);
+		MessageBox(hWnd, "バックバッファの取得に失敗", "結果", MB_ICONINFORMATION);
 		return FALSE;
 	}
 
