@@ -1,36 +1,69 @@
-cbuffer Transform : register(b1)
+cbuffer MatrixBuffer : register(b0)
 {
-    matrix World;
-    matrix View;
-    matrix Proj;
-}
+    matrix world;
+    matrix view;
+    matrix projection;
+};
 
-struct VSInput
+cbuffer BoneTransformBuffer : register(b1)
 {
-    float3 pos : POSITION;
+    matrix boneTransforms[100];
+};
+
+struct VertexInputType
+{
+    float3 position : POSITION;
+    float2 tex : TEXCOORD;
     float3 normal : NORMAL;
-    float2 uv : TEXCOORD;
-    float3 tangent : TANGENT;
-    float4 color : COLOR;
+    int4 boneIndices : BONEINDICES;
+    float4 boneWeights : BONEWEIGHTS;
 };
 
-struct VSOutput
+struct PixelInputType
 {
-    float4 svpos : SV_POSITION;
-    float4 color : COLOR;
-    float2 uv : TEXCOORD; // ピクセルシェーダーにuvを渡す
+    float2 tex : TEXCOORD0;
+    float4 normal : NORMAL;
+    float4 position : SV_POSITION;
 };
 
-VSOutput vert(VSInput input)
+PixelInputType main(VertexInputType input)
 {
-    VSOutput output = (VSOutput) 0;
+    PixelInputType output;
 
-    output.svpos = float4(input.pos, 1.0f);
-    output.svpos = mul(output.svpos,World);
-    output.svpos = mul(output.svpos, View);
-    output.svpos = mul(output.svpos,Proj);
+    // 頂点位置と法線の初期値
+    float4 localPosition = float4(0.0, 0.0, 0.0, 0.0);
+    float4 localNormal = float4(0.0, 0.0, 0.0, 0.0);
 
-    output.color = input.color;
-    output.uv = input.uv; // ここが変更点。入力からuvを渡す
+    // スキニング処理
+    for (int i = 0; i < 4; ++i)
+    {
+        float weight = input.boneWeights[i];
+        if (weight > 0.0)
+        {
+            int boneIndex = input.boneIndices[i];
+            matrix boneTransform = boneTransforms[boneIndex];
+            float4 skinnedPosition = mul(float4(input.position, 1.0), boneTransform);
+            float4 skinnedNormal = mul(float4(input.normal, 0.0), boneTransform);
+
+            localPosition += skinnedPosition * weight;
+            localNormal += skinnedNormal * weight;
+        }
+    }
+
+    // ワールド座標系への変換
+    output.position = mul(localPosition,world);
+
+    // 法線をワールド座標系に変換
+    output.normal = mul(localNormal, world);
+
+    // テクスチャ座標の設定
+    output.tex = input.tex;
+
+    // ビュー座標系への変換
+    output.position = mul(output.position, view);
+
+    // クリップ座標系への変換
+    output.position = mul(output.position, projection);
+
     return output;
 }

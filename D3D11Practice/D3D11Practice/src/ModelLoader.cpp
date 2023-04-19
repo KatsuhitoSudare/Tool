@@ -6,16 +6,16 @@
 
 #include "ModelLoader.h"
 
-DirectX::XMFLOAT4X4 aiToDxMatrix(const aiMatrix4x4& matrix)
+DirectX::XMMATRIX aiToDxMatrix(const aiMatrix4x4& matrix)
 {
-    return DirectX::XMFLOAT4X4(
+    return DirectX::XMMATRIX(
         matrix.a1, matrix.a2, matrix.a3, matrix.a4,
         matrix.b1, matrix.b2, matrix.b3, matrix.b4,
         matrix.c1, matrix.c2, matrix.c3, matrix.c4,
         matrix.d1, matrix.d2, matrix.d3, matrix.d4);
 }
 
-bool ModelLoader::LoadModel(const std::string const& FilePath,ModelData& dstData)
+bool ModelLoader::LoadModel(std::string const& FilePath,ModelData& dstData)
 {
     //インポーター
     Assimp::Importer importer;
@@ -61,27 +61,24 @@ bool ModelLoader::LoadModel(const std::string const& FilePath,ModelData& dstData
             dstData.Meshes[i].vertices.emplace_back(vertex);
         }
 
-        std::vector<Bone> bonearray;
-        bonearray.resize(mesh->mNumBones);
-        for (int b = 0; b < bonearray.size(); b++)
+        for (int b = 0; b < mesh->mNumBones; b++)
         {
             aiBone* bone = mesh->mBones[b];
+            dstData.Meshes[i].Bones[bone->mName.C_Str()].offsetMatrix = aiToDxMatrix( bone->mOffsetMatrix);
+            dstData.Meshes[i].Bones[bone->mName.C_Str()].BoneMatrix = DirectX::XMMatrixIdentity();
             for (int j = 0; j < bone->mNumWeights; j++)
             {
-                bonearray[b].BoneName = bone->mName.C_Str();
-                bonearray[b].offsetMatrix = aiToDxMatrix(bone->mOffsetMatrix);
                 for (int k = 0; k < 4; ++k)
                 {
-                    if (dstData.Meshes[i].vertices[bone->mWeights->mVertexId].boneWeights[k] == 0.0f)
+                    if (dstData.Meshes[i].vertices[bone->mWeights[j].mVertexId].boneWeights[k] == 0.0f)
                     {
-                        dstData.Meshes[i].vertices[bone->mWeights->mVertexId].boneIndices[k] = b;
-                        dstData.Meshes[i].vertices[bone->mWeights->mVertexId].boneWeights[k] = bone->mWeights->mWeight;
+                        dstData.Meshes[i].vertices[bone->mWeights[j].mVertexId].boneIndices[k] = b;
+                        dstData.Meshes[i].vertices[bone->mWeights[j].mVertexId].boneWeights[k] = bone->mWeights[j].mWeight;
+                        break;
                     }
                 }
             }
         }
-
-        dstData.Meshes[i].Bones = bonearray;
     }
 
     return true;

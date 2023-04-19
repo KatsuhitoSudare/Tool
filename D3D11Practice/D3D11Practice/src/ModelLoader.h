@@ -7,6 +7,8 @@
 #include <assimp/Importer.hpp>
 #include <assimp/scene.h>
 #include <assimp/postprocess.h>
+
+
 struct Animation
 {
     std::string name;
@@ -17,17 +19,18 @@ struct Animation
 
 struct Bone
 {
-    DirectX::XMFLOAT4X4 offsetMatrix;
-    std::string         BoneName;
+    DirectX::XMMATRIX   offsetMatrix;
+    DirectX::XMMATRIX   BoneMatrix;
     Bone*               parentId;
+    DirectX::XMFLOAT3   point;
 };
 
 struct Vertex
 {
     DirectX::XMFLOAT3 position;
-    DirectX::XMFLOAT3 normal;
     DirectX::XMFLOAT2 texCoords;
-    int boneIndices[4];  //頂点に影響を与えるボーンのインデックス
+    DirectX::XMFLOAT3 normal;
+    int   boneIndices[4];  //頂点に影響を与えるボーンのインデックス
     float boneWeights[4];//頂点に影響を与えるボーンのウェイト
 };
 
@@ -36,7 +39,8 @@ struct Mesh
     std::string                                MeshName;
     std::vector<Vertex>                        vertices;
     std::vector<unsigned int>                  indices;
-    std::vector<Bone>                          Bones;
+    std::unordered_map<std::string,Bone>       Bones;
+
     // テクスチャ情報等を含める場合は、ここに追加
 };
 
@@ -52,6 +56,6 @@ struct ModelData
 class ModelLoader
 {
 public:
-    static bool LoadModel(const std::string const& FilePath, ModelData& dstData);
+    static bool LoadModel(std::string const& FilePath, ModelData& dstData);
 };
 

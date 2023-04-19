@@ -13,19 +13,29 @@ struct Constant
 	XMMATRIX P;
 };
 
+struct BoneBuffer
+{
+	XMMATRIX bone[100];
+};
+
 
 class GameObject
 {
 public:
 	GameObject();
-
+	void Update();
+	void Render();
 private:
-	VertexBuffer<Vertex>     mVB;
+	std::vector<VertexBuffer<Vertex>>     mVB;
 	VertexShader             mVS;
 	ConstantBuffer<Constant> mCB;
+	std::vector<ConstantBuffer<BoneBuffer>> mBoneBuffer;
 	IndexBuffer              mIB;
 	PixelShader              mPS;
 	ModelData                modelData;
 
+	XMMATRIX  mW;
+	XMMATRIX  mV;
+	XMMATRIX  mP;
 };
 

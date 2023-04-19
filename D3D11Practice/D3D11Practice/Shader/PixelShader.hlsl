@@ -1,11 +1,11 @@
-struct VSOutput
+struct PixelInputType
 {
-    float4 svpos : SV_POSITION;
-    float4 color : COLOR;
-    float2 uv : TEXCOORD; // 頂点シェーダーから来たuv
+    float2 tex : TEXCOORD0;
+    float4 normal : NORMAL;
+    float4 position : SV_POSITION;
 };
 
-float4 pixel(VSOutput input) : SV_TARGET
+float4 main(PixelInputType input) : SV_TARGET
 {
-    return float4(input.uv.xy, 1, 1);
+    return input.normal;
 }
