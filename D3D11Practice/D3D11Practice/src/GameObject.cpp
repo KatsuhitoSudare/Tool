@@ -46,19 +46,6 @@ GameObject::GameObject()
 	mP = XMMatrixPerspectiveFovLH(DirectX::XM_PIDIV4, 16.0f / 9.0f, 0.1f, 1000.0f);
 
 	mW = XMMatrixIdentity();
-
-	for (int i = 0; i < mBoneBuffer.size(); i++)
-	{
-		BoneBuffer boneMatrix;
-		for (int j = 0; j < modelData.Meshes[i].Bones.size(); j++)
-		{
-			for (auto boneMat : modelData.Meshes[i].Bones)
-			{
-				boneMatrix.bone[j] = boneMat.second.BoneMatrix;
-			}
-		}
-		mBoneBuffer[i].UpdateBufferResource(&boneMatrix, cDirect3D::GetContext());
-	}
 }
 
 void GameObject::Update()
@@ -82,6 +69,9 @@ void GameObject::Update()
 	constTransform.P = XMMatrixTranspose(mP);
 	
 	mCB.UpdateBufferResource(&constTransform, cDirect3D::GetContext());
+
+
+	//ポージングアップデート
 
 	for (int i = 0; i < mBoneBuffer.size(); i++)
 	{

@@ -26,16 +26,16 @@ public:
 	void Update();
 	void Render();
 private:
-	std::vector<VertexBuffer<Vertex>>     mVB;
-	VertexShader             mVS;
-	ConstantBuffer<Constant> mCB;
+	std::vector<VertexBuffer<Vertex>>		mVB;
+	VertexShader							mVS;
+	ConstantBuffer<Constant>				mCB;
 	std::vector<ConstantBuffer<BoneBuffer>> mBoneBuffer;
-	IndexBuffer              mIB;
-	PixelShader              mPS;
-	ModelData                modelData;
+	IndexBuffer								mIB;
+	PixelShader								mPS;
+	ModelData								modelData;
 
-	XMMATRIX  mW;
-	XMMATRIX  mV;
-	XMMATRIX  mP;
+	XMMATRIX								mW;
+	XMMATRIX								mV;
+	XMMATRIX								mP;
 };
 
