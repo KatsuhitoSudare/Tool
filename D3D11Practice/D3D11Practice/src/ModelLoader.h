@@ -17,14 +17,15 @@ struct Animation
     std::vector<std::vector<DirectX::XMFLOAT4X4>> boneTransforms;
 };
 
+
+
 struct Bone
 {
+    std::string         BoneName;
     DirectX::XMMATRIX   offsetMatrix;
     DirectX::XMMATRIX   BoneMatrix;
-    Bone*               parentId;
-    DirectX::XMFLOAT3   point;
-    std::vector<Bone*>  childe;
 };
+
 
 struct Vertex
 {
@@ -40,8 +41,7 @@ struct Mesh
     std::string                                MeshName;
     std::vector<Vertex>                        vertices;
     std::vector<unsigned int>                  indices;
-    std::vector<Bone>                          Bones;
-
+    std::unordered_map<std::string,Bone>       Bones;
     // テクスチャ情報等を含める場合は、ここに追加
 };
 

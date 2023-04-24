@@ -17,7 +17,7 @@ GameObject::GameObject()
 	//ピクセルシェーダーの作成
 	mPS.InitPixelShader(L"Shader/PixelShader.hlsl", "main", cDirect3D::GetDevice());
 	//
-	ModelLoader::LoadModel("Alicia.fbx",modelData);
+	ModelLoader::LoadModel("walking.fbx",modelData);
 
 	mVB.resize(modelData.Meshes.size());
 	for (int i = 0; i < modelData.Meshes.size(); i++)
@@ -36,7 +36,7 @@ GameObject::GameObject()
 	}
 	
 
-	XMVECTOR m_CameraPos = XMVectorSet(0.0f, 0.0f, -180.0f, 0.0f);
+	XMVECTOR m_CameraPos = XMVectorSet(0.0f, 0.0f, -200.0f, 0.0f);
 	XMVECTOR m_Camerafocus = XMVectorSet(0.0f, 0.0f, 0.0f, 0.0f);
 	XMVECTOR m_CameraTop = XMVectorSet(0.0f, 1.0f, 0.0f, 0.0f);
 
@@ -58,7 +58,7 @@ void GameObject::Update()
 	
 	XMMATRIX rotatY = XMMatrixRotationY(oo);
 
-	XMMATRIX rotatX = XMMatrixRotationX(XMConvertToRadians(90));
+	XMMATRIX rotatX = XMMatrixRotationX(XMConvertToRadians(0));
 
 	XMMATRIX trans = XMMatrixTranslation(0.0f, -80.0f, 0.0f);
 
@@ -70,7 +70,6 @@ void GameObject::Update()
 	
 	mCB.UpdateBufferResource(&constTransform, cDirect3D::GetContext());
 
-
 	//ポージングアップデート
 	for (int i = 0; i < mBoneBuffer.size(); i++)
 	{
@@ -79,7 +78,7 @@ void GameObject::Update()
 		{
 			for (auto& boneMat : modelData.Meshes[i].Bones)
 			{
-				boneMatrix.bone[j] = boneMat.BoneMatrix;
+				boneMatrix.bone[j] = boneMat.second.BoneMatrix;
 			}
 		}
 		mBoneBuffer[i].UpdateBufferResource(&boneMatrix, cDirect3D::GetContext());
