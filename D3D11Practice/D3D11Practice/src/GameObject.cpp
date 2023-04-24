@@ -72,7 +72,6 @@ void GameObject::Update()
 
 
 	//ポージングアップデート
-
 	for (int i = 0; i < mBoneBuffer.size(); i++)
 	{
 		BoneBuffer boneMatrix;
@@ -80,7 +79,7 @@ void GameObject::Update()
 		{
 			for (auto& boneMat : modelData.Meshes[i].Bones)
 			{
-				boneMatrix.bone[j] = boneMat.second.BoneMatrix;
+				boneMatrix.bone[j] = boneMat.BoneMatrix;
 			}
 		}
 		mBoneBuffer[i].UpdateBufferResource(&boneMatrix, cDirect3D::GetContext());

@@ -61,25 +61,39 @@ bool ModelLoader::LoadModel(std::string const& FilePath,ModelData& dstData)
             dstData.Meshes[i].vertices.emplace_back(vertex);
         }
 
-        for (int b = 0; b < mesh->mNumBones; b++)
+        if (mesh->HasBones())
         {
-            aiBone* bone = mesh->mBones[b];
-            dstData.Meshes[i].Bones[bone->mName.C_Str()].offsetMatrix = aiToDxMatrix( bone->mOffsetMatrix);
-            dstData.Meshes[i].Bones[bone->mName.C_Str()].BoneMatrix = DirectX::XMMatrixIdentity();
-            for (int j = 0; j < bone->mNumWeights; j++)
+            dstData.Meshes[i].Bones.resize(mesh->mNumBones);
+            for (int b = 0; b < dstData.Meshes[i].Bones.size(); b++)
             {
-                for (int k = 0; k < 4; ++k)
+                //b番目のボーン
+                aiBone* bone = mesh->mBones[b];
+                dstData.Meshes[i].Bones[b].offsetMatrix = aiToDxMatrix(bone->mOffsetMatrix);
+                dstData.Meshes[i].Bones[b].BoneMatrix = DirectX::XMMatrixIdentity();
+
+                for (int j = 0; j < bone->mNumWeights; j++)
                 {
-                    if (dstData.Meshes[i].vertices[bone->mWeights[j].mVertexId].boneWeights[k] == 0.0f)
+                    for (int k = 0; k < 4; ++k)
                     {
-                        dstData.Meshes[i].vertices[bone->mWeights[j].mVertexId].boneIndices[k] = b;
-                        dstData.Meshes[i].vertices[bone->mWeights[j].mVertexId].boneWeights[k] = bone->mWeights[j].mWeight;
-                        break;
+                        if (dstData.Meshes[i].vertices[bone->mWeights[j].mVertexId].boneWeights[k] == 0.0f)
+                        {
+                            dstData.Meshes[i].vertices[bone->mWeights[j].mVertexId].boneIndices[k] = b;
+                            dstData.Meshes[i].vertices[bone->mWeights[j].mVertexId].boneWeights[k] = bone->mWeights[j].mWeight;
+                            break;
+                        }
                     }
                 }
             }
+
+            //親子関係を構築
+            Bone root_bone =  dstData.Meshes[i].Bones[0];//ルートノード
+
+
         }
     }
+
+
+
 
     return true;
 }

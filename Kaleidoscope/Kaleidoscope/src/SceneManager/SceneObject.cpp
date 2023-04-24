@@ -26,6 +26,32 @@ namespace KALEIDOSCOPE
 
 	void SceneObject::OnInitGameObject()
 	{
+		std::ifstream ifs("SceneFile/" + SceneName + "/Settings.json");
+		if (!ifs)
+		{
+			std::ofstream ofs("SceneFile/" + SceneName + "/Settings.json");
+			if (ofs.is_open())
+			{
+				//jsonファイルのオブジェクト
+				picojson::object jsonObj;
+
+				//SceneCameraのポジションと注視点と上向きベクトル
+				picojson::array Position { picojson::value(0.0f),picojson::value(0.0f),picojson::value(-1.0f)};
+				picojson::array GazePoint{ picojson::value(0.0f),picojson::value(0.0f),picojson::value(0.0f) };
+				picojson::array UpwardVec{ picojson::value(0.0f),picojson::value(1.0f),picojson::value(0.0f) };
+
+				picojson::object CameraPosition;
+				CameraPosition["Position"] = picojson::value(Position);
+				CameraPosition["GazePoint"] = picojson::value(GazePoint);
+				CameraPosition["UpwardVec"] = picojson::value(UpwardVec);
+
+				
+				jsonObj["SceneCameraPos"] = picojson::value(CameraPosition);
+
+				//オブジェクトに書き込む
+				ofs << picojson::value(jsonObj).serialize(true);
+			}
+		}
 		
 		for (const auto& entry : std::filesystem::directory_iterator("SceneFile/" + SceneName + "/object")) {
 			if (!entry.is_directory())
@@ -44,7 +70,6 @@ namespace KALEIDOSCOPE
 
 				picojson::array transformval = val.get<picojson::object>()["Transform"].get<picojson::object>()["Position"].get<picojson::array>();
 
-				
 
 				pGameObject->transform.Pos.x = transformval[0].get<double>();
 				pGameObject->transform.Pos.y = transformval[1].get<double>();

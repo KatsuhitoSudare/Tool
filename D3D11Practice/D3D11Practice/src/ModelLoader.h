@@ -23,6 +23,7 @@ struct Bone
     DirectX::XMMATRIX   BoneMatrix;
     Bone*               parentId;
     DirectX::XMFLOAT3   point;
+    std::vector<Bone*>  childe;
 };
 
 struct Vertex
@@ -39,7 +40,7 @@ struct Mesh
     std::string                                MeshName;
     std::vector<Vertex>                        vertices;
     std::vector<unsigned int>                  indices;
-    std::unordered_map<std::string,Bone>       Bones;
+    std::vector<Bone>                          Bones;
 
     // テクスチャ情報等を含める場合は、ここに追加
 };

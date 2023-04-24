@@ -1,0 +1,19 @@
+{
+  "SceneCameraPos": {
+    "GazePoint": [
+      0,
+      0,
+      0
+    ],
+    "Position": [
+      0,
+      0,
+      -1
+    ],
+    "UpwardVec": [
+      0,
+      1,
+      0
+    ]
+  }
+}
