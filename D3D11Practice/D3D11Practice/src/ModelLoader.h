@@ -24,6 +24,8 @@ struct Bone
     std::string         BoneName;
     DirectX::XMMATRIX   offsetMatrix;
     DirectX::XMMATRIX   BoneMatrix;
+    DirectX::XMMATRIX   InitBoneMatrix;
+    std::vector<std::string>    ChildBoneName;
 };
 
 
@@ -54,9 +56,12 @@ struct ModelData
 };
 
 
+
 class ModelLoader
 {
 public:
     static bool LoadModel(std::string const& FilePath, ModelData& dstData);
+private:
+   
 };
 

@@ -56,7 +56,7 @@ void GameObject::Update()
 
 	Constant constTransform;
 	
-	XMMATRIX rotatY = XMMatrixRotationY(oo);
+	XMMATRIX rotatY = XMMatrixRotationY(0);
 
 	XMMATRIX rotatX = XMMatrixRotationX(XMConvertToRadians(0));
 
@@ -71,6 +71,9 @@ void GameObject::Update()
 	mCB.UpdateBufferResource(&constTransform, cDirect3D::GetContext());
 
 	//ポージングアップデート
+	modelData.Meshes[0].Bones["rp_nathan_animated_003_walking_lowerarm_l"].BoneMatrix = XMMatrixRotationY(oo);
+
+
 	for (int i = 0; i < mBoneBuffer.size(); i++)
 	{
 		BoneBuffer boneMatrix;

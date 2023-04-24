@@ -15,13 +15,18 @@ DirectX::XMMATRIX aiToDxMatrix(const aiMatrix4x4& matrix)
         matrix.d1, matrix.d2, matrix.d3, matrix.d4);
 }
 
-void CreateBone(aiNode* root_node, Mesh* mesh)
+void CreateBone(aiNode* root_node, Mesh* mesh,int& indexnum)
 {
     Bone bone;
+    bone.InitBoneMatrix = aiToDxMatrix(root_node->mTransformation);
+    bone.BoneMatrix = DirectX::XMMatrixIdentity();
+    bone.offsetMatrix = DirectX::XMMatrixInverse(nullptr,bone.InitBoneMatrix);
     mesh->Bones[root_node->mName.C_Str()] = bone;
+
     for (int i = 0; i < root_node->mNumChildren; i++)
     {
-        CreateBone(root_node->mChildren[i], mesh);
+        mesh->Bones[root_node->mName.C_Str()].ChildBoneName.push_back(root_node->mChildren[i]->mName.C_Str());
+        CreateBone(root_node->mChildren[i], mesh, indexnum);
     }
 }
 
@@ -74,16 +79,13 @@ bool ModelLoader::LoadModel(std::string const& FilePath,ModelData& dstData)
         if (mesh->HasBones())
         {
             //親子関係を構築
+            int child = 0;
             aiNode* node = scene->mRootNode->FindNode(mesh->mBones[0]->mName);
-            CreateBone(node, &dstData.Meshes[i]);
+            CreateBone(node, &dstData.Meshes[i], child);
             for (int b = 0; b < mesh->mNumBones; b++)
             {
                 //b番目のボーン
                 aiBone* bone = mesh->mBones[b];
-                
-                dstData.Meshes[i].Bones[bone->mName.C_Str()].offsetMatrix = aiToDxMatrix(bone->mOffsetMatrix);
-                dstData.Meshes[i].Bones[bone->mName.C_Str()].BoneMatrix = DirectX::XMMatrixIdentity();
-
 
                 for (int j = 0; j < bone->mNumWeights; j++)
                 {
