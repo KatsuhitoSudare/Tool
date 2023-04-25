@@ -82,6 +82,14 @@ namespace KALEIDOSCOPE
 			ImGui_ImplGlfw_Shutdown();
 			ImGui::DestroyContext();
 		}
+		void* GuiWindowManager::GetSelectObject()
+		{
+			return SelectObject;
+		}
+		void GuiWindowManager::SetSelectObject(void* _select)
+		{
+			SelectObject = _select;
+		}
 		void GuiWindowManager::ImGuiInit()
 		{
 			// Setup Dear ImGui context

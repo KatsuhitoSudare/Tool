@@ -62,6 +62,6 @@ class ModelLoader
 public:
     static bool LoadModel(std::string const& FilePath, ModelData& dstData);
 private:
-   
+    
 };
 

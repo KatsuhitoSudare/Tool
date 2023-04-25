@@ -1,5 +1,6 @@
 #pragma once
 #include "Window.h"
+#include"..\KaleidoScopeCollection\GameObject.h"
 
 namespace KALEIDOSCOPE
 {
@@ -10,7 +11,7 @@ namespace KALEIDOSCOPE
 		public:
 			InspecterView();
 			void Update()override;
-
+			void* SelectObject;
 		};
 	}
 }

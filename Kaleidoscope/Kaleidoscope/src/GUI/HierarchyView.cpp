@@ -2,6 +2,8 @@
 #include"..\IMGUI\imgui.h"
 #include"..\SceneManager\SceneManager.h"
 #include"..\KaleidoScopeCollection\GameObject.h"
+#include"InspecterView.h"
+#include"GuiWindowManager.h"
 
 namespace KALEIDOSCOPE
 {
@@ -15,29 +17,23 @@ namespace KALEIDOSCOPE
 		{
 			ImGui::Begin(WindowName.c_str(), &CloseButton);
 
-			ObjectArray = SceneManager::GetObjectArray();
-
-			
-
-			for (auto& obj : *ObjectArray)
+			if (!ObjectArray)
 			{
-				if (ImGui::TreeNode(obj->ObjectName.c_str())) {
+				ObjectArray = SceneManager::GetObjectArray();
+			}
+
+			for (auto obj : *ObjectArray)
+			{
+				if (ImGui::TreeNodeEx(obj->ObjectName.c_str(), ImGuiTreeNodeFlags_Leaf)) {
+
+					if (ImGui::IsItemClicked())
+					{
+						GuiWindowManager::SetSelectObject((void*)obj);
+					}
+
 					ImGui::TreePop();
 				}
-				if (ImGui::IsItemHovered())
-				{
-					if (ImGui::BeginPopupContextItem("Menu")) {
-						if (ImGui::MenuItem("Item 1")) {
-							// Item 1‚ª‘I‘ğ‚³‚ê‚½‚Æ‚«‚Ìˆ—
-						}
-						if (ImGui::MenuItem("Item 2")) {
-							// Item 2‚ª‘I‘ğ‚³‚ê‚½‚Æ‚«‚Ìˆ—
-						}
-						ImGui::EndPopup();
-					}
-				}
-				
-			}			
+			}	
 
 			ImGui::End();
 		}

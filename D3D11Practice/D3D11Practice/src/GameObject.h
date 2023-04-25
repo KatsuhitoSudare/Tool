@@ -15,7 +15,7 @@ struct Constant
 
 struct BoneBuffer
 {
-	XMMATRIX bone[100];
+	XMMATRIX bone[256];
 };
 
 

@@ -42,6 +42,7 @@ bool ModelLoader::LoadModel(std::string const& FilePath,ModelData& dstData)
     flag |= aiProcess_CalcTangentSpace;
     //flag |= aiProcess_GenSmoothNormals;
     flag |= aiProcess_GenUVCoords;
+    flag |= aiProcess_GenNormals;
     flag |= aiProcess_RemoveRedundantMaterials;
     flag |= aiProcess_OptimizeMeshes;
     flag |= aiProcess_MakeLeftHanded;
@@ -68,6 +69,8 @@ bool ModelLoader::LoadModel(std::string const& FilePath,ModelData& dstData)
         {
             Vertex vertex;
             vertex.position = DirectX::XMFLOAT3(mesh->mVertices[v].x, mesh->mVertices[v].y, mesh->mVertices[v].z);
+            vertex.normal = DirectX::XMFLOAT3(mesh->mNormals[v].x, mesh->mNormals[v].y, mesh->mNormals[v].z);
+            vertex.texCoords = mesh->HasTextureCoords(0) ? DirectX::XMFLOAT2(mesh->mTextureCoords[0][v].x,mesh->mTextureCoords[0][v].y):DirectX::XMFLOAT2(0.0f,0.0f);
             for (int j = 0; j < 4; ++j)
             {
                 vertex.boneIndices[j] = -1;

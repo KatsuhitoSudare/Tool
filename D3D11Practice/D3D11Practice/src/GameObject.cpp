@@ -1,5 +1,6 @@
 #include "GameObject.h"
 #include"Direct3D11/cDirect3D.h"
+#include"WICTextureLoader11.h"
 
 //頂点の情報
 D3D11_INPUT_ELEMENT_DESC desc[5] = {
@@ -36,7 +37,7 @@ GameObject::GameObject()
 	}
 	
 
-	XMVECTOR m_CameraPos = XMVectorSet(0.0f, 0.0f, -200.0f, 0.0f);
+	XMVECTOR m_CameraPos = XMVectorSet(0.0f, 0.0f, -240.0f, 0.0f);
 	XMVECTOR m_Camerafocus = XMVectorSet(0.0f, 0.0f, 0.0f, 0.0f);
 	XMVECTOR m_CameraTop = XMVectorSet(0.0f, 1.0f, 0.0f, 0.0f);
 
@@ -56,7 +57,7 @@ void GameObject::Update()
 
 	Constant constTransform;
 	
-	XMMATRIX rotatY = XMMatrixRotationY(0);
+	XMMATRIX rotatY = XMMatrixRotationY(oo);
 
 	XMMATRIX rotatX = XMMatrixRotationX(XMConvertToRadians(0));
 
@@ -71,7 +72,7 @@ void GameObject::Update()
 	mCB.UpdateBufferResource(&constTransform, cDirect3D::GetContext());
 
 	//ポージングアップデート
-	modelData.Meshes[0].Bones["rp_nathan_animated_003_walking_lowerarm_l"].BoneMatrix = XMMatrixRotationY(oo);
+	//modelData.Meshes[13].Bones["Character1_LeftFoot"].BoneMatrix = XMMatrixTranslation(0.0f, -80.0f, 0.0f);
 
 
 	for (int i = 0; i < mBoneBuffer.size(); i++)
@@ -90,8 +91,15 @@ void GameObject::Update()
 
 void GameObject::Render()
 {
-	for (int i = 0; i < modelData.Meshes.size(); i++)
+	static float o = 0;
+	o += 0.01;
+	if (modelData.Meshes.size() < o)
 	{
+		o = 0;
+	}
+	for (int i = 0; i < 1; i++)
+	{
+		i = (int)o;
 		mVS.SetVertexShaderAndInputLayout(cDirect3D::GetContext());
 		mPS.SetPixelShader(cDirect3D::GetContext());
 		mCB.VSSetConstantBuffer(cDirect3D::GetContext(), 0);
