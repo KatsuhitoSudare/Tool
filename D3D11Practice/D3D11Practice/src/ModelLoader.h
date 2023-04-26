@@ -21,10 +21,10 @@ struct Animation
 
 struct Bone
 {
-    std::string         BoneName;
-    DirectX::XMMATRIX   offsetMatrix;
-    DirectX::XMMATRIX   BoneMatrix;
-    DirectX::XMMATRIX   InitBoneMatrix;
+    std::string                 BoneName;
+    DirectX::XMMATRIX           offsetMatrix;
+    DirectX::XMMATRIX           BoneMatrix;
+    DirectX::XMMATRIX           AnimBoneMatrix;
     std::vector<std::string>    ChildBoneName;
 };
 

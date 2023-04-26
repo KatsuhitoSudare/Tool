@@ -7,7 +7,7 @@
 #include"InspecterView.h"
 #include"HierarchyView.h"
 #include"GameView.h"
-#include"AssetsView.h"
+#include"ProjectView.h"
 #include"SceneView.h"
 #include"ConsoleView.h"
 
@@ -27,7 +27,7 @@ namespace KALEIDOSCOPE
 			//HierarchyView‚Ì’Ç‰Á
 			WindowArray.emplace_back(new HierarchyView());
 			//AssetsView‚Ì’Ç‰Á
-			WindowArray.emplace_back(new AssetsView());
+			WindowArray.emplace_back(new ProjectView());
 			//SceneView‚Ì’Ç‰Á
 			WindowArray.emplace_back(new SceneView());
 			//GameView‚Ì’Ç‰Á

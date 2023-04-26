@@ -58,9 +58,6 @@
     <Filter Include="GUI\Hierarchy">
       <UniqueIdentifier>{5abcaad3-7f8b-4ee1-99ab-28d3483bff90}</UniqueIdentifier>
     </Filter>
-    <Filter Include="GUI\Assets">
-      <UniqueIdentifier>{125359cb-0b35-4e8d-b10c-6c44fb15e9e1}</UniqueIdentifier>
-    </Filter>
     <Filter Include="GUI\Game">
       <UniqueIdentifier>{48f90319-32e3-40d8-9d62-9ff3d940986c}</UniqueIdentifier>
     </Filter>
@@ -108,6 +105,9 @@
     </Filter>
     <Filter Include="SceneManager\SceneObject">
       <UniqueIdentifier>{30d8e3dd-e060-4983-8693-ce42d568cd5f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GUI\Project">
+      <UniqueIdentifier>{125359cb-0b35-4e8d-b10c-6c44fb15e9e1}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -159,8 +159,8 @@
     <ClCompile Include="src\GUI\HierarchyView.cpp">
       <Filter>GUI\Hierarchy</Filter>
     </ClCompile>
-    <ClCompile Include="src\GUI\AssetsView.cpp">
-      <Filter>GUI\Assets</Filter>
+    <ClCompile Include="src\GUI\ProjectView.cpp">
+      <Filter>GUI\Project</Filter>
     </ClCompile>
     <ClCompile Include="src\GUI\GameView.cpp">
       <Filter>GUI\Game</Filter>
@@ -272,8 +272,8 @@
     <ClInclude Include="src\GUI\HierarchyView.h">
       <Filter>GUI\Hierarchy</Filter>
     </ClInclude>
-    <ClInclude Include="src\GUI\AssetsView.h">
-      <Filter>GUI\Assets</Filter>
+    <ClInclude Include="src\GUI\ProjectView.h">
+      <Filter>GUI\Project</Filter>
     </ClInclude>
     <ClInclude Include="src\GUI\GameView.h">
       <Filter>GUI\Game</Filter>

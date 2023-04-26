@@ -15,21 +15,6 @@ DirectX::XMMATRIX aiToDxMatrix(const aiMatrix4x4& matrix)
         matrix.d1, matrix.d2, matrix.d3, matrix.d4);
 }
 
-void CreateBone(aiNode* root_node, Mesh* mesh,int& indexnum)
-{
-    Bone bone;
-    bone.InitBoneMatrix = aiToDxMatrix(root_node->mTransformation);
-    bone.BoneMatrix = DirectX::XMMatrixIdentity();
-    bone.offsetMatrix = DirectX::XMMatrixInverse(nullptr,bone.InitBoneMatrix);
-    mesh->Bones[root_node->mName.C_Str()] = bone;
-
-    for (int i = 0; i < root_node->mNumChildren; i++)
-    {
-        mesh->Bones[root_node->mName.C_Str()].ChildBoneName.push_back(root_node->mChildren[i]->mName.C_Str());
-        CreateBone(root_node->mChildren[i], mesh, indexnum);
-    }
-}
-
 bool ModelLoader::LoadModel(std::string const& FilePath,ModelData& dstData)
 {
     //インポーター
@@ -37,14 +22,8 @@ bool ModelLoader::LoadModel(std::string const& FilePath,ModelData& dstData)
 
     //読み込みフラグ
     int flag = 0;
-    flag |= aiProcess_Triangulate;
-    //flag |= aiProcess_PreTransformVertices;
-    flag |= aiProcess_CalcTangentSpace;
-    //flag |= aiProcess_GenSmoothNormals;
-    flag |= aiProcess_GenUVCoords;
-    flag |= aiProcess_GenNormals;
-    flag |= aiProcess_RemoveRedundantMaterials;
-    flag |= aiProcess_OptimizeMeshes;
+    flag |= aiProcess_GenUVCoords;//UVを取得するフラグ
+    flag |= aiProcess_GenNormals;//法線を取得するフラグ
     flag |= aiProcess_MakeLeftHanded;
 
     //シーンデータ
@@ -68,8 +47,8 @@ bool ModelLoader::LoadModel(std::string const& FilePath,ModelData& dstData)
         for (int v = 0; v < mesh->mNumVertices; v++)
         {
             Vertex vertex;
-            vertex.position = DirectX::XMFLOAT3(mesh->mVertices[v].x, mesh->mVertices[v].y, mesh->mVertices[v].z);
-            vertex.normal = DirectX::XMFLOAT3(mesh->mNormals[v].x, mesh->mNormals[v].y, mesh->mNormals[v].z);
+            vertex.position = DirectX::XMFLOAT3(-mesh->mVertices[v].x, mesh->mVertices[v].y, mesh->mVertices[v].z);
+            vertex.normal = DirectX::XMFLOAT3(-mesh->mNormals[v].x, mesh->mNormals[v].y, mesh->mNormals[v].z);
             vertex.texCoords = mesh->HasTextureCoords(0) ? DirectX::XMFLOAT2(mesh->mTextureCoords[0][v].x,mesh->mTextureCoords[0][v].y):DirectX::XMFLOAT2(0.0f,0.0f);
             for (int j = 0; j < 4; ++j)
             {
@@ -82,13 +61,18 @@ bool ModelLoader::LoadModel(std::string const& FilePath,ModelData& dstData)
         if (mesh->HasBones())
         {
             //親子関係を構築
-            int child = 0;
-            aiNode* node = scene->mRootNode->FindNode(mesh->mBones[0]->mName);
-            CreateBone(node, &dstData.Meshes[i], child);
             for (int b = 0; b < mesh->mNumBones; b++)
             {
                 //b番目のボーン
                 aiBone* bone = mesh->mBones[b];
+                dstData.Meshes[i].Bones[bone->mName.C_Str()].offsetMatrix *= aiToDxMatrix(bone->mOffsetMatrix);
+                dstData.Meshes[i].Bones[bone->mName.C_Str()].BoneMatrix = DirectX::XMMatrixIdentity();
+                aiNode* bone_node = scene->mRootNode->FindNode(bone->mName);
+
+                for (int c = 0;c < bone_node->mNumChildren;c++)
+                {
+                    dstData.Meshes[i].Bones[bone->mName.C_Str()].ChildBoneName.push_back(bone_node->mChildren[c]->mName.C_Str());
+                }
 
                 for (int j = 0; j < bone->mNumWeights; j++)
                 {

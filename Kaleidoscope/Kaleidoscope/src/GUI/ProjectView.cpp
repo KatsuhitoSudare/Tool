@@ -1,15 +1,15 @@
-#include "AssetsView.h"
+#include "ProjectView.h"
 #include"..\IMGUI\imgui.h"
 
 namespace KALEIDOSCOPE
 {
 	namespace GUI
 	{
-		AssetsView::AssetsView()
+		ProjectView::ProjectView()
 		{
 			WindowName = "Assets";
 		}
-		void AssetsView::Update()
+		void ProjectView::Update()
 		{
 			ImGui::Begin(WindowName.c_str(), &CloseButton);
 			ImGui::End();

@@ -149,7 +149,7 @@
     <ClCompile Include="src\Direct3D11\VertexShader.cpp" />
     <ClCompile Include="src\GLFW\GLFWWindow.cpp" />
     <ClCompile Include="src\GlobalSetting.cpp" />
-    <ClCompile Include="src\GUI\AssetsView.cpp" />
+    <ClCompile Include="src\GUI\ProjectView.cpp" />
     <ClCompile Include="src\GUI\ConsoleView.cpp" />
     <ClCompile Include="src\GUI\GameView.cpp" />
     <ClCompile Include="src\GUI\GuiWindowManager.cpp" />
@@ -186,7 +186,7 @@
     <ClInclude Include="src\Direct3D11\VertexShader.h" />
     <ClInclude Include="src\GLFW\GLFWWindow.h" />
     <ClInclude Include="src\GlobalSetting.h" />
-    <ClInclude Include="src\GUI\AssetsView.h" />
+    <ClInclude Include="src\GUI\ProjectView.h" />
     <ClInclude Include="src\GUI\ConsoleView.h" />
     <ClInclude Include="src\GUI\GameView.h" />
     <ClInclude Include="src\GUI\GuiWindowManager.h" />

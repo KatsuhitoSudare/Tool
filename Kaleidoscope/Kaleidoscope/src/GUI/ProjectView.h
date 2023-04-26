@@ -5,11 +5,12 @@ namespace KALEIDOSCOPE
 {
 	namespace GUI
 	{
-		class AssetsView :public Window
+		class ProjectView :public Window
 		{
 		public:
-			AssetsView();
+			ProjectView();
 			void Update()override;
+
 		};
 	}
 }

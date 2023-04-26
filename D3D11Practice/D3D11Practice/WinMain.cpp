@@ -1,7 +1,6 @@
 #include"src/cWindowManager.h"
 #include"src/Direct3D11/cDirect3D.h"
 #include"src/ModelLoader.h"
-#include"src/PMXLoader.h"
 #include"src/GameObject.h"
 
 INT WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)

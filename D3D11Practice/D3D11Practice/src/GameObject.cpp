@@ -37,8 +37,8 @@ GameObject::GameObject()
 	}
 	
 
-	XMVECTOR m_CameraPos = XMVectorSet(0.0f, 0.0f, -240.0f, 0.0f);
-	XMVECTOR m_Camerafocus = XMVectorSet(0.0f, 0.0f, 0.0f, 0.0f);
+	XMVECTOR m_CameraPos = XMVectorSet(0.0f, 100.0f, -240.0f, 0.0f);
+	XMVECTOR m_Camerafocus = XMVectorSet(0.0f, 100.0f, 0.0f, 0.0f);
 	XMVECTOR m_CameraTop = XMVectorSet(0.0f, 1.0f, 0.0f, 0.0f);
 
 	//ビュー座標を初期化
@@ -57,11 +57,11 @@ void GameObject::Update()
 
 	Constant constTransform;
 	
-	XMMATRIX rotatY = XMMatrixRotationY(oo);
+	XMMATRIX rotatY = XMMatrixRotationY(0);
 
 	XMMATRIX rotatX = XMMatrixRotationX(XMConvertToRadians(0));
 
-	XMMATRIX trans = XMMatrixTranslation(0.0f, -80.0f, 0.0f);
+	XMMATRIX trans = XMMatrixTranslation(0.0f, 0.0f, 0.0f);
 
 	mW = rotatX * rotatY * trans;
 
@@ -71,8 +71,6 @@ void GameObject::Update()
 	
 	mCB.UpdateBufferResource(&constTransform, cDirect3D::GetContext());
 
-	//ポージングアップデート
-	//modelData.Meshes[13].Bones["Character1_LeftFoot"].BoneMatrix = XMMatrixTranslation(0.0f, -80.0f, 0.0f);
 
 
 	for (int i = 0; i < mBoneBuffer.size(); i++)
