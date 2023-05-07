@@ -174,6 +174,7 @@
     <ClCompile Include="src\SceneManager\SceneObject.cpp" />
     <ClCompile Include="src\SystemManager.cpp" />
     <ClCompile Include="src\WinMain.cpp" />
+    <ClCompile Include="src\GUI\Toolbar.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Collection\Collection.h" />
@@ -214,6 +215,7 @@
     <ClInclude Include="src\SceneManager\SceneManager.h" />
     <ClInclude Include="src\SceneManager\SceneObject.h" />
     <ClInclude Include="src\SystemManager.h" />
+    <ClInclude Include="src\GUI\Toolbar.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

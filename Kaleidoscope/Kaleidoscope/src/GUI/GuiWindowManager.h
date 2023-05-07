@@ -1,13 +1,19 @@
+/*****************************************************************//**
+ * \file   GuiWindowManager.h
+ * \brief  
+ * 
+ * \author ó˙èüêm
+ * \date   May 2023
+ *********************************************************************/
 #pragma once
 #include<vector>
 #include"Window.h"
 #include"WindowHost.h"
 
-
 namespace KALEIDOSCOPE
 {
 	namespace GUI
-	{
+	{		
 		class GuiWindowManager
 		{
 		public:

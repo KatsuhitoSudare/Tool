@@ -10,11 +10,13 @@
 #include"ProjectView.h"
 #include"SceneView.h"
 #include"ConsoleView.h"
+#include"Toolbar.h"
 
 namespace KALEIDOSCOPE
 {
 	namespace GUI
 	{
+		
 		void GuiWindowManager::InitializeGuiWindowAll()
 		{
 			//ImGui‚ğ‰Šú‰»‚·‚é
@@ -34,6 +36,8 @@ namespace KALEIDOSCOPE
 			WindowArray.emplace_back(new GameView());
 			//ConsoleView‚Ì’Ç‰Á
 			WindowArray.emplace_back(new ConsoleView());
+			//Toolbar‚Ì’Ç‰Á
+			WindowArray.emplace_back(new Toolbar());
 		}
 		void GuiWindowManager::UpdateGuiWindowAll()
 		{

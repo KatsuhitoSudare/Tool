@@ -109,6 +109,9 @@
     <Filter Include="GUI\Project">
       <UniqueIdentifier>{125359cb-0b35-4e8d-b10c-6c44fb15e9e1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="GUI\Toolbar">
+      <UniqueIdentifier>{7ec900c2-a5cf-4c16-abec-c41417753622}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\WinMain.cpp">
@@ -209,6 +212,9 @@
     </ClCompile>
     <ClCompile Include="src\SceneManager\SceneObject.cpp">
       <Filter>SceneManager\SceneObject</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GUI\Toolbar.cpp">
+      <Filter>GUI\Toolbar</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -325,6 +331,9 @@
     </ClInclude>
     <ClInclude Include="src\SceneManager\SceneObject.h">
       <Filter>SceneManager\SceneObject</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GUI\Toolbar.h">
+      <Filter>GUI\Toolbar</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
