@@ -1,6 +1,7 @@
 #include	<DirectXMath.h>
 #include	"CDirectxGraphics.h"
 #include	"dx11helper.h"
+#include "triangle.h"
 
 using namespace DirectX;
 
@@ -20,6 +21,8 @@ ID3D11PixelShader*		g_PixelShader = nullptr;	// ピクセルシェーダー
 ID3D11InputLayout*		g_VertexLayout = nullptr;	// 頂点レイアウト
 
 ID3D11Buffer*			g_ConstantBuffer = nullptr;	// 定数バッファ
+
+int                     g_vertexnum = 6;
 
 // 初期処理
 bool InitTrinagle() {
@@ -66,20 +69,35 @@ bool InitTrinagle() {
 	}
 
 	// 頂点座標
-	Vertex	v[3] = {
+	/*Vertex	v[3] = {
 		XMFLOAT3(0.0f*2.0f, 0.25f*2.0f, 0.5f),
 		XMFLOAT3(0.25f*2.0f, -0.25f*2.0f, 0.5f),
 		XMFLOAT3(-0.25f*2.0f, -0.25f*2.0f, 0.5f)
+	};*/
+
+	 //頂点座標四角形バージョン
+	Vertex	v[6] = {
+		XMFLOAT3(-0.5f, 0.5f, 0.5f),
+		XMFLOAT3(0.5,   0.5f, 0.5f),
+		XMFLOAT3(-0.5, -0.5f, 0.5f),
+		XMFLOAT3(0.5f,  0.5f, 0.5f),
+		XMFLOAT3(0.5,  -0.5f, 0.5f),
+		XMFLOAT3(-0.5, -0.5f, 0.5f),
 	};
+
+	
 
 	// 頂点バッファを生成
 	sts = CreateVertexBuffer(
 		device,						// デバイスオブジェクト
 		sizeof(Vertex),				// １頂点当たりバイト数
-		3,							// 頂点数
+		g_vertexnum,				    // 頂点数
 		v,							// 頂点データ格納メモリ先頭アドレス
 		&g_VertexBuffer				// 頂点バッファ
 	);
+
+
+
 	if (!sts) {
 		MessageBox(nullptr, "CreateVertexBuffer error", "error", MB_OK);
 		return false;
@@ -191,6 +209,44 @@ void DrawTriangle() {
 	devicecontext->PSSetShader(g_PixelShader, nullptr, 0);		// ピクセルシェーダーをセット
 
 	
+	// 定数バッファをGPUへセット（ここをコーディング）
+	devicecontext->PSSetConstantBuffers(0, 1, &g_ConstantBuffer);
+
+
+	// デバイスコンテキストに頂点データを流し込む
+	devicecontext->Draw(
+		g_vertexnum,				// 頂点数
+		0);				            // 開始頂点インデックス
+}
+
+void DrawBox()
+{
+	ID3D11DeviceContext* devicecontext;				// デバイスコンテキスト
+
+	// デバイスコンテキストを取得する
+	devicecontext = CDirectXGraphics::GetInstance()->GetImmediateContext();
+
+	unsigned int stride = sizeof(Vertex);					// ストライドをセット（１頂点当たりのバイト数）
+	unsigned  offset = 0;									// オフセット値をセット
+
+	// 頂点バッファをデバイスコンテキストへセット
+	devicecontext->IASetVertexBuffers(
+		0,													// スタートスロット
+		1,													// 頂点バッファ個数
+		&g_VertexBuffer,									// 頂点バッファの先頭アドレス
+		&stride,											// ストライド
+		&offset);											// オフセット
+
+	// トポロジーをセット
+	devicecontext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
+
+	// 頂点フォーマットをセット
+	devicecontext->IASetInputLayout(g_VertexLayout);
+
+	devicecontext->VSSetShader(g_VertexShader, nullptr, 0);		// 頂点シェーダーをセット
+	devicecontext->PSSetShader(g_PixelShader, nullptr, 0);		// ピクセルシェーダーをセット
+
+
 	// 定数バッファをGPUへセット（ここをコーディング）
 	devicecontext->PSSetConstantBuffers(0, 1, &g_ConstantBuffer);
 
