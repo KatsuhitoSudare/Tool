@@ -69,6 +69,12 @@ HWND cWindowManager::GetWindowHandole()
 	return m_hWnd;
 }
 
+void cWindowManager::GetWindowSize(UINT* w, UINT* h)
+{
+	*w = m_WindowW;
+	*h = m_WindowH;
+}
+
 void cWindowManager::SetWindowSize(UINT width, UINT Height)
 {
 	m_WindowW = width;
