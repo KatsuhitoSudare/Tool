@@ -23,8 +23,8 @@ float4 main( float4 Pos : POSITION ) : SV_POSITION
     
     float4 output;
     
-    //output = mul(Pos, routateZ);//‰ñ“]
-    output = mul(Pos, s);//Šg‘å
+    output = mul(Pos, routateZ);//‰ñ“]
+    //output = mul(Pos, s);//Šg‘å
     
     return output;
 }
