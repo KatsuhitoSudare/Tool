@@ -7,10 +7,14 @@ class RenderTergetView
 public:
 	RenderTergetView();
 	~RenderTergetView();
-private:
-	ID3D12DescriptorHeap*        rtvHeap;   //レンダーターゲット用のディスクリプタヒープ
-	std::vector<ID3D12Resource*> backBuffer;//DirectX11のバックバッファのテクスチャ的な奴
-	D3D12_CPU_DESCRIPTOR_HANDLE  handle;    //ディスクリプタヒープの開始位置
 
+	void CreateRenderTerget();
+	void CreateRenderTerget(IDXGISwapChain4* swapchain,int NumBffer);
+	
+
+private:
+	ID3D12DescriptorHeap*						rtvHeap;   //レンダーターゲット用のディスクリプタヒープ
+	std::vector<ID3D12Resource*>				backBuffer;//DirectX11のバックバッファのテクスチャ的な奴
+	std::vector<D3D12_CPU_DESCRIPTOR_HANDLE>	handle;    //ディスクリプタヒープの開始位置
 };
 

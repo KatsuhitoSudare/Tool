@@ -114,6 +114,8 @@ BOOL Direct3D12::Direct3D12Initialize()
 		nullptr,
 		(IDXGISwapChain1**)&m_pSwapChain
 	);
+	//レンダーターゲットの作成
+	m_pRtv = new RenderTergetView();
 
 	return TRUE;
 }
@@ -121,6 +123,26 @@ BOOL Direct3D12::Direct3D12Initialize()
 ID3D12Device* Direct3D12::GetDevice()
 {
 	return m_pDevice;
+}
+
+IDXGISwapChain4* Direct3D12::GetSwapChain()
+{
+	return m_pSwapChain;
+}
+
+void Direct3D12::RenderingStart()
+{
+	m_pAllocator->Reset();
+
+	auto bbIdx = m_pSwapChain->GetCurrentBackBufferIndex();
+
+	m_pCommandList->OMSetRenderTargets(1, );
+
+}
+
+ID3D12GraphicsCommandList* Direct3D12::GetCommandlist()
+{
+	return m_pCommandList;
 }
 
 Direct3D12::~Direct3D12()
@@ -131,4 +153,5 @@ Direct3D12::~Direct3D12()
 	COMSAFERELEASE(m_pCommandList);
 	COMSAFERELEASE(m_pAllocator);
 	COMSAFERELEASE(m_pQueue);
+	delete m_pRtv;
 }

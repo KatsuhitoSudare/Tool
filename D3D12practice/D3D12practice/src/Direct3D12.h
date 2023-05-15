@@ -8,6 +8,7 @@
  *********************************************************************/
 #include<d3d12.h>
 #include<dxgi1_6.h>
+#include"RenderTergetView.h"
 
 #define COMSAFERELEASE(o){if(o != nullptr){o->Release();};}
 
@@ -59,23 +60,60 @@ public:
 	 * @fn
 	 * @param[in]
 	 * @param[out]
-	 * @return         結果
+	 * @return         デバイス
 	 * @author         簾勝仁
 	 * @attention
 	 *
 	 */
 	ID3D12Device* GetDevice();
 
+	/**
+	 * @brief          スワップチェインを受け取る関数
+	 * @fn
+	 * @param[in]
+	 * @param[out]
+	 * @return         スワップチェイン
+	 * @author         簾勝仁
+	 * @attention
+	 *
+	 */
+	IDXGISwapChain4* GetSwapChain();
+
+	/**
+	 * @brief          描画開始時に呼び出す
+	 * @fn
+	 * @param[in]
+	 * @param[out]
+	 * @return         なし
+	 * @author         簾勝仁
+	 * @attention	   描画開始時に必ず呼び出す
+	 *
+	 */
+	void RenderingStart();
+
+	/**
+	 * @brief          コマンドリストの取得関数
+	 * @fn
+	 * @param[in]
+	 * @param[out]
+	 * @return         なし
+	 * @author         簾勝仁
+	 * @attention	   
+	 *
+	 */
+	ID3D12GraphicsCommandList* GetCommandlist();
+
 	~Direct3D12();
 private:
 	Direct3D12();
-	static inline Direct3D12* s_pInstance;
-	ID3D12Device*			  m_pDevice;
-	IDXGISwapChain4*		  m_pSwapChain;
-	IDXGIFactory6*			  m_pFactory;
-	ID3D12CommandAllocator*   m_pAllocator;
-	ID3D12CommandList*		  m_pCommandList;
-	ID3D12CommandQueue*       m_pQueue;
+	static inline Direct3D12*			s_pInstance;
+	ID3D12Device*						m_pDevice;
+	IDXGISwapChain4*					m_pSwapChain;
+	IDXGIFactory6*						m_pFactory;
+	ID3D12CommandAllocator*				m_pAllocator;
+	ID3D12GraphicsCommandList*			m_pCommandList;
+	ID3D12CommandQueue*					m_pQueue;
+	RenderTergetView*					m_pRtv;
 };
 
 #define D3D12 Direct3D12::GetInstatnce()
