@@ -9,6 +9,8 @@
 #include<d3d12.h>
 #include<dxgi1_6.h>
 
+#define COMSAFERELEASE(o){if(o != nullptr){o->Release();};}
+
 /**
  * @class			Direct3D12
  * @brief			Direct3D12を使うためのメインクラス：複数のレンダリングエンジンに対応させるためにstaticじゃなくシングルトンにした
@@ -51,6 +53,18 @@ public:
 	 * 
 	 */
 	BOOL Direct3D12Initialize();
+
+	/**
+	 * @brief          デバイスを受け取る関数
+	 * @fn
+	 * @param[in]
+	 * @param[out]
+	 * @return         結果
+	 * @author         簾勝仁
+	 * @attention
+	 *
+	 */
+	ID3D12Device* GetDevice();
 
 	~Direct3D12();
 private:

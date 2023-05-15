@@ -8,6 +8,7 @@ class cWindowManager
 public:
 	static BOOL MakeWindow();
 	static HWND GetWindowHandole();
+	static void GetWindowSize(UINT* w,UINT* h);
 	static void SetWindowSize(UINT width,UINT Height);
 	static void SetWindowTitle(LPCSTR );
 	static BOOL ProcessMessage();

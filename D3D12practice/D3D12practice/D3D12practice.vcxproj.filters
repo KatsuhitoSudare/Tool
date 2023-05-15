@@ -19,6 +19,9 @@
     <Filter Include="window">
       <UniqueIdentifier>{304cfbd8-7680-46ff-ad82-d154646af703}</UniqueIdentifier>
     </Filter>
+    <Filter Include="D3D12\RenderTergetView">
+      <UniqueIdentifier>{18b7b810-dbc5-49e8-a06f-1861bd5229a0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">
@@ -30,6 +33,9 @@
     <ClCompile Include="src\cWindowManager.cpp">
       <Filter>window</Filter>
     </ClCompile>
+    <ClCompile Include="src\RenderTergetView.cpp">
+      <Filter>D3D12\RenderTergetView</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Direct3D12.h">
@@ -37,6 +43,9 @@
     </ClInclude>
     <ClInclude Include="src\cWindowManager.h">
       <Filter>window</Filter>
+    </ClInclude>
+    <ClInclude Include="src\RenderTergetView.h">
+      <Filter>D3D12\RenderTergetView</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -136,10 +136,12 @@
     <ClCompile Include="src\cWindowManager.cpp" />
     <ClCompile Include="src\Direct3D12.cpp" />
     <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\RenderTergetView.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\cWindowManager.h" />
     <ClInclude Include="src\Direct3D12.h" />
+    <ClInclude Include="src\RenderTergetView.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
