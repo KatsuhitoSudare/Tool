@@ -2,55 +2,59 @@
 #include "Direct3D12.h"
 
 RenderTergetView::RenderTergetView()
-:rtvHeap(nullptr)
+:RTVIncrementSize(D3D12->GetDevice()->GetDescriptorHandleIncrementSize(D3D12_DESCRIPTOR_HEAP_TYPE_RTV))
 {
 	D3D12_DESCRIPTOR_HEAP_DESC heapDesc = {};
 	heapDesc.Type = D3D12_DESCRIPTOR_HEAP_TYPE_RTV;//レンダーターゲットビューなので当然RTV
 	heapDesc.NodeMask = 0;
-	heapDesc.NumDescriptors = 2;//表裏の２つ
+	heapDesc.NumDescriptors = D3D12_SIMULTANEOUS_RENDER_TARGET_COUNT;//レンダーターゲットの最大数分作成
 	heapDesc.Flags = D3D12_DESCRIPTOR_HEAP_FLAG_NONE;//特に指定なし
 
 	auto hr = D3D12->GetDevice()->CreateDescriptorHeap(&heapDesc, IID_PPV_ARGS(&rtvHeap));
-	if (SUCCEEDED(hr))
-	{
-		//ディスクリプタハンドルの先頭
-		handle.resize(2);
-		handle[0] = rtvHeap->GetCPUDescriptorHandleForHeapStart();
-		handle[1].ptr = handle[0].ptr += D3D12->GetDevice()->GetDescriptorHandleIncrementSize(D3D12_DESCRIPTOR_HEAP_TYPE_RTV);
-
-		backBuffer.resize(2);//バックバッファのサイズを合わせる
-		for (int i = 0; i < backBuffer.size(); i++)
-		{
-			//バックバッファの作成と紐づけ
-			D3D12->GetSwapChain()->GetBuffer(i,IID_PPV_ARGS(&backBuffer[i]));
-			D3D12->GetDevice()->CreateRenderTargetView(
-				backBuffer[i],
-				nullptr,
-				handle[i]
-				);
-		}
-	}
 }
 
 RenderTergetView::~RenderTergetView()
 {
 	COMSAFERELEASE(rtvHeap);
-	COMSAFERELEASE(backBuffer[0]);
-	COMSAFERELEASE(backBuffer[1]);
+	for (int i = 0; i < backBuffer.size(); i++)
+	{
+		COMSAFERELEASE(backBuffer[i]);
+	}
 }
 
-void RenderTergetView::CreateRenderTerget()
+bool RenderTergetView::CreateRenderTerget(IDXGISwapChain4* swapchain, int NumBffer)
 {
-	D3D12_DESCRIPTOR_HEAP_DESC heapDesc = {};
-	heapDesc.Type = D3D12_DESCRIPTOR_HEAP_TYPE_RTV;//レンダーターゲットビューなので当然RTV
-	heapDesc.NodeMask = 0;
-	heapDesc.NumDescriptors = 2;//表裏の２つ
-	heapDesc.Flags = D3D12_DESCRIPTOR_HEAP_FLAG_NONE;//特に指定なし
+	for (int i = 0; i < NumBffer; i++)
+	{
+		D3D12_CPU_DESCRIPTOR_HANDLE _handl{};
+		_handl.ptr = rtvHeap->GetCPUDescriptorHandleForHeapStart().ptr + RTVIncrementSize * TotalNumBuffer;
 
+		ID3D12Resource* _backbuffer;
+		//バックバッファの作成と紐づけ
+		swapchain->GetBuffer(i, IID_PPV_ARGS(&_backbuffer));
+		D3D12->GetDevice()->CreateRenderTargetView(
+			_backbuffer,
+			nullptr,
+			_handl
+		);
+		backBuffer.emplace_back(_backbuffer);
+		handle.emplace_back(_handl);
+	}
 
+	return true;
 }
 
-void RenderTergetView::CreateRenderTerget(IDXGISwapChain4* swapchain, int NumBffer)
+void RenderTergetView::SetRenderTerget(ID3D12GraphicsCommandList* commandlist, int rtvnum, float* CrearColor)
 {
-
+	commandlist->OMSetRenderTargets(1,&handle[rtvnum],true,nullptr);
+	commandlist->ClearRenderTargetView(handle[rtvnum], CrearColor, 0, nullptr);
 }
+
+ID3D12Resource* RenderTergetView::GetRTVResource(int resourcenum)
+{
+	return backBuffer[resourcenum];
+}
+
+
+
+

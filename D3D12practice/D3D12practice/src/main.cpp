@@ -20,7 +20,7 @@ int main()
 
 	while (cWindowManager::ProcessMessage())
 	{
-
+		D3D12->RenderingStart();
 	}
 
 	D3D12->Direct3D12ShutDown();

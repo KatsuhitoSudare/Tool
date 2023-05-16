@@ -1,9 +1,20 @@
 //--------------------------------------------------------------------------------------
 // Vertex Shader
 //--------------------------------------------------------------------------------------
+struct VS_IN
+{
+    float4 Pos : POSITION;
+    float4 Color : COLOR;
+};
+
+struct VS_OUT
+{
+    float4 Pos : SV_POSITION;
+    float4 Color : COLOR;
+};
 
 
-float4 main( float4 Pos : POSITION ) : SV_POSITION
+VS_OUT main(VS_IN input)
 {
     matrix routateZ =
     {
@@ -21,10 +32,11 @@ float4 main( float4 Pos : POSITION ) : SV_POSITION
         0, 0,   0, 1,
     };
     
-    float4 output;
+    VS_OUT output;
     
-    output = mul(Pos, routateZ);//‰ñ“]
+    output.Pos = input.Pos; //mul(input.Pos, routateZ); //‰ñ“]
     //output = mul(Pos, s);//Šg‘å
+    output.Color = input.Color;
     
     return output;
 }

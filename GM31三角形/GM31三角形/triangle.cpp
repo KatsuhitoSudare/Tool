@@ -8,6 +8,7 @@ using namespace DirectX;
 // 頂点構造体
 struct Vertex {
 	XMFLOAT3	Pos;
+	XMFLOAT4    color;
 };
 
 // 定数バッファ構造体
@@ -16,13 +17,14 @@ struct ConstantBuffer_Color {
 };
 
 ID3D11Buffer*			g_VertexBuffer = nullptr;	// 頂点バッファ
+
 ID3D11VertexShader*		g_VertexShader = nullptr;	// 頂点シェーダー
 ID3D11PixelShader*		g_PixelShader = nullptr;	// ピクセルシェーダー
 ID3D11InputLayout*		g_VertexLayout = nullptr;	// 頂点レイアウト
 
 ID3D11Buffer*			g_ConstantBuffer = nullptr;	// 定数バッファ
 
-int                     g_vertexnum = 6;
+int                     g_vertexnum = 4;
 
 // 初期処理
 bool InitTrinagle() {
@@ -36,6 +38,7 @@ bool InitTrinagle() {
 	D3D11_INPUT_ELEMENT_DESC layout[] =
 	{
 		{ "POSITION",	0, DXGI_FORMAT_R32G32B32_FLOAT,0, D3D11_APPEND_ALIGNED_ELEMENT, D3D11_INPUT_PER_VERTEX_DATA, 0 },
+		{ "COLOR",	0, DXGI_FORMAT_R32G32B32A32_FLOAT,0, D3D11_APPEND_ALIGNED_ELEMENT, D3D11_INPUT_PER_VERTEX_DATA, 0 },
 	};
 
 	// エレメント数
@@ -68,21 +71,30 @@ bool InitTrinagle() {
 		return false;
 	}
 
-	// 頂点座標
+	//頂点座標一個の三角形
 	/*Vertex	v[3] = {
-		XMFLOAT3(0.0f*2.0f, 0.25f*2.0f, 0.5f),
-		XMFLOAT3(0.25f*2.0f, -0.25f*2.0f, 0.5f),
-		XMFLOAT3(-0.25f*2.0f, -0.25f*2.0f, 0.5f)
+		XMFLOAT3(0.0f*2.0f, 0.25f*2.0f, 0.5f),XMFLOAT4(1.0f,1.0f,0.0f,0.0f),
+		XMFLOAT3(0.25f*2.0f, -0.25f*2.0f, 0.5f),XMFLOAT4(1.0f,1.0f,0.0f,0.0f),
+		XMFLOAT3(-0.25f*2.0f, -0.25f*2.0f, 0.5f),XMFLOAT4(1.0f,1.0f,0.0f,0.0f),
 	};*/
 
+	/*Vertex	v[6] = {
+		XMFLOAT3(-1.0f, 1.0f, 0.5f),XMFLOAT4(1.0f,1.0f,0.0f,0.0f),
+		XMFLOAT3(0.0,   1.0f, 0.5f),XMFLOAT4(1.0f,1.0f,0.0f,0.0f),
+		XMFLOAT3(-1.0, -1.0f, 0.5f),XMFLOAT4(1.0f,1.0f,0.0f,0.0f),
+
+		XMFLOAT3(0.0,  -1.0f, 0.5f),XMFLOAT4(1.0f,1.0f,0.0f,0.0f),
+		XMFLOAT3(1.0f, -1.0f, 0.5f),XMFLOAT4(1.0f,1.0f,0.0f,0.0f),
+		XMFLOAT3(1.0,   1.0f, 0.5f),XMFLOAT4(1.0f,1.0f,0.0f,0.0f),
+	};*/
+
+
 	 //頂点座標四角形バージョン
-	Vertex	v[6] = {
-		XMFLOAT3(-0.5f, 0.5f, 0.5f),
-		XMFLOAT3(0.5,   0.5f, 0.5f),
-		XMFLOAT3(-0.5, -0.5f, 0.5f),
-		XMFLOAT3(0.5f,  0.5f, 0.5f),
-		XMFLOAT3(0.5,  -0.5f, 0.5f),
-		XMFLOAT3(-0.5, -0.5f, 0.5f),
+	Vertex	v[4] = {
+		XMFLOAT3(-0.5f, 0.5f, 0.5f),XMFLOAT4(1.0f,1.0f,0.0f,0.0f),
+		XMFLOAT3(0.5,   0.5f, 0.5f),XMFLOAT4(1.0f,1.0f,0.0f,0.0f),
+		XMFLOAT3(-0.5, -0.5f, 0.5f),XMFLOAT4(1.0f,1.0f,0.0f,0.0f),
+		XMFLOAT3(0.5f, -0.5f, 0.5f),XMFLOAT4(1.0f,1.0f,0.0f,0.0f),
 	};
 
 	
@@ -200,8 +212,9 @@ void DrawTriangle() {
 		&offset);											// オフセット
 
 	// トポロジーをセット
-	devicecontext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
+	devicecontext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLESTRIP);
 
+	//devicecontext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
 	// 頂点フォーマットをセット
 	devicecontext->IASetInputLayout(g_VertexLayout);
 
@@ -238,7 +251,8 @@ void DrawBox()
 		&offset);											// オフセット
 
 	// トポロジーをセット
-	devicecontext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
+	//devicecontext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
+	devicecontext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLESTRIP);
 
 	// 頂点フォーマットをセット
 	devicecontext->IASetInputLayout(g_VertexLayout);

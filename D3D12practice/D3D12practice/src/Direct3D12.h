@@ -109,11 +109,13 @@ private:
 	static inline Direct3D12*			s_pInstance;
 	ID3D12Device*						m_pDevice;
 	IDXGISwapChain4*					m_pSwapChain;
-	IDXGIFactory6*						m_pFactory;
+	IDXGIFactory4*						m_pFactory;
 	ID3D12CommandAllocator*				m_pAllocator;
 	ID3D12GraphicsCommandList*			m_pCommandList;
 	ID3D12CommandQueue*					m_pQueue;
+	ID3D12Fence*						m_pFence;
 	RenderTergetView*					m_pRtv;
+	UINT								m_FenceVal;
 };
 
 #define D3D12 Direct3D12::GetInstatnce()
