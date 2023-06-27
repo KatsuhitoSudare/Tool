@@ -21,7 +21,6 @@ namespace KALEIDOSCOPE
 		{
 			//ImGui‚ğ‰Šú‰»‚·‚é
 			ImGuiInit();
-			
 			//Host‚Ìwindow‚ğ’Ç‰Á
 			WindowArray.emplace_back(new WindowHost());
 			//InspecterView‚ğ’Ç‰Á

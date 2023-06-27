@@ -143,6 +143,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Component.cpp" />
     <ClCompile Include="src\cWindowManager.cpp" />
     <ClCompile Include="src\Direct3D11\cDirect3D.cpp" />
     <ClCompile Include="src\Direct3D11\IndexBuffer.cpp" />
@@ -150,10 +151,16 @@
     <ClCompile Include="src\Direct3D11\RenderTergetView.cpp" />
     <ClCompile Include="src\Direct3D11\VertexShader.cpp" />
     <ClCompile Include="src\GameObject.cpp" />
+    <ClCompile Include="src\MeshRenderer.cpp" />
     <ClCompile Include="src\ModelLoader.cpp" />
+    <ClCompile Include="src\Renderer.cpp" />
+    <ClCompile Include="src\SceneManager.cpp" />
+    <ClCompile Include="src\SceneObject.cpp" />
+    <ClCompile Include="src\TitleScene.cpp" />
     <ClCompile Include="WinMain.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Component.h" />
     <ClInclude Include="src\cWindowManager.h" />
     <ClInclude Include="src\Direct3D11\cDirect3D.h" />
     <ClInclude Include="src\Direct3D11\ConstantBuffer.h" />
@@ -163,7 +170,12 @@
     <ClInclude Include="src\Direct3D11\VertexBuffer.h" />
     <ClInclude Include="src\Direct3D11\VertexShader.h" />
     <ClInclude Include="src\GameObject.h" />
+    <ClInclude Include="src\MeshRenderer.h" />
     <ClInclude Include="src\ModelLoader.h" />
+    <ClInclude Include="src\Renderer.h" />
+    <ClInclude Include="src\SceneManager.h" />
+    <ClInclude Include="src\SceneObject.h" />
+    <ClInclude Include="src\TitleScene.h" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Shader\PixelShader.hlsl">

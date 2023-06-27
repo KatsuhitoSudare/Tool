@@ -3,22 +3,18 @@
 #include"WICTextureLoader11.h"
 
 //頂点の情報
-D3D11_INPUT_ELEMENT_DESC desc[5] = {
+D3D11_INPUT_ELEMENT_DESC desc[3] = {
 	{ "POSITION", 0, DXGI_FORMAT_R32G32B32_FLOAT,    0, D3D11_APPEND_ALIGNED_ELEMENT, D3D11_INPUT_PER_VERTEX_DATA, 0 }, // float3のPOSITION
 	{ "TEXCOORD", 0, DXGI_FORMAT_R32G32_FLOAT,       0, D3D11_APPEND_ALIGNED_ELEMENT, D3D11_INPUT_PER_VERTEX_DATA, 0 }, // float2のTEXCOORD
 	{ "NORMAL",   0, DXGI_FORMAT_R32G32B32_FLOAT,    0, D3D11_APPEND_ALIGNED_ELEMENT, D3D11_INPUT_PER_VERTEX_DATA, 0 }, // float3のNORMAL
-	{ "BONEINDICES",    0, DXGI_FORMAT_R32G32B32A32_SINT,  0, D3D11_APPEND_ALIGNED_ELEMENT, D3D11_INPUT_PER_VERTEX_DATA, 0 }, // float3のTANGENT
-	{ "BONEWEIGHTS",    0, DXGI_FORMAT_R32G32B32A32_FLOAT, 0, D3D11_APPEND_ALIGNED_ELEMENT, D3D11_INPUT_PER_VERTEX_DATA, 0 }, // float4のCOLOR
 };
 
 GameObject::GameObject()
 {
 	//頂点シェーダーの作成
-	mVS.InitVertexShader(L"Shader/VertexShader.hlsl", "main", cDirect3D::GetDevice(), desc, 5);
+	mVS.InitVertexShader(L"Shader/VertexShader.hlsl", "main", cDirect3D::GetDevice(), desc, 3);
 	//ピクセルシェーダーの作成
 	mPS.InitPixelShader(L"Shader/PixelShader.hlsl", "main", cDirect3D::GetDevice());
-	//
-	ModelLoader::LoadModel("walking.fbx",modelData);
 
 	mVB.resize(modelData.Meshes.size());
 	for (int i = 0; i < modelData.Meshes.size(); i++)
@@ -49,12 +45,12 @@ GameObject::GameObject()
 	mW = XMMatrixIdentity();
 }
 
+void GameObject::Init()
+{
+}
+
 void GameObject::Update()
 {
-	static float oo = 0;
-
-	oo += 0.001;
-
 	Constant constTransform;
 	
 	XMMATRIX rotatY = XMMatrixRotationY(0);
@@ -70,34 +66,12 @@ void GameObject::Update()
 	constTransform.P = XMMatrixTranspose(mP);
 	
 	mCB.UpdateBufferResource(&constTransform, cDirect3D::GetContext());
-
-
-
-	for (int i = 0; i < mBoneBuffer.size(); i++)
-	{
-		BoneBuffer boneMatrix;
-		for (int j = 0; j < modelData.Meshes[i].Bones.size(); j++)
-		{
-			for (auto& boneMat : modelData.Meshes[i].Bones)
-			{
-				boneMatrix.bone[j] = boneMat.second.BoneMatrix;
-			}
-		}
-		mBoneBuffer[i].UpdateBufferResource(&boneMatrix, cDirect3D::GetContext());
-	}
 }
 
 void GameObject::Render()
 {
-	static float o = 0;
-	o += 0.01;
-	if (modelData.Meshes.size() < o)
-	{
-		o = 0;
-	}
 	for (int i = 0; i < 1; i++)
 	{
-		i = (int)o;
 		mVS.SetVertexShaderAndInputLayout(cDirect3D::GetContext());
 		mPS.SetPixelShader(cDirect3D::GetContext());
 		mCB.VSSetConstantBuffer(cDirect3D::GetContext(), 0);

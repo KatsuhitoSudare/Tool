@@ -1,7 +1,7 @@
 #include"src/cWindowManager.h"
 #include"src/Direct3D11/cDirect3D.h"
-#include"src/ModelLoader.h"
-#include"src/GameObject.h"
+#include"src/SceneManager.h"
+
 
 INT WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 {
@@ -9,20 +9,21 @@ INT WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 	cWindowManager::SetWindowTitle("Title");
 	cWindowManager::MakeWindow();
 	cDirect3D::Direct3DInit();
+	SceneManager::Init();
 
-	GameObject gameObject;
 
 	while (cWindowManager::ProcessMessage())
 	{
 		cDirect3D::ClearRenderTarget(0.6,0.6,0.6);
 
-		gameObject.Update();
-
-		gameObject.Render();
+		SceneManager::ProcessSceneObject();
 
 		cDirect3D::SwapBuffuer();
 	}
 
+
+
+	SceneManager::ShutDouwn();
 
 	return 0;
 }

@@ -200,8 +200,8 @@ void cDirect3D::SwapChainResizeBuffer(UINT w,UINT h)
 	if (m_pSwapChain != nullptr)
 	{
 		m_rtv.CleanupRenderTarget();
-		m_pSwapChain->ResizeBuffers(0, w, h, DXGI_FORMAT_UNKNOWN, 0);
 		m_pBackBuffer.Reset();
+		m_pSwapChain->ResizeBuffers(0, w, h, DXGI_FORMAT_UNKNOWN, 0);
 		auto hr = m_pSwapChain->GetBuffer(0, __uuidof(ID3D11Texture2D), (LPVOID*)&m_pBackBuffer);
 		m_rtv.CreateRenderTerget(m_pBackBuffer.Get(),w,h);
 	}

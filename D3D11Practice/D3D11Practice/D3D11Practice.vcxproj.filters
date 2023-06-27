@@ -25,6 +25,24 @@
     <Filter Include="Loader">
       <UniqueIdentifier>{c28fd029-c1db-4a64-9fbb-0e8dc256ba6d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="SceneManager">
+      <UniqueIdentifier>{c92ebc57-4edb-46d4-8e84-ea10efd6add3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SceneManager\SceneObject">
+      <UniqueIdentifier>{1c6a0129-b69a-4733-b4cc-d53529c11e17}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Component">
+      <UniqueIdentifier>{be8d4233-21df-4a15-b864-93060b3157b4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SceneManager\SceneObject\Title">
+      <UniqueIdentifier>{ef30b242-8cf3-4d6b-b28e-b15435c7922c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Component\Renderer">
+      <UniqueIdentifier>{069f04df-8098-4ba1-a01d-609a8cecc1f3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Component\Renderer\MeshRenderer">
+      <UniqueIdentifier>{bc444d81-4745-49b1-a74a-2426dd3b4d8c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinMain.cpp">
@@ -53,6 +71,24 @@
     </ClCompile>
     <ClCompile Include="src\ModelLoader.cpp">
       <Filter>Loader</Filter>
+    </ClCompile>
+    <ClCompile Include="src\SceneManager.cpp">
+      <Filter>SceneManager</Filter>
+    </ClCompile>
+    <ClCompile Include="src\SceneObject.cpp">
+      <Filter>SceneManager\SceneObject</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Component.cpp">
+      <Filter>Component</Filter>
+    </ClCompile>
+    <ClCompile Include="src\TitleScene.cpp">
+      <Filter>SceneManager\SceneObject\Title</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Renderer.cpp">
+      <Filter>Component\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\MeshRenderer.cpp">
+      <Filter>Component\Renderer\MeshRenderer</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -85,6 +121,24 @@
     </ClInclude>
     <ClInclude Include="src\ModelLoader.h">
       <Filter>Loader</Filter>
+    </ClInclude>
+    <ClInclude Include="src\SceneManager.h">
+      <Filter>SceneManager</Filter>
+    </ClInclude>
+    <ClInclude Include="src\SceneObject.h">
+      <Filter>SceneManager\SceneObject</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Component.h">
+      <Filter>Component</Filter>
+    </ClInclude>
+    <ClInclude Include="src\TitleScene.h">
+      <Filter>SceneManager\SceneObject\Title</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Renderer.h">
+      <Filter>Component\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\MeshRenderer.h">
+      <Filter>Component\Renderer\MeshRenderer</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

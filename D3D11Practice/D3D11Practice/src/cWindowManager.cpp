@@ -31,7 +31,7 @@ BOOL cWindowManager::MakeWindow()
 	m_hWnd = CreateWindowEx(0,                // 拡張ウィンドウスタイル
 		m_WindowTitle,                        // ウィンドウクラスの名前
 		m_WindowTitle,                        // ウィンドウの名前
-		WS_OVERLAPPEDWINDOW | WS_MAXIMIZE,    // ウィンドウスタイル
+		WS_OVERLAPPEDWINDOW,    // ウィンドウスタイル
 		CW_USEDEFAULT,						  // ウィンドウの左上Ｘ座標
 		CW_USEDEFAULT,						  // ウィンドウの左上Ｙ座標 
 		m_WindowW,							  // ウィンドウの幅

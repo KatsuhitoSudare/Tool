@@ -5,27 +5,25 @@
 #include"Direct3D11/VertexBuffer.h"
 #include"Direct3D11/VertexShader.h"
 #include"ModelLoader.h"
-
-struct Constant
-{
-	XMMATRIX W;
-	XMMATRIX V;
-	XMMATRIX P;
-};
-
-struct BoneBuffer
-{
-	XMMATRIX bone[256];
-};
-
+#include"Component.h"
 
 class GameObject
 {
 public:
 	GameObject();
-	void Update();
-	void Render();
+	virtual void Init();
+	virtual void Update();
+	virtual void Render();
+
+	template<class T>
+	T* GetComponent();
+
+	template<class T>
+	void AddComponent();
+
 private:
+	std::vector<Component*> m_ComponentArray;
+
 	std::vector<VertexBuffer<Vertex>>		mVB;
 	VertexShader							mVS;
 	ConstantBuffer<Constant>				mCB;
@@ -33,9 +31,16 @@ private:
 	IndexBuffer								mIB;
 	PixelShader								mPS;
 	ModelData								modelData;
-
-	XMMATRIX								mW;
-	XMMATRIX								mV;
-	XMMATRIX								mP;
 };
 
+template<class T>
+inline T* GameObject::GetComponent()
+{
+	return nullptr;
+}
+
+template<class T>
+inline void GameObject::AddComponent()
+{
+	m_ComponentArray.push_back(new T(this));
+}

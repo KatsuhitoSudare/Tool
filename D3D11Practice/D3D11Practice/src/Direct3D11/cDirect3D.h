@@ -29,7 +29,7 @@ private:
 	static inline ComPtr<IDXGIDevice>            m_pDxgiDevice;
 	static inline ComPtr<IDXGIFactory>           m_pDxgiFactory;
 	static inline ComPtr<IDXGIOutput>            m_pDxgiOutput;
-	static inline RenderTergetView               m_rtv;
+	static inline RenderTergetView				 m_rtv;
 	static inline ComPtr<ID3D11Texture2D>                      m_pBackBuffer;
 };
 

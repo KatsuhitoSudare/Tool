@@ -337,10 +337,12 @@ bool App::InitD3D()
         resDesc.Layout              = D3D12_TEXTURE_LAYOUT_UNKNOWN;
         resDesc.Flags               = D3D12_RESOURCE_FLAG_ALLOW_DEPTH_STENCIL;
 
-        D3D12_CLEAR_VALUE clearValue;
-        clearValue.Format               = DXGI_FORMAT_D32_FLOAT;
-        clearValue.DepthStencil.Depth   = 1.0;
-        clearValue.DepthStencil.Stencil = 0;
+        D3D12_CLEAR_VALUE clearColor = {};
+        clearColor.Format = renderTargetFormat;
+        clearColor.Color[0] = 1.0f; // Red
+        clearColor.Color[1] = 0.0f; // Green
+        clearColor.Color[2] = 0.0f; // Blue
+        clearColor.Color[3] = 1.0f; // Alpha
 
         hr = m_pDevice->CreateCommittedResource(
             &prop,
