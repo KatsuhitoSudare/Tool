@@ -1,4 +1,5 @@
 #pragma once
+#include"cDirect3D.h"
 #include<d3d11.h>
 #include<wrl/client.h>
 #include<vector>
@@ -9,16 +10,16 @@ template<class T>
 class ConstantBuffer
 {
 public:
-	HRESULT CreateConstantBuffer(ID3D11Device* _device);
-    void UpdateBufferResource(T* NewResource,ID3D11DeviceContext* context);
-    void VSSetConstantBuffer(ID3D11DeviceContext* context,int slot);
+	HRESULT CreateConstantBuffer();
+    void UpdateBufferResource(T* NewResource);
+    void VSSetConstantBuffer(int slot);
 private:
 	ComPtr<ID3D11Buffer> Buffer;
 };
 
 
 template<class T>
-inline HRESULT ConstantBuffer<T>::CreateConstantBuffer(ID3D11Device* _device)
+inline HRESULT ConstantBuffer<T>::CreateConstantBuffer()
 {
     D3D11_BUFFER_DESC cbDesc{};
 
@@ -29,7 +30,7 @@ inline HRESULT ConstantBuffer<T>::CreateConstantBuffer(ID3D11Device* _device)
     cbDesc.MiscFlags = 0;
     cbDesc.StructureByteStride = 0;
 
-    auto hr = _device->CreateBuffer(&cbDesc, NULL, &Buffer);
+    auto hr = cDirect3D::GetDevice()->CreateBuffer(&cbDesc, NULL, &Buffer);
     if (FAILED(hr))
         return hr;
 
@@ -37,28 +38,13 @@ inline HRESULT ConstantBuffer<T>::CreateConstantBuffer(ID3D11Device* _device)
 }
 
 template<class T>
-inline void ConstantBuffer<T>::UpdateBufferResource(T* NewResource, ID3D11DeviceContext* context)
+inline void ConstantBuffer<T>::UpdateBufferResource(T* NewResource)
 {
-    if (context != nullptr)
-    {
-        /*auto hr = context->Map(Buffer.Get(), 0, D3D11_MAP_WRITE_DISCARD, 0, &pData);
-        if (SUCCEEDED(hr))
-        {
-
-            const rsize_t dataSize = sizeof(T);
-            memcpy_s(pData.pData, pData.RowPitch, NewResource, dataSize);
-            context->Unmap(Buffer.Get(), 0);
-        }*/
-
-        context->UpdateSubresource(Buffer.Get(),0,NULL,NewResource,0,0);
-    }
+    cDirect3D::GetContext()->UpdateSubresource(Buffer.Get(), 0, NULL, NewResource, 0, 0);
 }
 
 template<class T>
-inline void ConstantBuffer<T>::VSSetConstantBuffer(ID3D11DeviceContext* context, int slot)
+inline void ConstantBuffer<T>::VSSetConstantBuffer(int slot)
 {
-    if (context != nullptr)
-    {
-        context->VSSetConstantBuffers(slot, 1, Buffer.GetAddressOf());
-    }
+    cDirect3D::GetContext()->VSSetConstantBuffers(slot, 1, Buffer.GetAddressOf());
 }

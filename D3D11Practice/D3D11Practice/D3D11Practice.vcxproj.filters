@@ -43,6 +43,24 @@
     <Filter Include="Component\Renderer\MeshRenderer">
       <UniqueIdentifier>{bc444d81-4745-49b1-a74a-2426dd3b4d8c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Component\Behavior">
+      <UniqueIdentifier>{569fdb35-c14f-41f8-af1a-973ec3b9a6a6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="JobScheduler">
+      <UniqueIdentifier>{f63d6e45-901e-438f-80a5-c8f7ac57e72e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameObject\Player">
+      <UniqueIdentifier>{d3176422-95db-418b-aebf-8c5ae8bce3ca}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Component\Trunsform">
+      <UniqueIdentifier>{934f8f29-2b10-4702-936d-7a0be256065b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ResourceManager">
+      <UniqueIdentifier>{9f033d34-9d6e-40fc-a611-5f3a57cd3722}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Camera">
+      <UniqueIdentifier>{810fc9e0-6735-4679-b6c8-7ab4804717d9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinMain.cpp">
@@ -89,6 +107,24 @@
     </ClCompile>
     <ClCompile Include="src\MeshRenderer.cpp">
       <Filter>Component\Renderer\MeshRenderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Behavior.cpp">
+      <Filter>Component\Behavior</Filter>
+    </ClCompile>
+    <ClCompile Include="src\JobScheguler.cpp">
+      <Filter>JobScheduler</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Player.cpp">
+      <Filter>GameObject\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Trunsform.cpp">
+      <Filter>Component\Trunsform</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ResourceManager.cpp">
+      <Filter>ResourceManager</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Camera.cpp">
+      <Filter>Camera</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -140,12 +176,30 @@
     <ClInclude Include="src\MeshRenderer.h">
       <Filter>Component\Renderer\MeshRenderer</Filter>
     </ClInclude>
+    <ClInclude Include="src\Behavior.h">
+      <Filter>Component\Behavior</Filter>
+    </ClInclude>
+    <ClInclude Include="src\JobScheguler.h">
+      <Filter>JobScheduler</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Player.h">
+      <Filter>GameObject\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Trunsform.h">
+      <Filter>Component\Trunsform</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ResourceManager.h">
+      <Filter>ResourceManager</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Camera.h">
+      <Filter>Camera</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <FxCompile Include="Shader\PixelShader.hlsl">
+    <FxCompile Include="Shader\PS.hlsl">
       <Filter>リソース ファイル</Filter>
     </FxCompile>
-    <FxCompile Include="Shader\VertexShader.hlsl">
+    <FxCompile Include="Shader\Vs.hlsl">
       <Filter>リソース ファイル</Filter>
     </FxCompile>
   </ItemGroup>

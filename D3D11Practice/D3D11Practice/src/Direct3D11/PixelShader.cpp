@@ -1,22 +1,23 @@
 #include "PixelShader.h"
+#include"cDirect3D.h"
 
-HRESULT PixelShader::InitPixelShader(const wchar_t* FileName, const char* EntryPoint, ID3D11Device* _device)
+HRESULT PixelShader::InitPixelShader(const wchar_t* FileName)
 {
     //シェーダーをコンパイルする
     ComPtr<ID3DBlob> compiledPS;
-    auto hr = D3DCompileFromFile(FileName, nullptr, nullptr, EntryPoint, "ps_5_0", 0, 0, &compiledPS, nullptr);
+    auto hr = D3DCompileFromFile(FileName, nullptr, nullptr, "main", "ps_5_0", 0, 0, &compiledPS, nullptr);
     if (FAILED(hr))
         return hr;
 
     //シェーダーを作成
-    hr = _device->CreatePixelShader(compiledPS->GetBufferPointer(), compiledPS->GetBufferSize(), nullptr, &Shader);
+    hr = cDirect3D::GetDevice()->CreatePixelShader(compiledPS->GetBufferPointer(), compiledPS->GetBufferSize(), nullptr, &Shader);
     if (FAILED(hr))
         return hr;
 
     return S_OK;
 }
 
-void PixelShader::SetPixelShader(ID3D11DeviceContext* context)
+void PixelShader::SetPixelShader()
 {
-    context->PSSetShader(Shader.Get(),NULL,0);
+    cDirect3D::GetContext()->PSSetShader(Shader.Get(), NULL, 0);
 }

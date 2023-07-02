@@ -3,13 +3,7 @@
 class TitleScene :public SceneObject
 {
 public:
-	void SceneObjectInit();
-	void SceneObjectUpdate();
-	void SceneObjectRender();
-	void SceneObjectShutDown();
-
+	void SceneObjectInit()override;
 private:
-	
-
 };
 

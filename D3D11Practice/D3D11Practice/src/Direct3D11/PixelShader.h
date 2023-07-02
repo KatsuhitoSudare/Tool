@@ -10,8 +10,8 @@ using Microsoft::WRL::ComPtr;
 class PixelShader
 {
 public:
-	HRESULT InitPixelShader(const wchar_t* FileName, const char* EntryPoint, ID3D11Device* _device);
-	void SetPixelShader(ID3D11DeviceContext* context);
+	HRESULT InitPixelShader(const wchar_t* FileName);
+	void SetPixelShader();
 private:
 	ComPtr<ID3D11PixelShader> Shader;
 };

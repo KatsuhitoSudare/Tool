@@ -21,8 +21,6 @@ INT WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 		cDirect3D::SwapBuffuer();
 	}
 
-
-
 	SceneManager::ShutDouwn();
 
 	return 0;

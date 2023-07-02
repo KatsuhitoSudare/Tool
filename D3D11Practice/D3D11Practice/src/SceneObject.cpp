@@ -1,4 +1,6 @@
 #include "SceneObject.h"
+#include"JobScheguler.h"
+#include"Direct3D11/cDirect3D.h"
 
 SceneObject::SceneObject()
 {
@@ -8,14 +10,20 @@ SceneObject::~SceneObject()
 {
 }
 
-void SceneObject::LoadModeldata(std::string modelname, std::string modelfilepath)
+void SceneObject::SceneObjectUpdate()
 {
-	ModelData data;
-	LoadModel(modelfilepath.c_str(), data);
-	m_ModelArray[modelname] = data;
+	JobScheguler::Update();
 }
 
-ModelData SceneObject::GetModeldata(std::string modelname)
+void SceneObject::SceneObjectRender()
 {
-	return m_ModelArray[modelname];
+	cDirect3D::ClearRenderTarget(0.6f, 0.6f, 0.6f);
+	JobScheguler::Render();
+	cDirect3D::SwapBuffuer();
 }
+
+void SceneObject::SceneObjectShutDown()
+{
+
+}
+

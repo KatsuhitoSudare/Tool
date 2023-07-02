@@ -2,7 +2,7 @@
 #include<d3d11.h>
 #include<wrl/client.h>
 #include<vector>
-
+#include"cDirect3D.h"
 using Microsoft::WRL::ComPtr;
 
 //======================================================================
@@ -12,15 +12,15 @@ template<class T>
 class VertexBuffer
 {
 public:
-	HRESULT CreateVertexBuffer(ID3D11Device * _device,ID3D11DeviceContext* context, std::vector<T> const& VertexList);
-    void IASetVertexBuffer(ID3D11DeviceContext* context,std::vector<T> Vertexlist);
+	HRESULT CreateVertexBuffer(std::vector<T> const& VertexList);
+    void IASetVertexBuffer(std::vector<T> Vertexlist);
 
 private:
 	ComPtr<ID3D11Buffer> Buffer;
 };
 
 template<class T>
-inline HRESULT VertexBuffer<T>::CreateVertexBuffer(ID3D11Device * _device, ID3D11DeviceContext* context, std::vector<T> const&  VertexList)
+inline HRESULT VertexBuffer<T>::CreateVertexBuffer(std::vector<T> const&  VertexList)
 {
     D3D11_BUFFER_DESC bufferDesc;
     bufferDesc.ByteWidth = sizeof(T) * (UINT)VertexList.size();
@@ -43,7 +43,7 @@ inline HRESULT VertexBuffer<T>::CreateVertexBuffer(ID3D11Device * _device, ID3D1
     subResourceData.SysMemPitch = 0;
     subResourceData.SysMemSlicePitch = 0;
 
-    auto hr = _device->CreateBuffer(&bufferDesc, &subResourceData, Buffer.GetAddressOf());
+    auto hr = cDirect3D::GetDevice()->CreateBuffer(&bufferDesc, &subResourceData, Buffer.GetAddressOf());
     
     delete[] VertexDate;
 
@@ -51,14 +51,11 @@ inline HRESULT VertexBuffer<T>::CreateVertexBuffer(ID3D11Device * _device, ID3D1
 }
 
 template<class T>
-inline void VertexBuffer<T>::IASetVertexBuffer(ID3D11DeviceContext* context, std::vector<T> Vertexlist)
+inline void VertexBuffer<T>::IASetVertexBuffer(std::vector<T> Vertexlist)
 {
-    if (context != nullptr)
-    {
-        UINT strides = sizeof(T);
-        UINT offsets = 0;
-        
-        context->UpdateSubresource(Buffer.Get(), 0, NULL, Vertexlist.data(), 0, 0);
-        context->IASetVertexBuffers(0, 1, Buffer.GetAddressOf(), &strides, &offsets);
-    }
+    UINT strides = sizeof(T);
+    UINT offsets = 0;
+
+    cDirect3D::GetContext()->UpdateSubresource(Buffer.Get(), 0, NULL, Vertexlist.data(), 0, 0);
+    cDirect3D::GetContext()->IASetVertexBuffers(0, 1, Buffer.GetAddressOf(), &strides, &offsets);
 }

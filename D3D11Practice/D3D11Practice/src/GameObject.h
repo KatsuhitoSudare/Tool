@@ -11,9 +11,9 @@ class GameObject
 {
 public:
 	GameObject();
+	virtual ~GameObject() {};
 	virtual void Init();
-	virtual void Update();
-	virtual void Render();
+
 
 	template<class T>
 	T* GetComponent();
@@ -21,16 +21,11 @@ public:
 	template<class T>
 	void AddComponent();
 
-private:
-	std::vector<Component*> m_ComponentArray;
+	std::string m_sModelName;
 
-	std::vector<VertexBuffer<Vertex>>		mVB;
-	VertexShader							mVS;
-	ConstantBuffer<Constant>				mCB;
-	std::vector<ConstantBuffer<BoneBuffer>> mBoneBuffer;
-	IndexBuffer								mIB;
-	PixelShader								mPS;
-	ModelData								modelData;
+private:
+	bool m_IsDestry;
+	std::vector<Component*> m_ComponentArray;
 };
 
 template<class T>
@@ -43,4 +38,5 @@ template<class T>
 inline void GameObject::AddComponent()
 {
 	m_ComponentArray.push_back(new T(this));
+	m_ComponentArray[m_ComponentArray.size() - 1]->Init();
 }

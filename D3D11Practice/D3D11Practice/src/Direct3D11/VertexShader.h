@@ -25,9 +25,9 @@ public:
 	VertexShader();
 	~VertexShader();
 
-	HRESULT InitVertexShader(const wchar_t* FileName,const char* EntryPoint, ID3D11Device* _device, D3D11_INPUT_ELEMENT_DESC* desc, int descsize);
+	HRESULT InitVertexShader(const wchar_t* FileName);
 
-	void SetVertexShaderAndInputLayout(ID3D11DeviceContext* context);
+	void SetVertexShaderAndInputLayout();
 private:
 	ComPtr<ID3D11VertexShader> Shader;
 	ComPtr<ID3D11InputLayout> InputLayout;
